@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cap. 3 · Rentabilidade de Títulos de Renda Fixa — Estudos de Crédito Privado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#0E3B2E;
+  --verde-escuro:#092A21;
+  --verde-alta:#1E8A5A;
+  --ambar:#C97B12;
+  --ambar-claro:#F4E3C8;
+  --papel:#ECEEE9;
+  --cartao:#FFFFFF;
+  --tinta:#16201C;
+  --tinta-suave:#4C5852;
+  --linha:#C9CEC5;
+  --neg:#B3402A;
+  --raio:10px;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --display:'Bricolage Grotesque',sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--body);background:var(--papel);color:var(--tinta);line-height:1.65;font-size:16px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* ---------- Header ---------- */
+header.hero{background:var(--verde);color:#F2F5F0;padding:56px 0 48px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,transparent 0 119px,rgba(255,255,255,.05) 119px 120px);
+  pointer-events:none}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9FC2AE;margin-bottom:14px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,5.4vw,52px);line-height:1.06;letter-spacing:-.01em;max-width:18ch}
+.hero h1 .cap{display:block;font-weight:600;font-size:.42em;letter-spacing:.06em;color:#CFE0D3;margin-bottom:10px}
+.hero p.lead{margin-top:18px;max-width:62ch;color:#D8E4DA;font-size:17px}
+.hero .keyline{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero .keyline span{font-family:var(--mono);font-size:12.5px;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 13px;color:#E8F0E8}
+
+/* ---------- Nav ---------- */
+nav.topo{position:sticky;top:0;z-index:50;background:rgba(236,238,233,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+nav.topo .wrap{display:flex;gap:4px;overflow-x:auto;padding:0 12px}
+nav.topo a{flex:0 0 auto;font-family:var(--mono);font-size:12.5px;color:var(--tinta-suave);text-decoration:none;padding:13px 12px;border-bottom:2px solid transparent;white-space:nowrap}
+nav.topo a:hover,nav.topo a:focus-visible{color:var(--verde);border-bottom-color:var(--verde)}
+nav.topo a .n{color:var(--ambar);font-weight:600;margin-right:5px}
+
+/* ---------- Sections ---------- */
+section{padding:54px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sec-num{font-family:var(--mono);font-weight:600;font-size:14px;color:#fff;background:var(--verde);border-radius:6px;padding:4px 10px;flex:0 0 auto}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.4vw,30px);line-height:1.15}
+h3{font-family:var(--display);font-weight:600;font-size:19px;margin:30px 0 10px}
+section>.wrap>p,section .prosa p{max-width:72ch;margin:12px 0;color:var(--tinta)}
+strong{font-weight:600}
+.suave{color:var(--tinta-suave)}
+
+/* cards de fatores */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+@media(max-width:640px){.duo{grid-template-columns:1fr}}
+.fator{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:20px 20px 16px}
+.fator .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ambar);font-weight:600}
+.fator h4{font-family:var(--display);font-size:17px;margin:6px 0 6px}
+.fator p{font-size:14.5px;color:var(--tinta-suave)}
+
+/* ---------- Fórmulas ---------- */
+.formula{background:var(--cartao);border:1px solid var(--linha);border-left:4px solid var(--verde);border-radius:var(--raio);padding:18px 20px;margin:18px 0;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.formula .eq{font-family:var(--mono);font-size:17px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.formula .ref{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--tinta-suave)}
+.formula .desc{flex-basis:100%;font-size:13.5px;color:var(--tinta-suave);margin-top:4px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 2px}
+.frac .num{padding:0 6px;border-bottom:1.5px solid var(--tinta)}
+.frac .den{padding:0 6px}
+sup{font-size:.68em}
+.eq .op{color:var(--tinta-suave)}
+.eq .destaque{color:var(--ambar);font-weight:600}
+
+/* ---------- Caixas ---------- */
+.insight{background:var(--ambar-claro);border:1px solid #E3C896;border-radius:var(--raio);padding:18px 20px;margin:22px 0;max-width:72ch}
+.insight .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar);font-weight:600;display:block;margin-bottom:6px}
+.insight p{font-size:14.5px;margin:6px 0}
+.errata{font-size:13px;color:var(--tinta-suave);border-left:3px solid var(--linha);padding:4px 12px;margin:14px 0;max-width:70ch}
+
+/* ---------- Painéis interativos ---------- */
+.painel{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:24px;margin:24px 0;box-shadow:0 1px 0 rgba(22,32,28,.04)}
+.painel .titulo-painel{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.painel .titulo-painel h3{margin:0}
+.badge-int{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--verde);color:#fff;border-radius:4px;padding:3px 8px}
+.painel p.sub{font-size:14px;color:var(--tinta-suave);margin-bottom:16px}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:14px 0}
+.campo label{display:block;font-family:var(--mono);font-size:12px;color:var(--tinta-suave);margin-bottom:5px}
+.campo input{width:100%;font-family:var(--mono);font-size:15px;padding:9px 11px;border:1px solid var(--linha);border-radius:7px;background:#FBFCFA;color:var(--tinta)}
+.campo input:focus-visible{outline:2px solid var(--verde);outline-offset:1px;border-color:var(--verde)}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px}
+button{font-family:var(--body);font-weight:600;font-size:14px;border-radius:8px;padding:10px 16px;border:1px solid var(--verde);cursor:pointer;transition:filter .15s}
+button.primario{background:var(--verde);color:#fff}
+button.primario:hover{filter:brightness(1.12)}
+button.fantasma{background:transparent;color:var(--verde)}
+button.fantasma:hover{background:#E2EAE3}
+button.mini{font-size:12.5px;padding:6px 11px;border-radius:6px}
+button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+
+.resultado{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.res-card{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:14px 16px}
+.res-card .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave)}
+.res-card .valor{font-family:var(--mono);font-weight:600;font-size:24px;margin-top:4px}
+.res-card .valor.pos{color:var(--verde-alta)}
+.res-card .valor.taxa{color:var(--ambar)}
+.res-card .nota{font-size:12px;color:var(--tinta-suave);margin-top:2px}
+
+/* tabelas */
+.tabela-rolagem{overflow-x:auto;margin:14px 0;border:1px solid var(--linha);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-align:left;color:#fff;background:var(--verde);padding:9px 12px;white-space:nowrap}
+td{padding:9px 12px;border-top:1px solid var(--linha);font-family:var(--mono);font-size:13.5px;white-space:nowrap}
+td.txt{font-family:var(--body)}
+tr.total td{background:#F2F5EF;font-weight:600}
+td input{font-family:var(--mono);font-size:13.5px;width:110px;padding:6px 8px;border:1px solid var(--linha);border-radius:6px;background:#FBFCFA}
+td input.curto{width:78px}
+td button.remover{border:none;background:none;color:var(--neg);font-size:16px;padding:2px 6px;cursor:pointer}
+
+/* timeline svg */
+.timeline-box{margin:18px 0 6px;background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:12px 8px 4px;overflow-x:auto}
+.timeline-box svg{display:block;min-width:560px;width:100%;height:auto}
+.legenda-tl{font-family:var(--mono);font-size:11.5px;color:var(--tinta-suave);padding:0 12px 10px}
+
+/* comparação */
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:680px){.versus{grid-template-columns:1fr}}
+.versus .col{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:20px}
+.versus .col.dois{border-top:4px solid var(--verde)}
+.versus .col.um{border-top:4px solid var(--ambar)}
+.versus h4{font-family:var(--display);font-size:17px;margin-bottom:8px}
+.versus ul{list-style:none;margin-top:8px}
+.versus li{font-size:14px;padding:7px 0 7px 22px;position:relative;color:var(--tinta-suave);border-top:1px dashed var(--linha)}
+.versus li:first-child{border-top:none}
+.versus li::before{content:"–";position:absolute;left:4px;color:var(--ambar);font-weight:700}
+.versus .col.dois li::before{color:var(--verde-alta)}
+
+/* exercícios */
+.exercicio{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:22px;margin:18px 0}
+.exercicio .num-ex{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar);font-weight:600}
+.exercicio h4{font-family:var(--display);font-size:17px;margin:4px 0 8px}
+.exercicio p{font-size:14.5px;max-width:70ch}
+.gabarito{display:none;margin-top:14px;border-top:1px dashed var(--linha);padding-top:14px}
+.gabarito.aberto{display:block}
+.gabarito .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--verde-alta);font-weight:600;display:block;margin-bottom:6px}
+.gabarito p{font-size:14px;color:var(--tinta-suave)}
+.vf{display:flex;gap:10px;margin:12px 0}
+.vf button.certo{border-color:var(--verde-alta);color:var(--verde-alta);background:#E7F3EC}
+.vf button.errado{border-color:var(--neg);color:var(--neg);background:#F7E9E5}
+.feedback{font-size:14px;margin-top:8px;display:none}
+.feedback.ok{display:block;color:var(--verde-alta);font-weight:600}
+.feedback.nok{display:block;color:var(--neg);font-weight:600}
+
+footer{margin-top:60px;background:var(--verde-escuro);color:#BBD0BF;padding:34px 0;font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+footer .mono{font-family:var(--mono);font-size:12px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Crédito Privado · Programa de Estudos · Módulo Renda Fixa</div>
+    <h1><span class="cap">Capítulo 3</span>Rentabilidade de títulos de renda fixa</h1>
+    <p class="lead">O retorno de um título <strong>não é</strong> a sua TIR — exceto em um caso muito particular. Este módulo cobre o cálculo do retorno de papéis sem cupom, o conceito de <em>total return</em> para papéis com cupom e a diferença de premissas entre os dois métodos de cálculo.</p>
+    <div class="keyline">
+      <span>r = (Pt/P0 − 1)</span>
+      <span>base 252 dias úteis</span>
+      <span>total return por quotas</span>
+      <span>TIR · reinvestimento</span>
+    </div>
+  </div>
+</header>
+
+<nav class="topo" aria-label="Seções do capítulo">
+  <div class="wrap">
+    <a href="#conceito"><span class="n">3.0</span>Conceito</a>
+    <a href="#zero-cupom"><span class="n">3.1</span>Sem cupom</a>
+    <a href="#calc-zero"><span class="n">⚙</span>Calculadora</a>
+    <a href="#com-cupom"><span class="n">3.2</span>Com cupom</a>
+    <a href="#simulador"><span class="n">⚙</span>Simulador</a>
+    <a href="#comparacao"><span class="n">Δ</span>TIR × Quotas</a>
+    <a href="#exercicios"><span class="n">✎</span>Exercícios</a>
+  </div>
+</nav>
+
+<!-- ====================== 3.0 CONCEITO ====================== -->
+<section id="conceito">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">3.0</span><h2>Por que rentabilidade ≠ TIR</h2></div>
+    <p>Os preços dos títulos de renda fixa são <strong>voláteis</strong> — volatilidade é a medida do padrão de oscilação nos preços de ativos financeiros. Por isso, precisamos de métricas para medir a rentabilidade de um título em um dado horizonte de tempo.</p>
+    <p>A rentabilidade de um título <em>se relaciona</em> com a sua TIR (ou com a taxa de juros subjacente), mas <strong>não é inteiramente correlacionada</strong> com elas, por dois motivos:</p>
+    <div class="duo">
+      <div class="fator">
+        <span class="tag">Fator 1</span>
+        <h4>Oscilações de mercado</h4>
+        <p>As expectativas sobre as taxas de juros mudam ao longo do tempo. Quando a curva de juros se desloca, o preço de mercado do papel se move — e com ele o retorno de quem carrega o título.</p>
+      </div>
+      <div class="fator">
+        <span class="tag">Fator 2</span>
+        <h4>Pagamentos de cupons</h4>
+        <p>Fluxos intermediários de juros (e amortizações) saem do papel e precisam ser reinvestidos. A taxa de reinvestimento dificilmente será a TIR original da compra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== 3.1 ZERO CUPOM ====================== -->
+<section id="zero-cupom">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">3.1</span><h2>Retorno de títulos sem cupom de juros</h2></div>
+    <p>A rentabilidade de uma aplicação financeira é dada pela <strong>variação do seu valor</strong> entre as datas de cálculo. Chamando o instante inicial de 0 e o final de <em>t</em>, o retorno ao período é:</p>
+
+    <div class="formula">
+      <span class="eq">r<sup>p</sup><sub>0,t</sub> <span class="op">=</span> <span class="op">(</span><span class="frac"><span class="num">P<sub>t</sub></span><span class="den">P<sub>0</sub></span></span> <span class="op">−</span> 1<span class="op">)</span> <span class="op">×</span> 100%</span>
+      <span class="ref">(3.1)</span>
+      <span class="desc">Retorno <strong>ao período</strong> (sobrescrito <em>p</em>) entre 0 e <em>t</em>.</span>
+    </div>
+
+    <p>Para comparar aplicações de prazos diferentes, anualiza-se o retorno na convenção brasileira de <strong>252 dias úteis</strong>, em que <em>t</em> é o número de dias úteis entre as duas datas:</p>
+
+    <div class="formula">
+      <span class="eq">r<sup>a</sup><sub>0,t</sub> <span class="op">=</span> <span class="op">[</span><span class="op">(</span><span class="frac"><span class="num">P<sub>t</sub></span><span class="den">P<sub>0</sub></span></span><span class="op">)</span><sup class="destaque">252/t</sup> <span class="op">−</span> 1<span class="op">]</span> <span class="op">×</span> 100%</span>
+      <span class="ref">(3.3)</span>
+      <span class="desc">Derivada de (1 + r<sup>a</sup>)<sup>t/252</sup> = P<sub>t</sub>/P<sub>0</sub> — equação (3.2).</span>
+    </div>
+
+    <div class="insight">
+      <span class="rotulo">Ponto-chave do capítulo</span>
+      <p>Se o título for <strong>zero cupom</strong> e mantido <strong>até o vencimento</strong>, o retorno total será idêntico à TIR contratada na compra. É a origem do conselho clássico de "levar o papel até o vencimento para garantir a taxa".</p>
+      <p>Esse raciocínio é <strong>apenas parcialmente correto</strong> para papéis com cupom: a TIR pressupõe reinvestimento dos cupons à própria TIR, e a taxa de reinvestimento real do mercado certamente será outra. O conceito vale com precisão somente para títulos sem cupom.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CALCULADORA ZERO CUPOM ====================== -->
+<section id="calc-zero">
+  <div class="wrap">
+    <div class="painel">
+      <div class="titulo-painel"><h3>Calculadora · retorno de título zero cupom</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">Pré-carregada com o exemplo 3.1.1 do livro: LTN venc. 1/7/2020, comprada em 11/7/2016 por R$ 637,445 e vendida 130 dias úteis depois (13/1/2017) por R$ 703,91.</p>
+      <div class="campos">
+        <div class="campo"><label for="z-p0">Preço de compra P₀ (R$)</label><input id="z-p0" inputmode="decimal" value="637,445"></div>
+        <div class="campo"><label for="z-pt">Preço de venda Pₜ (R$)</label><input id="z-pt" inputmode="decimal" value="703,91"></div>
+        <div class="campo"><label for="z-du">Dias úteis (t)</label><input id="z-du" inputmode="numeric" value="130"></div>
+      </div>
+      <div class="botoes">
+        <button class="primario" id="z-calc">Calcular retorno</button>
+        <button class="fantasma mini" id="z-reset">Recarregar exemplo do livro</button>
+      </div>
+      <div class="resultado" id="z-res" hidden>
+        <div class="res-card"><span class="rotulo">Retorno ao período (3.1)</span><div class="valor pos" id="z-rp">—</div><div class="nota" id="z-rp-nota"></div></div>
+        <div class="res-card"><span class="rotulo">Retorno anualizado (3.3)</span><div class="valor taxa" id="z-ra">—</div><div class="nota">base 252 dias úteis</div></div>
+      </div>
+      <p class="errata">Errata do material original: o texto diz "vendida em 13/1/<strong>2007</strong>"; pelo contexto (compra em 11/7/2016 e 130 d.u.), a data correta é 13/1/<strong>2017</strong>. Resultados de referência do livro: 10,43% no período e 21,20% a.a.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== 3.2 COM CUPOM ====================== -->
+<section id="com-cupom">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">3.2</span><h2>Retorno de títulos com pagamento de cupons</h2></div>
+    <p>Para papéis que pagam juros periódicos (e eventualmente amortizações), usar as equações da seção 3.1 <strong>negligencia o fluxo de caixa pago pelo emissor</strong> e distorce a rentabilidade. Daí o conceito de <strong>retorno total</strong> (<em>total return</em>): um cálculo que considera os preços de compra e venda <em>e</em> os fluxos intermediários recebidos.</p>
+    <p>Ambas as formas de cálculo assumem que os valores recebidos (juros ou amortizações) são <strong>reinvestidos na compra de papéis iguais</strong>, ao preço vigente de mercado.</p>
+
+    <h3>3.2.1 — Cálculo pela TIR</h3>
+    <p>Calcula-se a TIR do fluxo efetivamente recebido no período. O conceito de TIR embute, automaticamente, a hipótese de reinvestimento dos cupons <strong>à própria taxa interna de retorno</strong>. Chamando a TIR do fluxo de <em>y</em>:</p>
+    <div class="formula">
+      <span class="eq">TR<sup>a</sup><sub>0,t</sub> <span class="op">=</span> <span class="destaque">y</span></span>
+      <span class="ref">(3.4)</span>
+    </div>
+
+    <h3>3.2.2 — Cálculo por quotas de títulos equivalentes</h3>
+    <p>A cada cupom recebido, compra-se mais do mesmo título ao preço de mercado da data — a quantidade possuída aumenta, como quotas de um fundo. Ao final:</p>
+    <div class="formula">
+      <span class="eq">TR<sup>a</sup><sub>0,t</sub> <span class="op">=</span> <span class="op">[</span><span class="op">(</span><span class="frac"><span class="num">P<sub>t</sub> × Q<sub>t</sub></span><span class="den">P<sub>0</sub> × Q<sub>0</sub></span></span><span class="op">)</span><sup class="destaque">252/t</sup> <span class="op">−</span> 1<span class="op">]</span> <span class="op">×</span> 100%</span>
+      <span class="ref">(3.5)</span>
+      <span class="desc">Preços inicial e final ponderados pelas quantidades, capturando a valorização como se não houvesse pagamento periódico de juros.</span>
+    </div>
+    <div class="formula">
+      <span class="eq">Q<sub>t+1</sub> <span class="op">=</span> Q<sub>t</sub> <span class="op">+</span> <span class="frac"><span class="num">D<sub>t+1</sub></span><span class="den">P<sub>t+1</sub></span></span> <span class="op">×</span> Q<sub>t</sub></span>
+      <span class="ref">(3.7)</span>
+      <span class="desc">D = cupom de juros (renda fixa) ou dividendos (renda variável). O retorno entre datas segue a equação (3.6): TR<sub>t,t+1</sub> = (P<sub>t+1</sub>Q<sub>t+1</sub>)/(P<sub>t</sub>Q<sub>t</sub>) − 1.</span>
+    </div>
+
+    <div class="insight">
+      <span class="rotulo">Uso correto da ferramenta</span>
+      <p>Como não sabemos o que o investidor de fato fez com o dinheiro dos cupons, o total return é uma <strong>estimativa teórica para avaliação de performance</strong> — não deve ser usado para fins contábeis ou fiscais. Para esses fins, calcula-se o resultado da carteira caso a caso (controllers do fundo, fundo de pensão ou instituição financeira).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SIMULADOR TOTAL RETURN ====================== -->
+<section id="simulador">
+  <div class="wrap">
+    <div class="painel">
+      <div class="titulo-painel"><h3>Simulador · total return por quotas + TIR</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">Monte o fluxo de caixa do papel (compra, cupons, venda) e compare o retorno total pelos dois métodos. Pré-carregado com o exemplo 3.2.3: NTN-F 1/1/2027, comprada em 19/1/2016 por R$ 692,774 e vendida 249 d.u. depois por R$ 946,084, com dois cupons de R$ 48,808.</p>
+
+      <div class="botoes">
+        <button class="fantasma mini" id="s-livro">Exemplo do livro (NTN-F)</button>
+        <button class="fantasma mini" id="s-ex1">Carregar Exercício 1</button>
+        <button class="fantasma mini" id="s-add">+ Adicionar cupom</button>
+      </div>
+
+      <div class="tabela-rolagem">
+        <table aria-label="Fluxo de caixa do título">
+          <thead><tr><th>Evento</th><th>Dias úteis</th><th>Cupom (R$)</th><th>Preço de mercado (R$)</th><th></th></tr></thead>
+          <tbody id="s-corpo"></tbody>
+        </table>
+      </div>
+
+      <div class="botoes"><button class="primario" id="s-calc">Calcular retorno total</button></div>
+
+      <div id="s-saida" hidden>
+        <div class="timeline-box">
+          <svg id="s-svg" viewBox="0 0 760 190" role="img" aria-label="Diagrama de fluxos de caixa do título"></svg>
+          <div class="legenda-tl">Figura — fluxos de caixa do papel · seta para baixo: desembolso na compra · setas para cima: cupons e venda</div>
+        </div>
+
+        <h3 style="margin-top:22px">Esquema de cálculo por quotas (Tabela 3.1)</h3>
+        <div class="tabela-rolagem">
+          <table aria-label="Esquema de cálculo por quotas">
+            <thead><tr><th>d.u.</th><th>Fluxo (R$)</th><th>Preço (R$)</th><th>Quantidade atualizada</th><th>P × Q (R$)</th></tr></thead>
+            <tbody id="s-quotas"></tbody>
+          </table>
+        </div>
+
+        <div class="resultado">
+          <div class="res-card"><span class="rotulo">TR ao período · quotas</span><div class="valor pos" id="s-trp">—</div><div class="nota">eq. (3.5) sem anualizar</div></div>
+          <div class="res-card"><span class="rotulo">TR anualizado · quotas</span><div class="valor pos" id="s-tra">—</div><div class="nota">reinvestimento a preços de mercado</div></div>
+          <div class="res-card"><span class="rotulo">TIR do fluxo (y)</span><div class="valor taxa" id="s-tir">—</div><div class="nota">reinvestimento à própria TIR — eq. (3.4)</div></div>
+        </div>
+        <p class="suave" style="font-size:13.5px;margin-top:12px;max-width:72ch" id="s-leitura"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== COMPARAÇÃO ====================== -->
+<section id="comparacao">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">Δ</span><h2>TIR × total return por quotas</h2></div>
+    <p>As rentabilidades calculadas pelos dois métodos são <strong>distintas porque as premissas são distintas</strong>:</p>
+    <div class="versus">
+      <div class="col um">
+        <h4>Método 1 · TIR</h4>
+        <ul>
+          <li>Resolve a taxa única <em>y</em> que iguala o preço de compra ao valor presente de todos os fluxos recebidos.</li>
+          <li>Premissa implícita: cupons reinvestidos <strong>à própria TIR</strong> calculada no início.</li>
+          <li>Irrealista quando a curva de juros se move — a taxa de reinvestimento real será outra.</li>
+        </ul>
+      </div>
+      <div class="col dois">
+        <h4>Método 2 · Quotas (total return)</h4>
+        <ul>
+          <li>Cupons reinvestidos na compra de mais títulos <strong>aos preços vigentes de mercado</strong> em cada data de pagamento.</li>
+          <li>Premissa mais realista; é o padrão do mercado financeiro e dos estudos acadêmicos.</li>
+          <li>Extensível a ações (dividendos) e fundos de investimento.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="suave">No exemplo da NTN-F, o retorno total ficou muito acima do CDI acumulado do período porque houve <strong>grande deslocamento para baixo de toda a curva de juros</strong> no intervalo — exatamente o "Fator 1" da seção 3.0 trabalhando a favor do detentor do papel.</p>
+  </div>
+</section>
+
+<!-- ====================== EXERCÍCIOS ====================== -->
+<section id="exercicios">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">✎</span><h2>Exercícios propostos</h2></div>
+
+    <div class="exercicio">
+      <span class="num-ex">Exercício 1 · cálculo</span>
+      <h4>Total return de uma NTN-F 1/1/2027</h4>
+      <p>Compra em 4/2/2014 a R$ 905,356 e venda final em 5/7/2017 por R$ 1.018,790 (857 dias úteis), com sete cupons intermediários de R$ 48,80885 reinvestidos aos preços de mercado de cada data. Use o simulador acima — o botão abaixo carrega o fluxo completo do enunciado.</p>
+      <div class="botoes">
+        <button class="primario mini" id="ex1-carregar">Carregar no simulador</button>
+        <button class="fantasma mini" data-gab="g1">Ver gabarito</button>
+      </div>
+      <div class="gabarito" id="g1">
+        <span class="rotulo">Gabarito</span>
+        <p>Encadeando a equação (3.7) pelos sete cupons, a quantidade final chega a ≈ <strong>1,42382</strong> quota por título inicial. Valor final P×Q ≈ R$ 1.450,57 contra R$ 905,356 investidos: <strong>TR ≈ 60,2% no período</strong> e, anualizando por (1+TR)<sup>252/857</sup> − 1, <strong>≈ 14,9% a.a.</strong> Confira no simulador o passo a passo da tabela de quotas.</p>
+      </div>
+    </div>
+
+    <div class="exercicio">
+      <span class="num-ex">Exercício 2 · julgamento</span>
+      <h4>"O cupom da NTN-F é definido pelo Tesouro em 10% a.a., pagos semestralmente. Logo, a rentabilidade deste título é 10% a.a., em qualquer circunstância."</h4>
+      <div class="vf">
+        <button class="fantasma mini" data-vf="v">Verdadeira</button>
+        <button class="fantasma mini" data-vf="f">Falsa</button>
+      </div>
+      <p class="feedback" id="vf-fb"></p>
+      <div class="gabarito" id="g2">
+        <span class="rotulo">Justificativa</span>
+        <p><strong>Falsa.</strong> O cupom de 10% a.a. define apenas o <em>fluxo de caixa</em> do papel (R$ 48,81 por semestre sobre o valor de face de R$ 1.000), não a rentabilidade do investidor. A rentabilidade depende (i) do <strong>preço de compra</strong> — comprar abaixo ou acima do par muda a TIR; (ii) das <strong>oscilações de mercado</strong> sobre o preço caso o papel seja vendido antes do vencimento; e (iii) da <strong>taxa de reinvestimento dos cupons</strong>, que dificilmente será a TIR original. No próprio exemplo 3.2.3, o retorno total realizado da NTN-F foi de ≈ 52% a.a. no intervalo — muito distante dos 10% do cupom.</p>
+      </div>
+    </div>
+
+    <div class="exercicio">
+      <span class="num-ex">Exercício 3 · conceito</span>
+      <h4>Quais as diferenças entre o cálculo da rentabilidade pela TIR e por quotas?</h4>
+      <div class="botoes"><button class="fantasma mini" data-gab="g3">Ver resposta</button></div>
+      <div class="gabarito" id="g3">
+        <span class="rotulo">Resposta</span>
+        <p>A diferença está na <strong>premissa de reinvestimento dos fluxos intermediários</strong>. Na TIR, todos os cupons são implicitamente reinvestidos à própria taxa interna de retorno, única e definida no início — uma hipótese teórica. No cálculo por quotas, cada cupom compra mais títulos ao <strong>preço vigente de mercado na data do pagamento</strong>, atualizando a quantidade (eq. 3.7); o retorno é a variação de P×Q (eq. 3.5). Por refletir as condições reais de reinvestimento, o método de quotas é o preferido do mercado e da academia, e se estende a ações e fundos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Estudos de Crédito Privado · Renda Fixa — material de apoio ao Capítulo 3</div>
+    <div class="mono">convenção 252 d.u. · valores em R$ · uso educacional</div>
+  </div>
+</footer>
+
+<script>
+/* ---------- utilidades pt-BR ---------- */
+function parseBR(s){
+  if(typeof s!=='string') return NaN;
+  s=s.trim().replace(/\s/g,'').replace(/R\$/gi,'');
+  if(s==='') return NaN;
+  if(s.includes(',')){ s=s.replace(/\./g,'').replace(',','.'); }
+  return parseFloat(s);
+}
+function fmt(n,dec){ return n.toLocaleString('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
+function fmtPct(n,dec){ return fmt(n*100,dec)+'%'; }
+
+/* ---------- calculadora zero cupom ---------- */
+const zP0=document.getElementById('z-p0'), zPt=document.getElementById('z-pt'), zDu=document.getElementById('z-du');
+function calcZero(){
+  const p0=parseBR(zP0.value), pt=parseBR(zPt.value), du=parseBR(zDu.value);
+  const res=document.getElementById('z-res');
+  if(!(p0>0&&pt>0&&du>0)){ res.hidden=false;
+    document.getElementById('z-rp').textContent='—';
+    document.getElementById('z-ra').textContent='—';
+    document.getElementById('z-rp-nota').textContent='Preencha preços positivos e dias úteis > 0.';
+    return; }
+  const rp=pt/p0-1, ra=Math.pow(pt/p0,252/du)-1;
+  res.hidden=false;
+  const elRp=document.getElementById('z-rp');
+  elRp.textContent=fmtPct(rp,2);
+  elRp.className='valor '+(rp>=0?'pos':'');
+  if(rp<0) elRp.style.color='var(--neg)'; else elRp.style.color='';
+  document.getElementById('z-rp-nota').textContent='em '+fmt(du,0)+' dias úteis';
+  document.getElementById('z-ra').textContent=fmtPct(ra,2)+' a.a.';
+}
+document.getElementById('z-calc').addEventListener('click',calcZero);
+document.getElementById('z-reset').addEventListener('click',()=>{ zP0.value='637,445'; zPt.value='703,91'; zDu.value='130'; calcZero(); });
+[zP0,zPt,zDu].forEach(el=>el.addEventListener('keydown',e=>{ if(e.key==='Enter') calcZero(); }));
+
+/* ---------- simulador total return ---------- */
+const corpo=document.getElementById('s-corpo');
+function linhaFixa(tipo, du, valor, preco){
+  const tr=document.createElement('tr');
+  tr.dataset.tipo=tipo;
+  const duCell = tipo==='compra'
+    ? '<td>0</td>'
+    : '<td><input class="curto" data-campo="du" inputmode="numeric" value="'+du+'"></td>';
+  const cupomCell = tipo==='venda' ? '<td class="suave">— (venda)</td>'
+    : tipo==='compra' ? '<td class="suave">— (compra)</td>'
+    : '<td><input data-campo="cupom" inputmode="decimal" value="'+valor+'"></td>';
+  tr.innerHTML='<td class="txt"><strong>'+(tipo==='compra'?'Compra':tipo==='venda'?'Venda final':'Cupom')+'</strong></td>'
+    + duCell + cupomCell
+    + '<td><input data-campo="preco" inputmode="decimal" value="'+preco+'"></td>'
+    + '<td>'+(tipo==='cupom'?'<button class="remover" title="Remover linha" aria-label="Remover cupom">×</button>':'')+'</td>';
+  return tr;
+}
+function montar(compraPreco, cupons, vendaDu, vendaPreco){
+  corpo.innerHTML='';
+  corpo.appendChild(linhaFixa('compra',0,'',compraPreco));
+  cupons.forEach(c=>corpo.appendChild(linhaFixa('cupom',c.du,c.cupom,c.preco)));
+  corpo.appendChild(linhaFixa('venda',vendaDu,'',vendaPreco));
+  const vendaTr=corpo.lastElementChild;
+  vendaTr.querySelector('[data-campo="du"]').setAttribute('aria-label','Dias úteis até a venda');
+  document.getElementById('s-saida').hidden=true;
+}
+corpo.addEventListener('click',e=>{
+  if(e.target.classList.contains('remover')){ e.target.closest('tr').remove(); }
+});
+document.getElementById('s-add').addEventListener('click',()=>{
+  const venda=corpo.querySelector('tr[data-tipo="venda"]');
+  corpo.insertBefore(linhaFixa('cupom','','',''),venda);
+});
+
+const EX_LIVRO={p0:'692,774',cupons:[{du:113,cupom:'48,809',preco:'880,711'},{du:240,cupom:'48,809',preco:'932,790'}],du:249,pt:'946,084'};
+const EX_1={p0:'905,356',cupons:[
+  {du:99, cupom:'48,80885',preco:'944,922'},
+  {du:230,cupom:'48,80885',preco:'925,274'},
+  {du:352,cupom:'48,80885',preco:'922,966'},
+  {du:480,cupom:'48,80885',preco:'859,803'},
+  {du:604,cupom:'48,80885',preco:'958,421'},
+  {du:731,cupom:'48,80885',preco:'986,561'},
+  {du:855,cupom:'48,80885',preco:'1.017,479'}
+],du:857,pt:'1.018,790'};
+function carregar(ex){ montar(ex.p0,ex.cupons,ex.du,ex.pt); }
+document.getElementById('s-livro').addEventListener('click',()=>carregar(EX_LIVRO));
+document.getElementById('s-ex1').addEventListener('click',()=>carregar(EX_1));
+document.getElementById('ex1-carregar').addEventListener('click',()=>{
+  carregar(EX_1);
+  document.getElementById('simulador').scrollIntoView({behavior:'smooth'});
+});
+carregar(EX_LIVRO);
+
+function lerFluxo(){
+  const linhas=[...corpo.querySelectorAll('tr')];
+  const compra=linhas.find(l=>l.dataset.tipo==='compra');
+  const venda=linhas.find(l=>l.dataset.tipo==='venda');
+  const p0=parseBR(compra.querySelector('[data-campo="preco"]').value);
+  const pt=parseBR(venda.querySelector('[data-campo="preco"]').value);
+  const duT=parseBR(venda.querySelector('[data-campo="du"]').value);
+  const cupons=linhas.filter(l=>l.dataset.tipo==='cupom').map(l=>({
+    du:parseBR(l.querySelector('[data-campo="du"]').value),
+    cupom:parseBR(l.querySelector('[data-campo="cupom"]').value),
+    preco:parseBR(l.querySelector('[data-campo="preco"]').value)
+  })).filter(c=>c.du>0&&c.cupom>0&&c.preco>0).sort((a,b)=>a.du-b.du);
+  return {p0,pt,duT,cupons};
+}
+function tirAnual(p0,fluxos){ /* fluxos: [{du, valor}] */
+  function vp(y){ let s=-p0; fluxos.forEach(f=>{ s+=f.valor/Math.pow(1+y,f.du/252); }); return s; }
+  let lo=-0.95, hi=10;
+  if(vp(lo)*vp(hi)>0) return NaN;
+  for(let i=0;i<200;i++){ const m=(lo+hi)/2; (vp(lo)*vp(m)<=0)?(hi=m):(lo=m); }
+  return (lo+hi)/2;
+}
+function calcularSim(){
+  const {p0,pt,duT,cupons}=lerFluxo();
+  const saida=document.getElementById('s-saida');
+  if(!(p0>0&&pt>0&&duT>0)){ alert('Preencha preço de compra, preço de venda e dias úteis da venda.'); return; }
+  /* quotas */
+  let Q=1000, linhas=[];
+  linhas.push({du:0,fluxo:null,preco:p0,q:Q,formula:'Q₀ = 1.000,00000'});
+  cupons.forEach(c=>{
+    const add=c.cupom/c.preco*Q;
+    const novo=Q+add;
+    linhas.push({du:c.du,fluxo:c.cupom,preco:c.preco,q:novo,
+      formula:fmt(Q,5)+' + '+fmt(c.cupom,3)+'/'+fmt(c.preco,3)+' × '+fmt(Q,5)+' = '+fmt(novo,5)});
+    Q=novo;
+  });
+  const vFinal=pt*Q, vInicial=p0*1000;
+  linhas.push({du:duT,fluxo:pt,preco:pt,q:Q,formula:'Resgate total: '+fmt(pt,3)+' × '+fmt(Q,5)+' = '+fmt(vFinal,2),total:true});
+  const trP=vFinal/vInicial-1;
+  const trA=Math.pow(1+trP,252/duT)-1;
+  /* TIR */
+  const fluxos=cupons.map(c=>({du:c.du,valor:c.cupom})); fluxos.push({du:duT,valor:pt});
+  const y=tirAnual(p0,fluxos);
+
+  /* tabela */
+  const tb=document.getElementById('s-quotas'); tb.innerHTML='';
+  linhas.forEach(l=>{
+    const tr=document.createElement('tr');
+    if(l.total) tr.className='total';
+    tr.innerHTML='<td>'+fmt(l.du,0)+'</td>'
+      +'<td>'+(l.fluxo==null?'—':fmt(l.fluxo,3))+'</td>'
+      +'<td>'+fmt(l.preco,3)+'</td>'
+      +'<td>'+l.formula+'</td>'
+      +'<td>'+fmt(l.preco*l.q,2)+'</td>';
+    tb.appendChild(tr);
+  });
+  document.getElementById('s-trp').textContent=fmtPct(trP,2);
+  document.getElementById('s-tra').textContent=fmtPct(trA,2)+' a.a.';
+  document.getElementById('s-tir').textContent=isNaN(y)?'—':fmtPct(y,2)+' a.a.';
+  document.getElementById('s-leitura').innerHTML=
+    'Leitura: pelo método de quotas, R$ '+fmt(vInicial,2)+' aplicados viraram R$ '+fmt(vFinal,2)+
+    ' em '+fmt(duT,0)+' d.u. — <strong>'+fmtPct(trP,2)+' no período</strong>, ou '+fmtPct(trA,2)+
+    ' a.a. com reinvestimento dos cupons a preços de mercado. A TIR do mesmo fluxo ('+(isNaN(y)?'n/d':fmtPct(y,2))+
+    ' a.a.) difere porque assume reinvestimento à própria TIR.';
+  desenharTimeline(p0,cupons,duT,pt);
+  saida.hidden=false;
+}
+document.getElementById('s-calc').addEventListener('click',calcularSim);
+
+/* ---------- timeline SVG ---------- */
+function desenharTimeline(p0,cupons,duT,pt){
+  const svg=document.getElementById('s-svg');
+  const W=760,H=190, x0=60, x1=W-50, eixoY=110;
+  const esc=du=>x0+(x1-x0)*(du/duT);
+  let s='';
+  s+='<line x1="'+x0+'" y1="'+eixoY+'" x2="'+(x1+18)+'" y2="'+eixoY+'" stroke="#16201C" stroke-width="1.5"/>';
+  s+='<polygon points="'+(x1+18)+','+eixoY+' '+(x1+8)+','+(eixoY-5)+' '+(x1+8)+','+(eixoY+5)+'" fill="#16201C"/>';
+  /* compra: seta para baixo */
+  s+='<line x1="'+x0+'" y1="'+eixoY+'" x2="'+x0+'" y2="'+(eixoY+52)+'" stroke="#B3402A" stroke-width="2.5"/>';
+  s+='<polygon points="'+x0+','+(eixoY+58)+' '+(x0-5)+','+(eixoY+48)+' '+(x0+5)+','+(eixoY+48)+'" fill="#B3402A"/>';
+  s+='<text x="'+x0+'" y="'+(eixoY+76)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#B3402A">−'+fmt(p0,3)+'</text>';
+  s+='<text x="'+x0+'" y="'+(eixoY-10)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#4C5852">0</text>';
+  /* cupons */
+  cupons.forEach(c=>{
+    const x=esc(c.du);
+    s+='<line x1="'+x+'" y1="'+eixoY+'" x2="'+x+'" y2="'+(eixoY-38)+'" stroke="#1E8A5A" stroke-width="2"/>';
+    s+='<polygon points="'+x+','+(eixoY-44)+' '+(x-4.5)+','+(eixoY-34)+' '+(x+4.5)+','+(eixoY-34)+'" fill="#1E8A5A"/>';
+    s+='<text x="'+x+'" y="'+(eixoY-50)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#1E8A5A">'+fmt(c.cupom,2)+'</text>';
+    s+='<text x="'+x+'" y="'+(eixoY+16)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#4C5852">'+fmt(c.du,0)+'</text>';
+  });
+  /* venda */
+  const xv=esc(duT);
+  s+='<line x1="'+xv+'" y1="'+eixoY+'" x2="'+xv+'" y2="'+(eixoY-66)+'" stroke="#0E3B2E" stroke-width="3"/>';
+  s+='<polygon points="'+xv+','+(eixoY-73)+' '+(xv-5.5)+','+(eixoY-61)+' '+(xv+5.5)+','+(eixoY-61)+'" fill="#0E3B2E"/>';
+  s+='<text x="'+xv+'" y="'+(eixoY-80)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" font-weight="600" fill="#0E3B2E">'+fmt(pt,3)+'</text>';
+  s+='<text x="'+xv+'" y="'+(eixoY+16)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#4C5852">'+fmt(duT,0)+' d.u.</text>';
+  svg.innerHTML=s;
+}
+
+/* ---------- gabaritos e V/F ---------- */
+document.querySelectorAll('[data-gab]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const g=document.getElementById(b.dataset.gab);
+    g.classList.toggle('aberto');
+    b.textContent=g.classList.contains('aberto')?'Ocultar gabarito':'Ver gabarito';
+  });
+});
+document.querySelectorAll('[data-vf]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const fb=document.getElementById('vf-fb');
+    const g2=document.getElementById('g2');
+    document.querySelectorAll('[data-vf]').forEach(x=>x.classList.remove('certo','errado'));
+    if(b.dataset.vf==='f'){ b.classList.add('certo'); fb.className='feedback ok'; fb.textContent='Correto — a afirmação é falsa.'; }
+    else{ b.classList.add('errado'); fb.className='feedback nok'; fb.textContent='Não exatamente — o cupom define o fluxo, não a rentabilidade.'; }
+    g2.classList.add('aberto');
+  });
+});
+
+/* cálculo inicial dos painéis */
+calcZero();
+</script>
+</body>
+</html>
