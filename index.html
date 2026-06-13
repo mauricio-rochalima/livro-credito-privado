@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cap. 3 · Rentabilidade de Títulos de Renda Fixa — Estudos de Crédito Privado</title>
+<title>Estudos de Crédito Privado · Renda Fixa — Caps. 3 e 4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -161,9 +161,63 @@ td button.remover{border:none;background:none;color:var(--neg);font-size:16px;pa
 footer{margin-top:60px;background:var(--verde-escuro);color:#BBD0BF;padding:34px 0;font-size:13.5px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 footer .mono{font-family:var(--mono);font-size:12px}
+
+/* ---------- abas de capítulos ---------- */
+.barra-site{background:var(--verde-escuro);color:#DCE8DE}
+.barra-site .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:10px;padding-bottom:0;flex-wrap:wrap}
+.barra-site .marca{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#9FC2AE;padding-bottom:10px}
+.abas{display:flex;gap:6px}
+.aba{font-family:var(--display);font-weight:600;font-size:14px;background:transparent;border:1px solid rgba(255,255,255,.25);border-bottom:none;color:#CFE0D3;border-radius:8px 8px 0 0;padding:9px 18px;cursor:pointer}
+.aba.atual{background:var(--verde);color:#fff;border-color:var(--verde)}
+.aba:hover{color:#fff}
+.aba:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+.capitulo{display:none}
+.capitulo.ativa{display:block}
+
+/* ---------- definição em destaque ---------- */
+.definicao{background:var(--cartao);border:1.5px solid var(--verde);border-left:6px solid var(--verde);border-radius:var(--raio);padding:18px 22px;margin:20px 0;max-width:74ch}
+.definicao .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--verde-alta);font-weight:600;display:block;margin-bottom:6px}
+.definicao p{font-family:var(--display);font-weight:600;font-size:17.5px;line-height:1.5}
+
+/* ---------- passo a passo ---------- */
+.passos{margin:16px 0;display:grid;gap:10px}
+.passo{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:13px 16px 13px 52px;position:relative}
+.passo .pnum{position:absolute;left:14px;top:13px;width:26px;height:26px;border-radius:50%;background:var(--verde);color:#fff;font-family:var(--mono);font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center}
+.passo .ptxt{font-size:14px;color:var(--tinta-suave);margin-bottom:4px}
+.passo .pform{font-family:var(--mono);font-size:14.5px;overflow-x:auto;white-space:nowrap;padding:2px 0}
+.passo .pform .res{color:var(--verde-alta);font-weight:600}
+.passo .pform .tax{color:var(--ambar);font-weight:600}
+
+/* ---------- construtor de ETTJ ---------- */
+.copons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.copom-ctl{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:10px 12px}
+.copom-ctl label{display:block;font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin-bottom:4px}
+.copom-ctl .delta{font-family:var(--mono);font-weight:600;font-size:14px}
+.copom-ctl .delta.sobe{color:var(--neg)}
+.copom-ctl .delta.cai{color:var(--verde-alta)}
+.copom-ctl input[type=range]{width:100%;accent-color:var(--verde);margin-top:4px}
+.grafico-box{margin:16px 0 4px;background:#fff;border:1px solid var(--linha);border-radius:8px;padding:10px 6px 2px;overflow-x:auto}
+.grafico-box svg{display:block;min-width:600px;width:100%;height:auto}
+.legenda-graf{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--tinta-suave);padding:6px 12px 10px}
+.legenda-graf .chave{display:inline-flex;align-items:center;gap:6px}
+.legenda-graf .tra{width:22px;height:0;border-top:3px solid var(--verde)}
+.legenda-graf .tra.di{border-top:2px dashed var(--ambar)}
+.vertices td{font-size:13px}
 </style>
 </head>
 <body>
+
+<div class="barra-site">
+  <div class="wrap">
+    <span class="marca">Estudos de Crédito Privado · Renda Fixa</span>
+    <div class="abas" role="tablist" aria-label="Capítulos">
+      <button class="aba atual" data-cap="3" role="tab" aria-selected="true">Cap. 3 · Rentabilidade</button>
+      <button class="aba" data-cap="4" role="tab" aria-selected="false">Cap. 4 · ETTJ</button>
+    </div>
+  </div>
+</div>
+
+<div class="capitulo ativa" data-cap="3">
 
 <header class="hero">
   <div class="wrap">
@@ -417,9 +471,272 @@ footer .mono{font-family:var(--mono);font-size:12px}
   </div>
 </section>
 
+</div><!-- /capítulo 3 -->
+
+<!-- ╔══════════════════════ CAPÍTULO 4 — ETTJ ══════════════════════╗ -->
+<div class="capitulo" data-cap="4">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Crédito Privado · Programa de Estudos · Módulo Renda Fixa</div>
+    <h1><span class="cap">Capítulo 4</span>Estrutura a termo de taxas de juros (ETTJ)</h1>
+    <p class="lead">A taxa "de mercado" para cada prazo não cai do céu: ela é a <strong>média geométrica da trajetória esperada do DI</strong>, dia útil a dia útil. Este módulo cobre a definição da ETTJ, a diferença entre DI e Selic, e como o mercado forma — e revela — as taxas prefixadas.</p>
+    <div class="keyline">
+      <span>(1+i)^(du/252) = ∏(1+E[DIₖ])^(1/252)</span>
+      <span>DI × Selic</span>
+      <span>Copom · meta Selic</span>
+      <span>taxa spot</span>
+    </div>
+  </div>
+</header>
+
+<nav class="topo" aria-label="Seções do capítulo 4">
+  <div class="wrap">
+    <a href="#c4-def"><span class="n">4.1</span>Definição</a>
+    <a href="#c4-diselic"><span class="n">4.2</span>DI × Selic</a>
+    <a href="#c4-formacao"><span class="n">4.3</span>Formação</a>
+    <a href="#c4-curva"><span class="n">⚙</span>Construa a curva</a>
+    <a href="#c4-copom"><span class="n">⚙</span>Apostas do Copom</a>
+    <a href="#c4-ltn"><span class="n">⚙</span>LTN c/ trajetória</a>
+    <a href="#c4-ex"><span class="n">✎</span>Exercícios</a>
+  </div>
+</nav>
+
+<!-- ============ 4.1 DEFINIÇÃO ============ -->
+<section id="c4-def">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">4.1</span><h2>Definição</h2></div>
+    <div class="definicao">
+      <span class="rotulo">Definição central</span>
+      <p>A estrutura a termo de taxas de juros (ETTJ) é a curva que relaciona as taxas de juros de um <em>mesmo risco de crédito</em> para <em>diferentes prazos</em>.</p>
+    </div>
+    <p>Como existem taxas para diferentes níveis de risco de crédito e para diferentes indexadores, existem <strong>diversas ETTJs</strong> — uma para cada mercado analisado:</p>
+    <div class="duo">
+      <div class="fator">
+        <span class="tag">Por indexador</span>
+        <h4>Pré, cupom cambial, cupom de IPCA, cupom de IGPM…</h4>
+        <p>Aqui, "cupom" significa a diferença de remuneração entre a curva prefixada e o respectivo indexador — não confundir com a taxa de cupom dos títulos de longa duração (os juros semestrais do Cap. 3).</p>
+      </div>
+      <div class="fator">
+        <span class="tag">Por risco de crédito</span>
+        <h4>Soberana, bancária, corporativa…</h4>
+        <p>A curva de títulos públicos federais é a base; as ETTJs com risco de crédito (a praia do crédito privado) são determinadas a partir dela, com o spread refletindo o risco do emissor.</p>
+      </div>
+    </div>
+    <div class="insight">
+      <span class="rotulo">Para que serve</span>
+      <p>Entre outros usos, as curvas de juros servem para <strong>"descobrir" preços de ativos que não estão sendo negociados</strong> em mercado, determinando qual deveria ser o seu preço de negociação. É exatamente o que você faz ao marcar uma debênture a mercado: desconta o fluxo pela curva do indexador + spread de crédito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4.2 DI × SELIC ============ -->
+<section id="c4-diselic">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">4.2</span><h2>Taxa DI <em>versus</em> taxa Selic</h2></div>
+    <p>Antes de discutir a formação das taxas, é preciso conhecer as duas taxas de <strong>1 dia útil</strong> da economia — ambas com estreita relação com a Meta Selic divulgada pelo Copom.</p>
+    <div class="versus">
+      <div class="col um">
+        <h4>Taxa DI (CDI)</h4>
+        <ul>
+          <li>Média das operações prefixadas de <strong>1 d.u. entre instituições financeiras</strong> de grupos econômicos diferentes, para cobrir necessidades momentâneas de caixa.</li>
+          <li><strong>Sem garantia</strong> (risco de crédito bancário puro).</li>
+          <li>Lastreada em Certificados de Depósito Interfinanceiro (CDIs), negociáveis apenas entre instituições financeiras; registro na Cetip.</li>
+          <li>É a referência de remuneração <strong>pós-fixada</strong> do mercado brasileiro: indexa CDBs, empréstimos, derivativos etc.</li>
+        </ul>
+      </div>
+      <div class="col dois">
+        <h4>Taxa Selic</h4>
+        <ul>
+          <li>Média do financiamento interbancário de 1 d.u. <strong>com lastro (garantia) em títulos públicos federais</strong>, registrados no sistema Selic.</li>
+          <li>Operacionalizada por <strong>compromissadas</strong> (<em>repo</em>): o tomador vende títulos públicos ao doador com compromisso de recompra no dia útil seguinte; a diferença de valores são os juros pactuados.</li>
+          <li>É a taxa que o <strong>Banco Central monitora</strong> para deixá-la próxima da meta definida pelo Copom.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="insight">
+      <span class="rotulo">Síntese para prova</span>
+      <p>As duas são taxas médias de operações de 1 dia útil entre instituições financeiras. A diferença essencial é a <strong>garantia</strong>: Selic tem lastro em títulos públicos (e por isso é o instrumento da política monetária); DI não tem garantia (e por isso é a referência de indexação privada). Em condições normais, andam coladas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4.3 FORMAÇÃO ============ -->
+<section id="c4-formacao">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">4.3</span><h2>Formação das taxas de juros</h2></div>
+    <p>O <strong>Copom reúne-se oito vezes ao ano</strong> para definir a meta da taxa Selic, considerando inflação (regime de metas), crescimento econômico, liquidez da economia, taxa de câmbio e risco soberano (risco de solvência do país ao longo do tempo), entre outros. A discussão dura dois dias e resulta na meta de juros <strong>para 1 dia útil</strong>.</p>
+    <p>O Bacen mantém a Selic efetiva perto da meta. E as taxas para <strong>todos os outros prazos</strong>? Quem determina é o <strong>mercado financeiro</strong>, negociando títulos públicos prefixados (LTNs e NTN-Fs) e derivativos de juros — principalmente <strong>futuros de DI</strong> e <strong>swaps pré × DI</strong>. Essas taxas mais longas dependem de três fatores:</p>
+    <div class="duo" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div class="fator"><span class="tag">Fator 1</span><h4>Expectativas de taxas de juros</h4><p>O que o mercado acha que o Copom fará em cada reunião futura.</p></div>
+      <div class="fator"><span class="tag">Fator 2</span><h4>Preferência pela liquidez</h4><p>Agentes exigem compensação para travar dinheiro em prazos longos.</p></div>
+      <div class="fator"><span class="tag">Fator 3</span><h4>Segmentação de mercado</h4><p>Oferta e demanda específicas em cada faixa de prazo (vértice).</p></div>
+    </div>
+    <p>Sob a <strong>hipótese de expectativas</strong> — isto é, assumindo que não há prêmio de risco na curva — a curva prefixada de cada instante revela exatamente o valor esperado das taxas DI ao longo do tempo. (Se as expectativas sobre as taxas a termo forem serialmente correlacionadas, a hipótese pode se mostrar inadequada; um termo de prêmio pelo prazo pode ser acrescentado para generalizar.)</p>
+
+    <h3>A equação central do capítulo</h3>
+    <p>Como futuros de DI e swaps pré × DI permitem prefixar as taxas futuras de DI <strong>por arbitragem</strong>, as taxas negociadas nesses contratos revelam, a cada instante, a ETTJ prefixada da economia:</p>
+    <div class="formula">
+      <span class="eq">(1 + i)<sup class="destaque">du/252</sup> <span class="op">=</span> <span style="font-size:1.35em">∏</span><sub>k=0</sub><sup>du−1</sup> (1 + E[DI<sub>k</sub>])<sup>1/252</sup></span>
+      <span class="ref">(4.1)</span>
+      <span class="desc">A taxa pré <em>i</em> para o prazo <em>du</em> (em dias úteis) é o produtório da taxa DI <strong>esperada</strong> em cada dia útil do período. A taxa spot é, portanto, a <strong>média geométrica</strong> da trajetória esperada do DI.</span>
+    </div>
+    <div class="formula">
+      <span class="eq">i<sup>*</sup> <span class="op">=</span> <span style="font-size:1.35em">Σ</span><sub>k=0</sub><sup>du−1</sup> E[DI<sup>*</sup><sub>k</sub>]</span>
+      <span class="ref">(4.2)</span>
+      <span class="desc">Versão linearizada: a taxa pré é a soma das taxas DI diárias esperadas, onde o asterisco indica taxa linearizada. Útil como intuição: pré ≈ acumulado esperado do DI.</span>
+    </div>
+    <div class="insight">
+      <span class="rotulo">Leitura prática</span>
+      <p>O valor de <em>i</em> para um vencimento <em>du</em> <strong>muda a cada instante</strong> porque muda a percepção do mercado sobre a trajetória do DI dali em diante. Quando você vê o DI futuro "abrindo" ou "fechando" na tela, é a expectativa coletiva sobre as próximas decisões do Copom sendo reprecificada — e é por isso que o preço da sua debênture marcada a mercado mexe sem o emissor ter feito nada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSTRUTOR DE ETTJ ============ -->
+<section id="c4-curva">
+  <div class="wrap">
+    <div class="painel">
+      <div class="titulo-painel"><h3>Construa a sua ETTJ · das decisões do Copom à curva</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">A equação (4.1) em ação: defina o DI de hoje e o que você espera de cada uma das próximas 8 reuniões do Copom. A ferramenta monta a trajetória diária esperada do DI (escada tracejada) e calcula a taxa pré spot para cada prazo (curva cheia) — a média geométrica da escada.</p>
+      <div class="campos" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+        <div class="campo"><label for="e-di0">Taxa DI hoje (% a.a.)</label><input id="e-di0" inputmode="decimal" value="7,25"></div>
+      </div>
+      <div class="botoes">
+        <button class="fantasma mini" data-cen="alta">Cenário: ciclo de alta</button>
+        <button class="fantasma mini" data-cen="corte">Cenário: ciclo de corte</button>
+        <button class="fantasma mini" data-cen="vaievolta">Cenário: sobe e desce</button>
+        <button class="fantasma mini" data-cen="zera">Estável (zerar)</button>
+      </div>
+      <div class="copons" id="e-copons"></div>
+      <div class="grafico-box"><svg id="e-svg" viewBox="0 0 780 330" role="img" aria-label="Curva de juros construída a partir das expectativas"></svg></div>
+      <div class="legenda-graf">
+        <span class="chave"><span class="tra"></span> taxa pré spot i(du) — eq. (4.1)</span>
+        <span class="chave"><span class="tra di"></span> trajetória esperada do DI (escada)</span>
+      </div>
+      <h3 style="margin-top:18px">Taxas spot nos vértices</h3>
+      <div class="tabela-rolagem">
+        <table class="vertices" aria-label="Taxas spot por vértice">
+          <thead><tr><th>Vértice (d.u.)</th><th>21</th><th>63</th><th>126</th><th>252</th><th>378</th><th>504</th></tr></thead>
+          <tbody><tr id="e-vertices"><td class="txt"><strong>i spot (% a.a.)</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr></tbody>
+        </table>
+      </div>
+      <p class="suave" style="font-size:13.5px;max-width:74ch" id="e-leitura"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIMULADOR COPOM (4.3.1) ============ -->
+<section id="c4-copom">
+  <div class="wrap">
+    <div class="painel">
+      <div class="titulo-painel"><h3>O que o mercado espera do Copom? · exemplo 4.3.1</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">O caminho inverso: dado o preço do futuro de DI, extraia a decisão que o mercado está embutindo. Pré-carregado com o exemplo do livro — Copom em 10 d.u., DI = Selic = 7,25% a.a., futuro de DI de 25 d.u. negociado a 8,00% a.a.</p>
+      <div class="campos">
+        <div class="campo"><label for="k-di">Taxa DI atual (% a.a.)</label><input id="k-di" inputmode="decimal" value="7,25"></div>
+        <div class="campo"><label for="k-dur">D.u. até o Copom</label><input id="k-dur" inputmode="numeric" value="10"></div>
+        <div class="campo"><label for="k-fut">Taxa do futuro DI (% a.a.)</label><input id="k-fut" inputmode="decimal" value="8,00"></div>
+        <div class="campo"><label for="k-duf">D.u. do futuro</label><input id="k-duf" inputmode="numeric" value="25"></div>
+      </div>
+      <div class="botoes">
+        <button class="primario" id="k-calc">Extrair expectativa do mercado</button>
+        <button class="fantasma mini" id="k-reset">Recarregar exemplo do livro</button>
+      </div>
+      <div id="k-saida" hidden>
+        <div class="passos" id="k-passos"></div>
+        <div class="resultado">
+          <div class="res-card"><span class="rotulo">E[DI] pós-Copom</span><div class="valor taxa" id="k-edi">—</div><div class="nota">taxa esperada após a reunião</div></div>
+          <div class="res-card"><span class="rotulo">Ajuste esperado</span><div class="valor" id="k-ajuste">—</div><div class="nota" id="k-ajuste-nota"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRECIFICADOR LTN ============ -->
+<section id="c4-ltn">
+  <div class="wrap">
+    <div class="painel">
+      <div class="titulo-painel"><h3>Precificador de LTN com trajetória de Copom · exercício 1</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">Agora o caminho direto: das expectativas para o preço. Pré-carregado com o exercício 1 — Selic corrente de 8,00% a.a., Copom em 20 d.u. com corte esperado de 50 p.b., LTN vencendo em 30 d.u. (P = 1.000/(1+i)^(du/252)).</p>
+      <div class="campos">
+        <div class="campo"><label for="l-selic">Selic corrente (% a.a.)</label><input id="l-selic" inputmode="decimal" value="8,00"></div>
+        <div class="campo"><label for="l-dur">D.u. até o Copom</label><input id="l-dur" inputmode="numeric" value="20"></div>
+        <div class="campo"><label for="l-var">Variação esperada (p.b.)</label><input id="l-var" inputmode="decimal" value="-50"></div>
+        <div class="campo"><label for="l-duv">D.u. até o vencimento</label><input id="l-duv" inputmode="numeric" value="30"></div>
+      </div>
+      <div class="botoes">
+        <button class="primario" id="l-calc">Precificar a LTN</button>
+        <button class="fantasma mini" id="l-reset">Recarregar exercício 1</button>
+      </div>
+      <div id="l-saida" hidden>
+        <div class="passos" id="l-passos"></div>
+        <div class="resultado">
+          <div class="res-card"><span class="rotulo">Preço da LTN</span><div class="valor pos" id="l-preco">—</div><div class="nota">VF de R$ 1.000,00</div></div>
+          <div class="res-card"><span class="rotulo">Taxa pré implícita</span><div class="valor taxa" id="l-taxa">—</div><div class="nota">média geométrica da trajetória</div></div>
+        </div>
+        <p class="suave" style="font-size:13.5px;margin-top:12px;max-width:74ch" id="l-leitura"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXERCÍCIOS CAP 4 ============ -->
+<section id="c4-ex">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">✎</span><h2>Exercícios propostos</h2></div>
+
+    <div class="exercicio">
+      <span class="num-ex">Exercício 1 · cálculo</span>
+      <h4>Precifique a LTN com mudança esperada de Selic</h4>
+      <p>Selic corrente de 8% a.a., próxima reunião do Copom em 20 dias úteis, LTN vencendo em 30 dias úteis, redução esperada de 50 p.b. Resolva no precificador acima e confira o passo a passo.</p>
+      <div class="botoes">
+        <button class="primario mini" id="c4ex1-ir">Abrir no precificador</button>
+        <button class="fantasma mini" data-gab="c4g1">Ver gabarito</button>
+      </div>
+      <div class="gabarito" id="c4g1">
+        <span class="rotulo">Gabarito</span>
+        <p>Trajetória esperada: 20 d.u. a 8,00% e 10 d.u. a 7,50%. Fator acumulado = (1,08)<sup>20/252</sup> × (1,075)<sup>10/252</sup> ≈ 1,006127 × 1,002874 ≈ <strong>1,009018</strong>. Preço: P = 1.000 / 1,009018 ≈ <strong>R$ 991,06</strong>. A taxa pré implícita de 30 d.u. é 1,009018<sup>252/30</sup> − 1 ≈ <strong>7,83% a.a.</strong> — entre 8,00% e 7,50%, mais perto de 8,00% porque a maior parte do prazo (20 de 30 d.u.) corre antes do corte.</p>
+      </div>
+    </div>
+
+    <div class="exercicio">
+      <span class="num-ex">Exercício 2 · conceito</span>
+      <h4>Defina o que é a ETTJ.</h4>
+      <div class="botoes"><button class="fantasma mini" data-gab="c4g2">Ver resposta</button></div>
+      <div class="gabarito" id="c4g2">
+        <span class="rotulo">Resposta</span>
+        <p>A ETTJ é a curva que relaciona as taxas de juros de um <strong>mesmo risco de crédito</strong> para <strong>diferentes prazos</strong>. Existem diversas ETTJs — uma por mercado: prefixada para cada nível de risco de crédito, cupom cambial, cupom de IPCA, cupom de IGPM etc. Entre seus usos está "descobrir" o preço justo de ativos que não estão sendo negociados em mercado.</p>
+      </div>
+    </div>
+
+    <div class="exercicio">
+      <span class="num-ex">Exercício 3 · conceito</span>
+      <h4>Quais as diferenças entre as taxas Selic e DI?</h4>
+      <div class="botoes"><button class="fantasma mini" data-gab="c4g3">Ver resposta</button></div>
+      <div class="gabarito" id="c4g3">
+        <span class="rotulo">Resposta</span>
+        <p>Ambas são taxas médias de operações de 1 dia útil entre instituições financeiras, mas: (i) a <strong>Selic</strong> nasce de operações compromissadas <strong>garantidas por títulos públicos federais</strong>, registradas no sistema Selic, e é a taxa que o Bacen monitora para mantê-la próxima da meta do Copom; (ii) a <strong>DI</strong> nasce de operações <strong>sem garantia</strong> entre instituições de grupos econômicos diferentes, lastreadas em CDIs (negociáveis só entre instituições financeiras) e registradas na Cetip, servindo de referência pós-fixada para CDBs, empréstimos e derivativos.</p>
+      </div>
+    </div>
+
+    <div class="exercicio">
+      <span class="num-ex">Exercício 4 · conceito</span>
+      <h4>Descreva o processo de formação das taxas de juros.</h4>
+      <div class="botoes"><button class="fantasma mini" data-gab="c4g4">Ver resposta</button></div>
+      <div class="gabarito" id="c4g4">
+        <span class="rotulo">Resposta</span>
+        <p>O Copom reúne-se oito vezes ao ano e, considerando inflação, crescimento, liquidez, câmbio e risco soberano, define a <strong>meta Selic para 1 dia útil</strong>. O Bacen atua para manter a Selic efetiva próxima da meta. As taxas para os <strong>demais prazos</strong> são formadas pelo mercado na negociação de títulos públicos prefixados (LTN, NTN-F) e derivativos (futuro de DI, swap pré × DI), refletindo expectativas de juros, preferência pela liquidez e segmentação de mercado por prazo. Pela equação (4.1), a taxa pré de cada prazo equivale à média geométrica da trajetória esperada do DI; a partir dessa curva básica, derivam-se as ETTJs dos cupons (cambial, IPCA, IGPM, TBF) e as curvas com risco de crédito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /capítulo 4 -->
+
 <footer>
   <div class="wrap">
-    <div>Estudos de Crédito Privado · Renda Fixa — material de apoio ao Capítulo 3</div>
+    <div>Estudos de Crédito Privado · Renda Fixa — Cap. 3 (Rentabilidade) e Cap. 4 (ETTJ)</div>
     <div class="mono">convenção 252 d.u. · valores em R$ · uso educacional</div>
   </div>
 </footer>
@@ -612,10 +929,11 @@ function desenharTimeline(p0,cupons,duT,pt){
 
 /* ---------- gabaritos e V/F ---------- */
 document.querySelectorAll('[data-gab]').forEach(b=>{
+  const rotulo=b.textContent;
   b.addEventListener('click',()=>{
     const g=document.getElementById(b.dataset.gab);
     g.classList.toggle('aberto');
-    b.textContent=g.classList.contains('aberto')?'Ocultar gabarito':'Ver gabarito';
+    b.textContent=g.classList.contains('aberto')?'Ocultar':rotulo;
   });
 });
 document.querySelectorAll('[data-vf]').forEach(b=>{
@@ -631,6 +949,234 @@ document.querySelectorAll('[data-vf]').forEach(b=>{
 
 /* cálculo inicial dos painéis */
 calcZero();
+
+/* ============================================================
+   CAPÍTULO 4
+   ============================================================ */
+
+/* ---------- troca de capítulos ---------- */
+function mostrarCap(n){
+  document.querySelectorAll('.capitulo').forEach(c=>c.classList.toggle('ativa',c.dataset.cap===n));
+  document.querySelectorAll('.aba').forEach(a=>{
+    const atual=a.dataset.cap===n;
+    a.classList.toggle('atual',atual);
+    a.setAttribute('aria-selected',atual?'true':'false');
+  });
+  history.replaceState(null,'','#cap'+n);
+  window.scrollTo({top:0});
+}
+document.querySelectorAll('.aba').forEach(a=>a.addEventListener('click',()=>mostrarCap(a.dataset.cap)));
+if(location.hash==='#cap4') mostrarCap('4');
+
+/* ---------- construtor de ETTJ ---------- */
+const REUNIOES=[10,55,100,145,190,235,280,325]; /* d.u. de cada Copom */
+const HORIZONTE=504;
+const eCopons=document.getElementById('e-copons');
+REUNIOES.forEach((du,i)=>{
+  const div=document.createElement('div');
+  div.className='copom-ctl';
+  div.innerHTML='<label>Copom '+(i+1)+' · d.u. '+du+'</label>'
+    +'<span class="delta" id="e-d'+i+'">0,00 p.p.</span>'
+    +'<input type="range" min="-150" max="150" step="25" value="0" data-i="'+i+'" aria-label="Decisão esperada na reunião '+(i+1)+' em pontos-base">';
+  eCopons.appendChild(div);
+});
+function lerDeltas(){ return [...eCopons.querySelectorAll('input[type=range]')].map(r=>parseFloat(r.value)/10000); }
+function atualizarRotulos(){
+  lerDeltas().forEach((d,i)=>{
+    const el=document.getElementById('e-d'+i);
+    const pp=d*100;
+    el.textContent=(pp>0?'+':'')+fmt(pp,2)+' p.p.';
+    el.className='delta '+(pp>0?'sobe':pp<0?'cai':'');
+  });
+}
+function trajetoriaDI(di0,deltas){
+  const r=new Array(HORIZONTE);
+  let atual=di0;
+  let prox=0;
+  for(let d=0;d<HORIZONTE;d++){
+    while(prox<REUNIOES.length && d>=REUNIOES[prox]){ atual=Math.max(0.0001,atual+deltas[prox]); prox++; }
+    r[d]=atual;
+  }
+  return r;
+}
+function curvaSpot(traj){
+  const spot=new Array(HORIZONTE);
+  let L=0;
+  for(let d=0;d<HORIZONTE;d++){
+    L+=Math.log(1+traj[d])/252;
+    spot[d]=Math.exp(L*252/(d+1))-1;
+  }
+  return spot;
+}
+function desenharETTJ(){
+  const di0=parseBR(document.getElementById('e-di0').value)/100;
+  if(!(di0>0)) return;
+  atualizarRotulos();
+  const deltas=lerDeltas();
+  const traj=trajetoriaDI(di0,deltas);
+  const spot=curvaSpot(traj);
+  /* escala */
+  const todos=traj.concat(spot);
+  let yMin=Math.min(...todos), yMax=Math.max(...todos);
+  const folga=Math.max(0.004,(yMax-yMin)*0.18); yMin-=folga; yMax+=folga;
+  const W=780,H=330, mL=58,mR=16,mT=14,mB=40;
+  const X=du=>mL+(W-mL-mR)*(du/HORIZONTE);
+  const Y=t=>mT+(H-mT-mB)*(1-(t-yMin)/(yMax-yMin));
+  let s='';
+  /* grade + eixo Y */
+  const passos=5;
+  for(let g=0;g<=passos;g++){
+    const t=yMin+(yMax-yMin)*g/passos, y=Y(t);
+    s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(W-mR)+'" y2="'+y+'" stroke="#E2E6DF" stroke-width="1"/>';
+    s+='<text x="'+(mL-8)+'" y="'+(y+4)+'" text-anchor="end" font-family="IBM Plex Mono" font-size="10.5" fill="#4C5852">'+fmt(t*100,2)+'%</text>';
+  }
+  /* eixo X */
+  [0,63,126,189,252,315,378,441,504].forEach(du=>{
+    const x=X(du);
+    s+='<text x="'+x+'" y="'+(H-14)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#4C5852">'+du+'</text>';
+  });
+  s+='<text x="'+((mL+W-mR)/2)+'" y="'+(H-1)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9AA39C">prazo em dias úteis</text>';
+  /* escada do DI esperado (tracejada) */
+  let pDI='M'+X(0)+' '+Y(traj[0]);
+  for(let d=1;d<HORIZONTE;d++){ if(traj[d]!==traj[d-1]){ pDI+=' L'+X(d)+' '+Y(traj[d-1])+' L'+X(d)+' '+Y(traj[d]); } }
+  pDI+=' L'+X(HORIZONTE)+' '+Y(traj[HORIZONTE-1]);
+  s+='<path d="'+pDI+'" fill="none" stroke="#C97B12" stroke-width="2" stroke-dasharray="6 4"/>';
+  /* curva spot */
+  let pS='M'+X(1)+' '+Y(spot[0]);
+  for(let d=1;d<HORIZONTE;d++){ pS+=' L'+X(d+1)+' '+Y(spot[d]); }
+  s+='<path d="'+pS+'" fill="none" stroke="#0E3B2E" stroke-width="3"/>';
+  document.getElementById('e-svg').innerHTML=s;
+  /* vértices */
+  const tds=document.getElementById('e-vertices').querySelectorAll('td');
+  [21,63,126,252,378,504].forEach((v,i)=>{ tds[i+1].textContent=fmt(spot[v-1]*100,2)+'%'; });
+  /* leitura */
+  const i252=spot[251], diFim=traj[251];
+  let formato='plana';
+  if(spot[503]>spot[20]+0.001) formato='positivamente inclinada (mercado espera DI subindo)';
+  else if(spot[503]<spot[20]-0.001) formato='invertida (mercado espera DI caindo)';
+  document.getElementById('e-leitura').innerHTML=
+    'Leitura: com essa trajetória, a curva fica <strong>'+formato+'</strong>. A taxa pré de 252 d.u. ('+fmt(i252*100,2)+
+    '% a.a.) é a média geométrica do DI esperado ao longo do ano — repare que ela fica entre o DI de hoje ('+
+    fmt(traj[0]*100,2)+'%) e o DI esperado ao fim do período ('+fmt(diFim*100,2)+'%), sempre "atrasada" em relação à escada, porque carrega todos os dias do caminho.';
+}
+eCopons.addEventListener('input',desenharETTJ);
+document.getElementById('e-di0').addEventListener('input',desenharETTJ);
+const CENARIOS={
+  alta:[25,50,50,50,25,0,0,0],
+  corte:[-25,-50,-50,-50,-25,0,0,0],
+  vaievolta:[50,50,25,0,-25,-50,-50,-25],
+  zera:[0,0,0,0,0,0,0,0]
+};
+document.querySelectorAll('[data-cen]').forEach(b=>b.addEventListener('click',()=>{
+  const c=CENARIOS[b.dataset.cen];
+  eCopons.querySelectorAll('input[type=range]').forEach((r,i)=>r.value=c[i]);
+  desenharETTJ();
+}));
+desenharETTJ();
+
+/* ---------- helpers de passo a passo ---------- */
+function passo(n,txt,form){
+  return '<div class="passo"><span class="pnum">'+n+'</span><div class="ptxt">'+txt+'</div><div class="pform">'+form+'</div></div>';
+}
+function fmt6(n){ return n.toLocaleString('pt-BR',{minimumFractionDigits:6,maximumFractionDigits:6}); }
+
+/* ---------- simulador Copom (4.3.1) ---------- */
+function calcCopom(){
+  const di=parseBR(document.getElementById('k-di').value)/100;
+  const dur=parseBR(document.getElementById('k-dur').value);
+  const fut=parseBR(document.getElementById('k-fut').value)/100;
+  const duf=parseBR(document.getElementById('k-duf').value);
+  if(!(di>0&&fut>0&&dur>0&&duf>dur)){ alert('Verifique os dados: o prazo do futuro deve ser maior que o prazo até o Copom.'); return; }
+  const rest=duf-dur;
+  const fFut=Math.pow(1+fut,duf/252);
+  const fPre=Math.pow(1+di,dur/252);
+  const razao=fFut/fPre;
+  const E=Math.pow(razao,252/rest)-1;
+  const ajuste=E-di;
+  let h='';
+  h+=passo(1,'Montagem pela equação (4.1): o fator do futuro de DI ('+fmt(duf,0)+' d.u.) precisa ser igual ao acumulado do DI atual até o Copom ('+fmt(dur,0)+' d.u.) vezes o acumulado da taxa esperada nos '+fmt(rest,0)+' d.u. restantes — como a expectativa do DI não muda antes da reunião:',
+    '(1 + '+fmt(fut*100,2)+'%)<sup>'+fmt(duf,0)+'/252</sup> = (1 + '+fmt(di*100,2)+'%)<sup>'+fmt(dur,0)+'/252</sup> × (1 + E[DI])<sup>'+fmt(rest,0)+'/252</sup>');
+  h+=passo(2,'Fator acumulado embutido no futuro de DI:',
+    '(1 + '+fmt(fut*100,2)+'%)<sup>'+fmt(duf,0)+'/252</sup> = <span class="res">'+fmt6(fFut)+'</span>');
+  h+=passo(3,'Fator acumulado do DI atual até a reunião:',
+    '(1 + '+fmt(di*100,2)+'%)<sup>'+fmt(dur,0)+'/252</sup> = <span class="res">'+fmt6(fPre)+'</span>');
+  h+=passo(4,'Isolando o trecho pós-Copom (divisão dos fatores):',
+    '(1 + E[DI])<sup>'+fmt(rest,0)+'/252</sup> = '+fmt6(fFut)+' / '+fmt6(fPre)+' = <span class="res">'+fmt6(razao)+'</span>');
+  h+=passo(5,'Elevando a 252/'+fmt(rest,0)+' para anualizar a taxa esperada:',
+    'E[DI] = '+fmt6(razao)+'<sup>252/'+fmt(rest,0)+'</sup> − 1 = <span class="tax">'+fmt(E*100,2)+'% a.a.</span>');
+  h+=passo(6,'Comparando com o DI atual, a decisão embutida no preço é:',
+    'ajuste = '+fmt(E*100,2)+'% − '+fmt(di*100,2)+'% = <span class="'+(ajuste>=0?'tax':'res')+'">'+(ajuste>=0?'+':'')+fmt(ajuste*100,2)+' p.p.</span>');
+  document.getElementById('k-passos').innerHTML=h;
+  document.getElementById('k-edi').textContent=fmt(E*100,2)+'% a.a.';
+  const elA=document.getElementById('k-ajuste');
+  elA.textContent=(ajuste>=0?'+':'')+fmt(ajuste*100,2)+' p.p.';
+  elA.style.color=ajuste>0?'var(--neg)':ajuste<0?'var(--verde-alta)':'';
+  document.getElementById('k-ajuste-nota').textContent=ajuste>0?'mercado precifica ALTA de juros':ajuste<0?'mercado precifica CORTE de juros':'mercado precifica manutenção';
+  document.getElementById('k-saida').hidden=false;
+}
+document.getElementById('k-calc').addEventListener('click',calcCopom);
+document.getElementById('k-reset').addEventListener('click',()=>{
+  document.getElementById('k-di').value='7,25';
+  document.getElementById('k-dur').value='10';
+  document.getElementById('k-fut').value='8,00';
+  document.getElementById('k-duf').value='25';
+  calcCopom();
+});
+
+/* ---------- precificador LTN com trajetória ---------- */
+function calcLTN(){
+  const selic=parseBR(document.getElementById('l-selic').value)/100;
+  const dur=parseBR(document.getElementById('l-dur').value);
+  const varPb=parseBR(document.getElementById('l-var').value);
+  const duv=parseBR(document.getElementById('l-duv').value);
+  if(!(selic>0&&dur>=0&&duv>0)){ alert('Verifique os dados informados.'); return; }
+  const nova=selic+varPb/10000;
+  let h='', fator, taxa, preco;
+  if(duv<=dur){
+    fator=Math.pow(1+selic,duv/252);
+    h+=passo(1,'O vencimento ('+fmt(duv,0)+' d.u.) ocorre antes do Copom ('+fmt(dur,0)+' d.u.): a mudança esperada não afeta o papel. Trajetória única:',
+      'fator = (1 + '+fmt(selic*100,2)+'%)<sup>'+fmt(duv,0)+'/252</sup> = <span class="res">'+fmt6(fator)+'</span>');
+  } else {
+    const rest=duv-dur;
+    const f1=Math.pow(1+selic,dur/252);
+    const f2=Math.pow(1+nova,rest/252);
+    fator=f1*f2;
+    h+=passo(1,'Trajetória esperada da taxa, pela equação (4.1): '+fmt(dur,0)+' d.u. à taxa atual e os '+fmt(rest,0)+' d.u. restantes à taxa pós-Copom:',
+      fmt(selic*100,2)+'% por '+fmt(dur,0)+' d.u. &nbsp;→&nbsp; '+fmt(selic*100,2)+'% '+(varPb>=0?'+':'−')+' '+fmt(Math.abs(varPb),0)+' p.b. = <span class="tax">'+fmt(nova*100,2)+'%</span> por '+fmt(rest,0)+' d.u.');
+    h+=passo(2,'Fator do primeiro trecho (até o Copom):',
+      '(1 + '+fmt(selic*100,2)+'%)<sup>'+fmt(dur,0)+'/252</sup> = <span class="res">'+fmt6(f1)+'</span>');
+    h+=passo(3,'Fator do segundo trecho (do Copom ao vencimento):',
+      '(1 + '+fmt(nova*100,2)+'%)<sup>'+fmt(rest,0)+'/252</sup> = <span class="res">'+fmt6(f2)+'</span>');
+    h+=passo(4,'Fator acumulado da trajetória (produtório da eq. 4.1):',
+      fmt6(f1)+' × '+fmt6(f2)+' = <span class="res">'+fmt6(fator)+'</span>');
+  }
+  taxa=Math.pow(fator,252/duv)-1;
+  preco=1000/fator;
+  const n=duv<=dur?2:5;
+  h+=passo(n,'Taxa pré spot equivalente para '+fmt(duv,0)+' d.u. — a média geométrica da trajetória:',
+    'i = '+fmt6(fator)+'<sup>252/'+fmt(duv,0)+'</sup> − 1 = <span class="tax">'+fmt(taxa*100,2)+'% a.a.</span>');
+  h+=passo(n+1,'Preço da LTN descontando o valor de face pelo fator acumulado:',
+    'P = 1.000 / '+fmt6(fator)+' = <span class="res">R$ '+fmt(preco,3)+'</span>');
+  document.getElementById('l-passos').innerHTML=h;
+  document.getElementById('l-preco').textContent='R$ '+fmt(preco,2);
+  document.getElementById('l-taxa').textContent=fmt(taxa*100,2)+'% a.a.';
+  document.getElementById('l-leitura').innerHTML = duv<=dur ? '' :
+    'Leitura: a taxa implícita de '+fmt(taxa*100,2)+'% fica entre '+fmt(selic*100,2)+'% e '+fmt(nova*100,2)+
+    '% — ponderada pelo tempo que cada taxa vigora ('+fmt(dur,0)+' d.u. contra '+fmt(duv-dur,0)+' d.u.). É a equação (4.1) aplicada na prática: o preço do papel já "carrega" a decisão esperada do Copom.';
+  document.getElementById('l-saida').hidden=false;
+}
+document.getElementById('l-calc').addEventListener('click',calcLTN);
+document.getElementById('l-reset').addEventListener('click',()=>{
+  document.getElementById('l-selic').value='8,00';
+  document.getElementById('l-dur').value='20';
+  document.getElementById('l-var').value='-50';
+  document.getElementById('l-duv').value='30';
+  calcLTN();
+});
+document.getElementById('c4ex1-ir').addEventListener('click',()=>{
+  document.getElementById('l-reset').click();
+  document.getElementById('c4-ltn').scrollIntoView({behavior:'smooth'});
+});
 </script>
 </body>
 </html>
