@@ -4,1349 +4,1082 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Masterclass Interativa: Renda Fixa (Caps 3, 4 e 5)</title>
-
-<!-- Fontes Premium -->
+<title>Estudos de Crédito Privado · Renda Fixa — Caps. 3, 4 e 5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- KaTeX: Motor de Renderização Matemática -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ==========================================================================
-   VARIÁVEIS GLOBAIS E TEMAS DIDÁTICOS
-   ========================================================================== */
-:root {
-  /* Cores Base */
-  --papel: #F4F6F5;
-  --cartao: #FFFFFF;
-  --tinta: #1A201D;
-  --tinta-suave: #57635C;
-  --linha: #D1D8D4;
-  --negativo: #D32F2F;
-  --raio: 12px;
-  
-  /* Fontes */
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --display: 'Bricolage Grotesque', sans-serif;
-  --body: 'Inter', system-ui, sans-serif;
-
-  /* Tema Módulo 3: Retornos (Verde Esmeralda) */
-  --t3-main: #0B6B46;
-  --t3-light: #E6F3ED;
-  --t3-dark: #06402A;
-
-  /* Tema Módulo 4: Curva e Macro (Azul Safira) */
-  --t4-main: #1565C0;
-  --t4-light: #E3F2FD;
-  --t4-dark: #0B3873;
-
-  /* Tema Módulo 5: Matemática/Quant (Roxo Ametista) */
-  --t5-main: #6A1B9A;
-  --t5-light: #F3E5F5;
-  --t5-dark: #3E0C5E;
+:root{
+  --verde:#0E3B2E;
+  --verde-escuro:#092A21;
+  --verde-alta:#1E8A5A;
+  --ambar:#C97B12;
+  --ambar-claro:#F4E3C8;
+  --azul:#2B5E8A;
+  --azul-claro:#E8F0FE;
+  --azul-prof:#1A73E8;
+  --papel:#ECEEE9;
+  --cartao:#FFFFFF;
+  --tinta:#16201C;
+  --tinta-suave:#4C5852;
+  --linha:#C9CEC5;
+  --neg:#B3402A;
+  --raio:10px;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --display:'Bricolage Grotesque',sans-serif;
+  --body:'Inter',system-ui,sans-serif;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--body);background:var(--papel);color:var(--tinta);line-height:1.65;font-size:16px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body { font-family: var(--body); background: var(--papel); color: var(--tinta); line-height: 1.7; font-size: 16px; }
-.wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-strong { font-weight: 600; color: #000; }
+/* ---------- Header ---------- */
+header.hero{background:var(--verde);color:#F2F5F0;padding:48px 0 40px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,transparent 0 119px,rgba(255,255,255,.05) 119px 120px);
+  pointer-events:none}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9FC2AE;margin-bottom:14px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,48px);line-height:1.06;letter-spacing:-.01em;max-width:20ch}
+.hero h1 .cap{display:block;font-weight:600;font-size:.42em;letter-spacing:.06em;color:#CFE0D3;margin-bottom:10px}
+.hero p.lead{margin-top:18px;max-width:64ch;color:#D8E4DA;font-size:16.5px}
+.hero .keyline{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero .keyline span{font-family:var(--mono);font-size:12.5px;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 13px;color:#E8F0E8}
 
-/* ==========================================================================
-   NAVEGAÇÃO E CABEÇALHOS GLOBAIS
-   ========================================================================== */
-.barra-site { background: #000; color: #FFF; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-.barra-site .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-top: 12px; }
-.marca { font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: #8FA196; padding-bottom: 12px; }
-.abas { display: flex; gap: 4px; overflow-x: auto; }
-.aba { font-family: var(--display); font-weight: 600; font-size: 15px; background: transparent; border: none; color: #8FA196; border-radius: 8px 8px 0 0; padding: 10px 20px; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
-.aba:hover { background: rgba(255,255,255,0.05); color: #FFF; }
-.aba.t3.atual { background: var(--t3-main); color: #FFF; }
-.aba.t4.atual { background: var(--t4-main); color: #FFF; }
-.aba.t5.atual { background: var(--t5-main); color: #FFF; }
+/* ---------- Nav ---------- */
+nav.topo{position:sticky;top:0;z-index:50;background:rgba(236,238,233,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+nav.topo .wrap{display:flex;gap:4px;overflow-x:auto;padding:0 12px}
+nav.topo a{flex:0 0 auto;font-family:var(--mono);font-size:13px;color:var(--tinta-suave);text-decoration:none;padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap}
+nav.topo a:hover,nav.topo a:focus-visible{color:var(--verde);border-bottom-color:var(--verde)}
+nav.topo a .n{color:var(--ambar);font-weight:600;margin-right:5px}
 
-.capitulo { display: none; animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-.capitulo.ativa { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+/* ---------- Sections ---------- */
+section{padding:48px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px; flex-wrap: wrap;}
+.sec-num{font-family:var(--mono);font-weight:600;font-size:14px;color:#fff;background:var(--verde);border-radius:6px;padding:4px 10px;flex:0 0 auto}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.4vw,30px);line-height:1.15}
+h3{font-family:var(--display);font-weight:600;font-size:19px;margin:30px 0 10px}
+h4.sub3{font-family:var(--display);font-weight:600;font-size:16px;margin:22px 0 6px;color:var(--verde)}
+section>.wrap>p,section .prosa p{max-width:74ch;margin:14px 0;color:var(--tinta)}
+strong{font-weight:600}
+.suave{color:var(--tinta-suave)}
+ul.lista{max-width:72ch;margin:12px 0 12px 4px}
+ul.lista li{margin:8px 0 8px 18px;font-size:15px;color:var(--tinta)}
 
-header.hero { padding: 64px 0 54px; position: relative; overflow: hidden; color: #FFF; }
-header.hero::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 119px, rgba(255,255,255,.05) 119px 120px); pointer-events: none; }
-.hero.t3 { background: var(--t3-dark); }
-.hero.t4 { background: var(--t4-dark); }
-.hero.t5 { background: var(--t5-dark); }
+/* ---------- Dica do Professor & Explicações ---------- */
+.dica-prof { background: var(--azul-claro); border-left: 4px solid var(--azul-prof); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; max-width: 74ch;}
+.dica-prof h4 { font-family: var(--display); color: #174EA6; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;}
+.dica-prof p { font-size: 14.5px; color: var(--tinta); margin: 0; line-height: 1.6;}
 
-.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; opacity: 0.8; }
-.hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(32px, 5vw, 56px); line-height: 1.1; letter-spacing: -0.02em; max-width: 22ch; }
-.hero h1 .cap { display: block; font-weight: 600; font-size: 0.4em; letter-spacing: 0.08em; margin-bottom: 12px; opacity: 0.9; }
-.hero p.lead { margin-top: 20px; max-width: 65ch; font-size: 18px; opacity: 0.9; line-height: 1.6; }
-
-nav.topo { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); position: sticky; top: 51px; z-index: 90; }
-nav.topo .wrap { display: flex; gap: 8px; overflow-x: auto; padding: 0 12px; }
-nav.topo a { flex: 0 0 auto; font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--tinta-suave); text-decoration: none; padding: 14px 12px; border-bottom: 2px solid transparent; transition: 0.2s; }
-.t3 nav.topo a:hover { color: var(--t3-main); border-bottom-color: var(--t3-main); }
-.t4 nav.topo a:hover { color: var(--t4-main); border-bottom-color: var(--t4-main); }
-.t5 nav.topo a:hover { color: var(--t5-main); border-bottom-color: var(--t5-main); }
-
-/* ==========================================================================
-   TIPOGRAFIA E ESTRUTURA DO TEXTO
-   ========================================================================== */
-section { padding: 64px 0 20px; }
-.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
-.sec-num { font-family: var(--mono); font-weight: 700; font-size: 15px; color: #fff; border-radius: 6px; padding: 4px 10px; flex: 0 0 auto; }
-.t3 .sec-num { background: var(--t3-main); } .t4 .sec-num { background: var(--t4-main); } .t5 .sec-num { background: var(--t5-main); }
-h2 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 3.5vw, 32px); line-height: 1.15; letter-spacing: -0.01em;}
-h3 { font-family: var(--display); font-weight: 600; font-size: 20px; margin: 36px 0 12px; }
-.t3 h3 { color: var(--t3-dark); } .t4 h3 { color: var(--t4-dark); } .t5 h3 { color: var(--t5-dark); }
-section > .wrap > p { max-width: 76ch; margin: 14px 0; color: var(--tinta); }
-
-/* ==========================================================================
-   ELEMENTOS DIDÁTICOS (Nobel da Didática)
-   ========================================================================== */
-/* Dica do Professor */
-.dica-prof { padding: 24px; margin: 32px 0; border-radius: 0 var(--raio) var(--raio) 0; border-left: 6px solid; box-shadow: 0 4px 15px rgba(0,0,0,0.03); max-width: 76ch; }
-.t3 .dica-prof { background: var(--t3-light); border-color: var(--t3-main); }
-.t4 .dica-prof { background: var(--t4-light); border-color: var(--t4-main); }
-.t5 .dica-prof { background: var(--t5-light); border-color: var(--t5-main); }
-.dica-prof h4 { font-family: var(--display); font-size: 19px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-weight: 700; }
-.t3 .dica-prof h4 { color: var(--t3-dark); } .t4 .dica-prof h4 { color: var(--t4-dark); } .t5 .dica-prof h4 { color: var(--t5-dark); }
-.dica-prof p { font-size: 15.5px; margin: 8px 0; }
-
-/* Fórmulas e Matemáticas */
-.bloco-formula { background: var(--cartao); border: 1px solid var(--linha); border-left: 5px solid; border-radius: var(--raio); padding: 20px 24px; margin: 24px 0; max-width: 76ch; overflow-x: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-.t3 .bloco-formula { border-color: var(--t3-main); } .t4 .bloco-formula { border-color: var(--t4-main); } .t5 .bloco-formula { border-color: var(--t5-main); }
-.bloco-formula .desc { font-family: var(--mono); font-size: 12.5px; color: var(--tinta-suave); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-.katex-display { margin: 12px 0 !important; }
-
-/* Descompressão Cognitiva (Details/Summary) */
-details.explicacao { background: #FAFBFA; border: 1px dashed var(--linha); border-radius: 8px; padding: 14px 20px; margin: 12px 0 24px 0; transition: all 0.3s ease; max-width: 76ch; }
-details.explicacao[open] { background: var(--cartao); border-style: solid; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
-.t3 details.explicacao[open] { border-color: var(--t3-main); } .t4 details.explicacao[open] { border-color: var(--t4-main); } .t5 details.explicacao[open] { border-color: var(--t5-main); }
-details.explicacao summary { font-family: var(--display); font-weight: 600; font-size: 16px; cursor: pointer; list-style-type: none; display: flex; align-items: center; justify-content: space-between; color: var(--tinta); }
+details.explicacao { background: var(--cartao); border: 1px solid var(--linha); border-radius: 8px; padding: 12px 16px; margin: 16px 0; max-width: 74ch;}
+details.explicacao summary { font-family: var(--display); font-weight: 600; color: var(--verde-alta); cursor: pointer; list-style: none; font-size: 15px; display: flex; justify-content: space-between; align-items: center;}
 details.explicacao summary::-webkit-details-marker { display: none; }
-details.explicacao summary::after { content: "▼"; font-size: 12px; transition: transform 0.3s; color: var(--tinta-suave); }
+details.explicacao summary::after { content: "▼"; font-size: 10px; color: var(--tinta-suave); transition: transform 0.3s;}
 details.explicacao[open] summary::after { transform: rotate(-180deg); }
-.var-list { list-style: none; padding: 16px 0 8px; margin-top: 12px; font-size: 15px; border-top: 1px dashed var(--linha); }
-.var-list li { margin-bottom: 12px; padding-left: 14px; border-left: 3px solid #D1D8D4; }
-.var-list strong { font-family: var(--mono); font-size: 14px; background: #EEE; padding: 2px 6px; border-radius: 4px; }
+details.explicacao p { font-size: 14px; margin-top: 12px; color: var(--tinta-suave); }
+.var-list { list-style: none; margin-top: 12px; font-size: 14px; color: var(--tinta-suave); border-top: 1px dashed var(--linha); padding-top: 12px;}
+.var-list li { margin-bottom: 8px; padding-left: 12px; border-left: 3px solid var(--ambar); }
 
-/* Cards de Fatores (Grid) */
-.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 24px 0; }
-.card-fator { background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio); padding: 24px; transition: transform 0.2s; border-top: 4px solid; }
-.card-fator:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-.t3 .card-fator { border-color: var(--t3-main); } .t4 .card-fator { border-color: var(--t4-main); } .t5 .card-fator { border-color: var(--t5-main); }
-.card-fator .tag { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--tinta-suave); }
-.card-fator h4 { font-family: var(--display); font-size: 18px; margin: 8px 0; }
-.card-fator p { font-size: 14.5px; color: var(--tinta-suave); margin: 0; }
+/* cards de fatores */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+@media(max-width:640px){.duo{grid-template-columns:1fr}}
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:22px 0}
+.fator{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:20px 20px 16px}
+.fator .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ambar);font-weight:600}
+.fator h4{font-family:var(--display);font-size:17px;margin:6px 0 6px}
+.fator p{font-size:14.5px;color:var(--tinta-suave); margin:0;}
 
-/* ==========================================================================
-   LABORATÓRIOS INTERATIVOS E CALCULADORAS
-   ========================================================================== */
-.painel { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 32px; margin: 40px 0; box-shadow: 0 12px 32px rgba(0,0,0,0.04); }
-.titulo-painel { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
-.titulo-painel h3 { margin: 0; font-size: 22px; }
-.badge-int { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; border-radius: 6px; padding: 4px 10px; font-weight: 600; }
-.t3 .badge-int { background: var(--t3-main); } .t4 .badge-int { background: var(--t4-main); } .t5 .badge-int { background: var(--t5-main); }
-.painel p.sub { font-size: 15px; color: var(--tinta-suave); margin-bottom: 24px; border-bottom: 1px solid var(--linha); padding-bottom: 16px; }
+/* ---------- Fórmulas (NATIVAS HTML/CSS - SEM DEPENDÊNCIAS) ---------- */
+.formula{background:var(--cartao);border:1px solid var(--linha);border-left:4px solid var(--verde);border-radius:var(--raio);padding:18px 20px;margin:18px 0;display:flex;align-items:center;gap:18px;flex-wrap:wrap; overflow-x: auto;}
+.formula .eq{font-family:var(--mono);font-size:15px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;line-height:2.2; white-space: nowrap;}
+.formula .ref{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--tinta-suave)}
+.formula .desc{flex-basis:100%;font-size:13.5px;color:var(--tinta-suave);margin-top:4px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 4px}
+.frac .num{padding:0 6px;border-bottom:1.5px solid var(--tinta)}
+.frac .den{padding:0 6px}
+sup{font-size:.7em}
+.eq .op{color:var(--tinta-suave)}
+.eq .destaque{color:var(--ambar);font-weight:600}
 
-/* Controles de Formulário */
-.campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 20px 0; }
-.campo label { display: block; font-family: var(--mono); font-size: 12.5px; color: var(--tinta-suave); margin-bottom: 6px; font-weight: 500; }
-.campo input { width: 100%; font-family: var(--mono); font-size: 16px; padding: 12px 14px; border: 1px solid #B0B8B3; border-radius: 8px; background: #FAFBFA; color: var(--tinta); font-weight: 600; transition: 0.2s; }
-.t3 .campo input:focus { outline: 2px solid var(--t3-main); background: #FFF; border-color: transparent; }
-.t4 .campo input:focus { outline: 2px solid var(--t4-main); background: #FFF; border-color: transparent; }
-.t5 .campo input:focus { outline: 2px solid var(--t5-main); background: #FFF; border-color: transparent; }
+/* ---------- Caixas ---------- */
+.insight{background:var(--ambar-claro);border:1px solid #E3C896;border-radius:var(--raio);padding:18px 20px;margin:22px 0;max-width:74ch}
+.insight .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar);font-weight:600;display:block;margin-bottom:6px}
+.insight p{font-size:14.5px;margin:6px 0}
+.errata{font-size:13px;color:var(--tinta-suave);border-left:3px solid var(--linha);padding:4px 12px;margin:14px 0;max-width:70ch}
 
-/* Botões */
-.botoes { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 16px; align-items: center; }
-button { font-family: var(--body); font-weight: 600; font-size: 15px; border-radius: 8px; padding: 12px 24px; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-.btn-primary { color: #FFF; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-.t3 .btn-primary { background: var(--t3-main); } .t4 .btn-primary { background: var(--t4-main); } .t5 .btn-primary { background: var(--t5-main); }
-.btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
-.btn-ghost { background: transparent; border: 1px solid; }
-.t3 .btn-ghost { color: var(--t3-main); border-color: var(--t3-main); } .t4 .btn-ghost { color: var(--t4-main); border-color: var(--t4-main); } .t5 .btn-ghost { color: var(--t5-main); border-color: var(--t5-main); }
-.btn-ghost:hover { background: rgba(0,0,0,0.04); }
-button.mini { font-size: 13px; padding: 8px 14px; border-radius: 6px; }
+/* ---------- Painéis interativos ---------- */
+.painel{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:24px;margin:24px 0;box-shadow:0 1px 0 rgba(22,32,28,.04)}
+.painel .titulo-painel{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.painel .titulo-painel h3{margin:0}
+.badge-int{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--verde);color:#fff;border-radius:4px;padding:3px 8px; white-space: nowrap;}
+.painel p.sub{font-size:14px;color:var(--tinta-suave);margin-bottom:16px}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:14px 0}
+.campo label{display:block;font-family:var(--mono);font-size:12px;color:var(--tinta-suave);margin-bottom:5px}
+.campo input{width:100%;font-family:var(--mono);font-size:15px;padding:9px 11px;border:1px solid var(--linha);border-radius:7px;background:#FBFCFA;color:var(--tinta)}
+.campo input:focus-visible{outline:2px solid var(--verde);outline-offset:1px;border-color:var(--verde)}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px}
+button{font-family:var(--body);font-weight:600;font-size:14px;border-radius:8px;padding:10px 16px;border:1px solid var(--verde);cursor:pointer;transition:filter .15s}
+button.primario{background:var(--verde);color:#fff}
+button.primario:hover{filter:brightness(1.12)}
+button.fantasma{background:transparent;color:var(--verde)}
+button.fantasma:hover{background:#E2EAE3}
+button.mini{font-size:12.5px;padding:6px 11px;border-radius:6px}
 
-/* Resultados em Destaque */
-.resultado { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; }
-.res-card { background: #FAFBFA; border: 1px solid var(--linha); border-radius: 12px; padding: 20px; text-align: center; }
-.res-card .rotulo { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tinta-suave); font-weight: 600; }
-.res-card .valor { font-family: var(--mono); font-weight: 700; font-size: 26px; margin: 8px 0 4px; }
-.res-card .nota { font-size: 12.5px; color: var(--tinta-suave); }
-/* Cores Dinâmicas nos resultados */
-.val-green { color: #00796B; } .val-blue { color: #1976D2; } .val-purple { color: #7B1FA2; } .val-orange { color: #F57C00; } .val-red { color: #D32F2F; }
+.resultado{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px}
+.res-card{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:14px 16px}
+.res-card .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave)}
+.res-card .valor{font-family:var(--mono);font-weight:600;font-size:23px;margin-top:4px}
+.res-card .valor.pos{color:var(--verde-alta)}
+.res-card .valor.taxa{color:var(--ambar)}
+.res-card .valor.azul{color:var(--azul)}
+.res-card .nota{font-size:12px;color:var(--tinta-suave);margin-top:2px}
 
-/* Passo a Passo Didático Dinâmico */
-.box-passos { margin: 24px 0; background: #FFF; border: 1px solid var(--linha); border-radius: 12px; padding: 24px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); }
-.box-passos h4 { font-family: var(--display); font-size: 17px; margin-bottom: 16px; border-bottom: 1px dashed var(--linha); padding-bottom: 8px; color: var(--tinta); }
-.passo-item { position: relative; padding: 12px 0 12px 36px; border-bottom: 1px solid #F0F0F0; }
-.passo-item:last-child { border-bottom: none; }
-.passo-item .badge-num { position: absolute; left: 0; top: 12px; width: 24px; height: 24px; background: #E0E0E0; color: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 700; font-size: 12px; }
-.t3 .passo-item .badge-num { background: var(--t3-light); color: var(--t3-main); } .t4 .passo-item .badge-num { background: var(--t4-light); color: var(--t4-main); } .t5 .passo-item .badge-num { background: var(--t5-light); color: var(--t5-main); }
-.passo-item .txt { font-size: 15px; margin-bottom: 8px; font-weight: 500; }
-.passo-item .math-box { background: #FAFBFA; padding: 12px 16px; border-radius: 6px; border: 1px dashed var(--linha); overflow-x: auto; }
+/* tabelas */
+.tabela-rolagem{overflow-x:auto;margin:14px 0;border:1px solid var(--linha);border-radius:8px; -webkit-overflow-scrolling: touch;}
+table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-align:left;color:#fff;background:var(--verde);padding:10px 12px;white-space:nowrap}
+td{padding:10px 12px;border-top:1px solid var(--linha);font-family:var(--mono);font-size:13.5px;white-space:nowrap}
+td.txt{font-family:var(--body)}
+tr.total td{background:#F2F5EF;font-weight:600}
+tr.vert td{background:#F2F5EF;font-weight:600}
+td input{font-family:var(--mono);font-size:13.5px;width:110px;padding:6px 8px;border:1px solid var(--linha);border-radius:6px;background:#FBFCFA}
+td input.curto{width:78px}
+td button.remover{border:none;background:#FDE8E8;color:var(--neg);font-size:13px;padding:4px 8px;border-radius:4px;cursor:pointer}
 
-/* ==========================================================================
-   TABELAS, GRÁFICOS E SLIDERS
-   ========================================================================== */
-.tabela-rolagem { overflow-x: auto; margin: 20px 0; border: 1px solid var(--linha); border-radius: 12px; }
-table { border-collapse: collapse; width: 100%; font-size: 14.5px; background: #fff; text-align: left; }
-th { font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; padding: 12px 16px; white-space: nowrap; }
-.t3 th { background: var(--t3-main); } .t4 th { background: var(--t4-main); } .t5 th { background: var(--t5-main); }
-td { padding: 12px 16px; border-top: 1px solid var(--linha); font-family: var(--mono); white-space: nowrap; }
-td.txt { font-family: var(--body); }
-tr.total td, tr.vert td { background: #F8F9F8; font-weight: 700; color: var(--tinta); }
-td input { font-family: var(--mono); font-size: 14px; width: 120px; padding: 8px 10px; border: 1px solid var(--linha); border-radius: 6px; background: #FFF; }
-td input.curto { width: 80px; }
-td button.btn-remover { border: none; background: #FDE8E8; color: var(--negativo); font-size: 12px; font-weight: bold; padding: 6px 10px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
-td button.btn-remover:hover { background: #F8D0D0; }
+/* timeline svg */
+.timeline-box{margin:18px 0 6px;background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:12px 8px 4px;overflow-x:auto}
+.timeline-box svg{display:block;min-width:560px;width:100%;height:auto}
+.legenda-tl{font-family:var(--mono);font-size:11.5px;color:var(--tinta-suave);padding:0 12px 10px}
 
-.grafico-box { margin: 24px 0 12px; background: #fff; border: 1px solid var(--linha); border-radius: 12px; padding: 20px; overflow-x: auto; }
-.grafico-box svg { display: block; min-width: 600px; width: 100%; height: auto; }
-.legenda-graf { display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; color: var(--tinta-suave); justify-content: center; margin-top: 8px; }
-.legenda-graf .chave { display: inline-flex; align-items: center; gap: 8px; }
-.legenda-graf .linha-svg { width: 24px; height: 3px; }
+/* comparação */
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:680px){.versus{grid-template-columns:1fr}}
+.versus .col{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:20px}
+.versus .col.dois{border-top:4px solid var(--verde)}
+.versus .col.um{border-top:4px solid var(--ambar)}
+.versus h4{font-family:var(--display);font-size:17px;margin-bottom:8px}
+.versus ul{list-style:none;margin-top:8px}
+.versus li{font-size:14px;padding:7px 0 7px 22px;position:relative;color:var(--tinta-suave);border-top:1px dashed var(--linha)}
+.versus li:first-child{border-top:none}
+.versus li::before{content:"–";position:absolute;left:4px;color:var(--ambar);font-weight:700}
+.versus .col.dois li::before{color:var(--verde-alta)}
 
-/* Controles Deslizantes (Sliders) */
-.grid-sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 20px 0; background: #FAFBFA; padding: 20px; border-radius: 12px; border: 1px solid var(--linha); }
-.slider-item { display: flex; flex-direction: column; gap: 8px; }
-.slider-item label { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--tinta-suave); }
-.slider-item label .val { font-weight: 700; }
-.t4 .slider-item label .val { color: var(--t4-main); } .t5 .slider-item label .val { color: var(--t5-main); }
-input[type=range] { width: 100%; cursor: pointer; height: 6px; border-radius: 3px; outline: none; -webkit-appearance: none; background: #D1D8D4; }
-input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; cursor: pointer; }
-.t4 input[type=range]::-webkit-slider-thumb { background: var(--t4-main); } .t5 input[type=range]::-webkit-slider-thumb { background: var(--t5-main); }
+/* exercícios */
+.exercicio{background:var(--cartao);border:1px solid var(--linha);border-radius:var(--raio);padding:22px;margin:18px 0}
+.exercicio .num-ex{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar);font-weight:600}
+.exercicio h4{font-family:var(--display);font-size:17px;margin:4px 0 8px}
+.exercicio p{font-size:14.5px;max-width:70ch}
+.gabarito{display:none;margin-top:14px;border-top:1px dashed var(--linha);padding-top:14px}
+.gabarito.aberto{display:block}
+.gabarito .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--verde-alta);font-weight:600;display:block;margin-bottom:6px}
+.gabarito p{font-size:14px;color:var(--tinta-suave);margin:8px 0}
+.vf{display:flex;gap:10px;margin:12px 0}
+.vf button.certo{border-color:var(--verde-alta);color:var(--verde-alta);background:#E7F3EC}
+.vf button.errado{border-color:var(--neg);color:var(--neg);background:#F7E9E5}
+.feedback{font-size:14px;margin-top:8px;display:none}
+.feedback.ok{display:block;color:var(--verde-alta);font-weight:600}
+.feedback.nok{display:block;color:var(--neg);font-weight:600}
 
-/* ==========================================================================
-   EXERCÍCIOS E GABARITOS
-   ========================================================================== */
-.exercicio { background: #FFF; border: 1px solid var(--linha); border-left: 6px solid; border-radius: var(--raio); padding: 24px; margin: 24px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-.t3 .exercicio { border-left-color: var(--t3-main); } .t4 .exercicio { border-left-color: var(--t4-main); } .t5 .exercicio { border-left-color: var(--t5-main); }
-.num-ex { font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; display: inline-block;}
-.t3 .num-ex { color: var(--t3-main); } .t4 .num-ex { color: var(--t4-main); } .t5 .num-ex { color: var(--t5-main); }
-.exercicio h4 { font-family: var(--display); font-size: 19px; margin-bottom: 12px; color: var(--tinta); }
-.gabarito { display: none; margin-top: 20px; border-top: 1px dashed var(--linha); padding-top: 20px; background: #FAFBFA; border-radius: 0 0 8px 8px; padding: 20px; }
-.gabarito.aberto { display: block; animation: fadeIn 0.4s; }
-.gabarito-tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 12px; }
-.t3 .gabarito-tag { color: var(--t3-main); } .t4 .gabarito-tag { color: var(--t4-main); } .t5 .gabarito-tag { color: var(--t5-main); }
+footer{margin-top:60px;background:var(--verde-escuro);color:#BBD0BF;padding:34px 0;font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+footer .mono{font-family:var(--mono);font-size:12px}
 
-/* Bloco de Código Python */
-pre.codigo { background: #1E1E1E; color: #D4D4D4; padding: 20px; border-radius: 12px; overflow-x: auto; font-family: var(--mono); font-size: 14px; line-height: 1.6; margin: 20px 0; border: 1px solid #333; }
-.kw { color: #569CD6; } .func { color: #DCDCAA; } .str { color: #CE9178; } .cmt { color: #6A9955; font-style: italic; }
+/* ---------- abas de capítulos ---------- */
+.barra-site{background:var(--verde-escuro);color:#DCE8DE}
+.barra-site .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:10px;padding-bottom:0;flex-wrap:wrap}
+.barra-site .marca{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#9FC2AE;padding-bottom:10px}
+.abas{display:flex;gap:6px;flex-wrap:wrap}
+.aba{font-family:var(--display);font-weight:600;font-size:14px;background:transparent;border:1px solid rgba(255,255,255,.25);border-bottom:none;color:#CFE0D3;border-radius:8px 8px 0 0;padding:9px 18px;cursor:pointer}
+.aba.atual{background:var(--verde);color:#fff;border-color:var(--verde)}
+.aba:hover{color:#fff}
+.aba:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+.capitulo{display:none}
+.capitulo.ativa{display:block; animation: fadeIn 0.3s;}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px);} to { opacity: 1; transform: translateY(0);} }
 
-footer { margin-top: 80px; background: #000; color: #8FA196; padding: 40px 0; font-size: 14px; text-align: center; }
+/* ---------- definição em destaque ---------- */
+.definicao{background:var(--cartao);border:1.5px solid var(--verde);border-left:6px solid var(--verde);border-radius:var(--raio);padding:18px 22px;margin:20px 0;max-width:74ch}
+.definicao .rotulo{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--verde-alta);font-weight:600;display:block;margin-bottom:6px}
+.definicao p{font-family:var(--display);font-weight:600;font-size:17.5px;line-height:1.5; margin:0;}
+
+/* ---------- passo a passo ---------- */
+.passos{margin:16px 0;display:grid;gap:10px}
+.passo{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:13px 16px 13px 52px;position:relative}
+.passo .pnum{position:absolute;left:14px;top:13px;width:26px;height:26px;border-radius:50%;background:var(--verde);color:#fff;font-family:var(--mono);font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center}
+.passo .ptxt{font-size:14px;color:var(--tinta-suave);margin-bottom:6px}
+.passo .pform{font-family:var(--mono);font-size:14px;overflow-x:auto;white-space:nowrap;padding:4px 8px; background: #FFF; border: 1px dashed var(--linha); border-radius: 4px; line-height: 1.8;}
+.passo .pform .res{color:var(--verde-alta);font-weight:600}
+.passo .pform .tax{color:var(--ambar);font-weight:600}
+
+/* ---------- construtor de ETTJ ---------- */
+.copons{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.copom-ctl{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:10px 12px}
+.copom-ctl label{display:block;font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin-bottom:4px}
+.copom-ctl .delta{font-family:var(--mono);font-weight:600;font-size:14px}
+.copom-ctl .delta.sobe{color:var(--neg)}
+.copom-ctl .delta.cai{color:var(--verde-alta)}
+.copom-ctl input[type=range]{width:100%;accent-color:var(--verde);margin-top:4px}
+.grafico-box{margin:16px 0 4px;background:#fff;border:1px solid var(--linha);border-radius:8px;padding:10px 6px 2px;overflow-x:auto}
+.grafico-box svg{display:block;min-width:600px;width:100%;height:auto}
+.legenda-graf{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--tinta-suave);padding:6px 12px 10px}
+.legenda-graf .chave{display:inline-flex;align-items:center;gap:6px}
+.legenda-graf .tra{width:22px;height:0;border-top:3px solid var(--verde)}
+.legenda-graf .tra.di{border-top:2px dashed var(--ambar)}
+.legenda-graf .tra.lin{border-top:2px dotted var(--azul)}
+.vertices td{font-size:13px}
+
+/* ---------- código / sliders / sistema (cap. 5) ---------- */
+.codigo{background:#1E1E1E;color:#D4D4D4;border-radius:10px;padding:18px 20px;margin:18px 0;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.7}
+.codigo .cm{color:#6A9955; font-style:italic;}
+.codigo .kw{color:#569CD6;}
+.codigo .st{color:#CE9178;}
+.codigo .func{color:#DCDCAA;}
+.sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:14px 0}
+.slider-ctl{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:11px 13px}
+.slider-ctl label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--tinta-suave);margin-bottom:5px}
+.slider-ctl label .val{color:var(--verde);font-weight:600}
+.slider-ctl input[type=range]{width:100%;accent-color:var(--verde)}
+.toggle-row{display:flex;align-items:center;gap:10px;margin:8px 0 4px;font-size:14px;color:var(--tinta)}
+.toggle-row input{width:18px;height:18px;accent-color:var(--verde)}
+.oculto{display:none}
+.sistema{font-family:var(--mono);font-size:13.5px;line-height:2;background:var(--papel);border:1px solid var(--linha);border-left:4px solid var(--verde);border-radius:8px;padding:14px 18px;margin:14px 0;overflow-x:auto;white-space:nowrap}
+.sistema .v{color:var(--verde-alta);font-weight:600}
 </style>
 </head>
 <body>
 
-<!-- Navegação Master -->
 <div class="barra-site">
   <div class="wrap">
-    <span class="marca">📚 Masterclass Interativa · Crédito Privado</span>
+    <span class="marca">Estudos de Crédito Privado · Renda Fixa</span>
     <div class="abas" role="tablist" aria-label="Capítulos">
-      <button class="aba t3 atual" data-cap="3" role="tab" aria-selected="true">Cap 3 · Rentabilidade</button>
-      <button class="aba t4" data-cap="4" role="tab" aria-selected="false">Cap 4 · ETTJ & Precificação</button>
-      <button class="aba t5" data-cap="5" role="tab" aria-selected="false">Cap 5 · Interpolação</button>
+      <button class="aba atual" data-cap="3" role="tab" aria-selected="true">Cap. 3 · Rentabilidade</button>
+      <button class="aba" data-cap="4" role="tab" aria-selected="false">Cap. 4 · ETTJ</button>
+      <button class="aba" data-cap="5" role="tab" aria-selected="false">Cap. 5 · Estimação</button>
     </div>
   </div>
 </div>
 
+<!-- ==============================================================================
+     CAPÍTULO 3
+     ============================================================================== -->
+<div class="capitulo ativa" data-cap="3">
 
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║ CAPÍTULO 3 — RENTABILIDADE E MARCAÇÃO A MERCADO                      ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
-<div class="capitulo t3 ativa" id="cap3" data-cap="3">
-
-<header class="hero t3">
+<header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Microeconomia · Matemática Financeira</div>
-    <h1><span class="cap">Capítulo 3</span>Rentabilidade Real vs. TIR Teórica</h1>
-    <p class="lead">Entenda definitivamente por que o retorno financeiro de um título no seu bolso <strong>quase nunca</strong> é igual à taxa contratada no dia da compra. Desmistifique o cálculo passo a passo para títulos com e sem pagamento de cupons.</p>
+    <div class="eyebrow">Crédito Privado · Programa de Estudos · Módulo Renda Fixa</div>
+    <h1><span class="cap">Capítulo 3</span>Rentabilidade de títulos de renda fixa</h1>
+    <p class="lead">O retorno de um título <strong>não é</strong> a sua TIR — exceto em um caso muito particular. Este módulo cobre o cálculo do retorno de papéis sem cupom, o conceito de <em>total return</em> para papéis com cupom e a diferença de premissas entre os dois métodos de cálculo.</p>
+    <div class="keyline">
+      <span>r = (Pt/P0 − 1)</span>
+      <span>base 252 dias úteis</span>
+      <span>total return por quotas</span>
+      <span>TIR · reinvestimento</span>
+    </div>
   </div>
 </header>
 
-<nav class="topo t3">
+<nav class="topo" aria-label="Seções do capítulo">
   <div class="wrap">
-    <a href="#c3-conceito">Por que TIR falha?</a>
-    <a href="#c3-zero">Títulos Zero Cupom</a>
-    <a href="#c3-lab-zero">⚙ Lab: Zero Cupom</a>
-    <a href="#c3-cupons">Total Return (Cotas)</a>
-    <a href="#c3-lab-total">⚙ Lab: Total Return</a>
+    <a href="#conceito"><span class="n">3.0</span>Conceito</a>
+    <a href="#zero-cupom"><span class="n">3.1</span>Sem cupom</a>
+    <a href="#calc-zero"><span class="n">⚙</span>Calculadora</a>
+    <a href="#com-cupom"><span class="n">3.2</span>Com cupom</a>
+    <a href="#simulador"><span class="n">⚙</span>Simulador</a>
+    <a href="#comparacao"><span class="n">Δ</span>TIR × Quotas</a>
+    <a href="#exercicios"><span class="n">✎</span>Exercícios</a>
   </div>
 </nav>
 
-<section id="c3-conceito">
+<section id="conceito">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">3.1</span><h2>O Mito da Taxa Fixa</h2></div>
-    <p>Existe uma crença perigosa de que comprar um título prefixado a 10% a.a. garante um lucro de 10% a.a. na sua conta. Isso só seria verdade em um mundo paralisado. No mercado real, a <strong>Volatilidade</strong> dita as regras.</p>
+    <div class="sec-head"><span class="sec-num">3.0</span><h2>Por que rentabilidade ≠ TIR</h2></div>
+    <p>Os preços dos títulos de renda fixa são <strong>voláteis</strong> — volatilidade é a medida do padrão de oscilação nos preços de ativos financeiros. Por isso, precisamos de métricas para medir a rentabilidade de um título em um dado horizonte de tempo.</p>
     
     <div class="dica-prof">
-      <h4>💡 O Poder da Marcação a Mercado</h4>
-      <p>Pense na "Marcação a Mercado" como o mercado de carros usados. Você comprou um título que paga 10% de juros. No dia seguinte, o Banco Central aumenta os juros, e os novos títulos passam a pagar 12%. Ninguém em sã consciência vai comprar o seu título antigo de 10% pelo preço original. Você será obrigado a <strong>dar um desconto no preço do título</strong> para conseguir vendê-lo. Seu patrimônio caiu, mesmo a taxa sendo "fixa".</p>
+      <h4>💡 Dica do Professor: "Marcação a Mercado"</h4>
+      <p>Imagine que você comprou um título prefixado a 10% a.a. Amanhã, o governo emite um idêntico pagando 12% a.a. Ninguém vai querer comprar o seu de 10% pelo preço original. Você terá que dar um <strong>desconto no preço</strong> do seu título para conseguir vendê-lo. Seus ganhos e perdas dependem dessas oscilações diárias, e não apenas da taxa fixa da compra.</p>
     </div>
 
-    <p>Sua rentabilidade real depende de dois pilares implacáveis:</p>
-    <div class="grid-cards">
-      <div class="card-fator">
-        <span class="tag">Pilar 1: Oscilação de Preço</span>
-        <h4>Ganho/Perda de Capital</h4>
-        <p>A diferença pura entre o quanto você pagou e por quanto você consegue vender o título hoje no mercado secundário.</p>
+    <p>A rentabilidade de um título <em>se relaciona</em> com a sua TIR, mas <strong>não é inteiramente correlacionada</strong> com ela, por dois motivos:</p>
+    <div class="duo">
+      <div class="fator">
+        <span class="tag">Fator 1</span>
+        <h4>Oscilações de mercado</h4>
+        <p>As expectativas sobre as taxas de juros mudam ao longo do tempo. Quando a curva de juros se desloca, o preço de mercado do papel se move — e com ele o retorno de quem carrega o título.</p>
       </div>
-      <div class="card-fator">
-        <span class="tag">Pilar 2: Risco de Reinvestimento</span>
-        <h4>O Paradoxo do Cupom</h4>
-        <p>Se o título te paga juros na conta corrente a cada 6 meses, o que você faz com o dinheiro? A taxa na qual você <strong>reinveste</strong> esse dinheiro muda completamente seu lucro final.</p>
+      <div class="fator">
+        <span class="tag">Fator 2</span>
+        <h4>Pagamentos de cupons</h4>
+        <p>Fluxos intermediários de juros saem do papel e precisam ser reinvestidos. A taxa de reinvestimento dificilmente será a TIR original da compra.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="c3-zero">
+<section id="zero-cupom">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">3.2</span><h2>A Matemática Limpa: Zero Cupom</h2></div>
-    <p>Títulos "Zero Cupom" (como a LTN - Tesouro Prefixado) são fáceis de calcular porque isolam o Pilar 2. Eles não pagam juros no meio do caminho. Você compra barato hoje e recebe o valor cheio (Valor de Face) no vencimento.</p>
+    <div class="sec-head"><span class="sec-num">3.1</span><h2>Retorno de títulos sem cupom de juros</h2></div>
+    <p>A rentabilidade de uma aplicação financeira é dada pela <strong>variação do seu valor</strong> entre as datas de cálculo. Chamando o instante inicial de 0 e o final de <em>t</em>, o retorno ao período é:</p>
 
-    <div class="bloco-formula">
-      <div class="desc">Equação 3.1: Retorno Absoluto do Período ($r^p$)</div>
-      $$ r^p_{0,t} = \left( \frac{P_t}{P_0} - 1 \right) \times 100 $$
+    <div class="formula">
+      <span class="eq">r<sup>p</sup><sub>0,t</sub> <span class="op">=</span> <span class="op">(</span><span class="frac"><span class="num">P<sub>t</sub></span><span class="den">P<sub>0</sub></span></span> <span class="op">−</span> 1<span class="op">)</span> <span class="op">×</span> 100</span>
+      <span class="ref">(3.1)</span>
+      <span class="desc">Retorno <strong>ao período</strong> (sobrescrito <em>p</em>) entre 0 e <em>t</em>.</span>
     </div>
 
     <details class="explicacao">
-      <summary>🔍 Traduzindo a Fórmula: Retorno Absoluto</summary>
+      <summary>🔍 Entenda a Fórmula 3.1: Retorno Absoluto</summary>
       <ul class="var-list">
-        <li><strong>$P_t$ (Preço Final)</strong>: O dinheiro que retornou para o seu bolso na venda ou vencimento.</li>
-        <li><strong>$P_0$ (Preço Inicial)</strong>: O dinheiro que saiu do seu bolso no dia da compra.</li>
-        <li><strong>A Lógica ($P_t / P_0$)</strong>: Gera um multiplicador. Se comprou por R$ 50 e vendeu por R$ 60, o multiplicador é 1.20 (120%). Ao subtrair 1, ficamos com o lucro puro (0.20 ou 20%).</li>
+        <li><strong>P<sub>t</sub> (Preço Final):</strong> Dinheiro que retornou para o seu bolso (venda/vencimento).</li>
+        <li><strong>P<sub>0</sub> (Preço Inicial):</strong> Dinheiro que saiu do seu bolso (compra).</li>
+        <li><strong>A Lógica (P<sub>t</sub> / P<sub>0</sub>):</strong> Gera um fator. Comprou por R$50, vendeu por R$60, o fator é 1.20 (120%). Subtraindo 1, temos o lucro real de 0.20 (20%).</li>
       </ul>
     </details>
 
-    <p>Como o mercado padroniza tudo ao ano, precisamos converter esse lucro total para uma <strong>taxa anual equivalente</strong>, considerando o calendário financeiro brasileiro de 252 dias úteis.</p>
+    <p>Para comparar aplicações de prazos diferentes, anualiza-se o retorno na convenção brasileira de <strong>252 dias úteis</strong>, em que <em>t</em> é o número de dias úteis entre as duas datas:</p>
 
-    <div class="bloco-formula">
-      <div class="desc">Equação 3.3: Retorno Anualizado Base 252 ($r^a$)</div>
-      $$ r^a_{0,t} = \left[ \left( \frac{P_t}{P_0} \right)^{\frac{252}{t}} - 1 \right] \times 100 $$
+    <div class="formula">
+      <span class="eq">r<sup>a</sup><sub>0,t</sub> <span class="op">=</span> <span class="op">[</span><span class="op">(</span><span class="frac"><span class="num">P<sub>t</sub></span><span class="den">P<sub>0</sub></span></span><span class="op">)</span><sup class="destaque">252/t</sup> <span class="op">−</span> 1<span class="op">]</span> <span class="op">×</span> 100</span>
+      <span class="ref">(3.3)</span>
+      <span class="desc">Derivada de (1 + r<sup>a</sup>)<sup>t/252</sup> = P<sub>t</sub>/P<sub>0</sub> — equação (3.2).</span>
+    </div>
+
+    <div class="insight">
+      <span class="rotulo">Ponto-chave do capítulo</span>
+      <p>Se o título for <strong>zero cupom</strong> e mantido <strong>até o vencimento</strong>, o retorno total será idêntico à TIR contratada na compra. É a origem do conselho clássico de "levar o papel até o vencimento para garantir a taxa".</p>
+      <p>Esse raciocínio é <strong>apenas parcialmente correto</strong> para papéis com cupom: a TIR pressupõe reinvestimento dos cupons à própria TIR, e a taxa de reinvestimento real do mercado certamente será outra.</p>
     </div>
   </div>
 </section>
 
-<!-- LABORATÓRIO: ZERO CUPOM -->
-<section id="c3-lab-zero">
+<section id="calc-zero">
   <div class="wrap">
     <div class="painel">
-      <div class="titulo-painel">
-        <h3>Calculadora Analítica · Título Zero Cupom</h3>
-        <span class="badge-int">Interativo</span>
-      </div>
-      <p class="sub">Simule operações com LTN. Insira os preços de compra e venda e veja a matemática atuar.</p>
-      
+      <div class="titulo-painel"><h3>Calculadora · retorno de título zero cupom</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">Pré-carregada com o exemplo 3.1.1 do livro: LTN venc. 1/7/2020, comprada em 11/7/2016 por R$ 637,445 e vendida 130 dias úteis depois por R$ 703,91.</p>
       <div class="campos">
-        <div class="campo"><label>Preço de Compra ($P_0$)</label><input id="z-p0" type="number" value="637.44"></div>
-        <div class="campo"><label>Preço de Venda ($P_t$)</label><input id="z-pt" type="number" value="703.91"></div>
-        <div class="campo"><label>Dias Úteis Aplicados ($t$)</label><input id="z-du" type="number" value="130"></div>
+        <div class="campo"><label for="z-p0">Preço de compra P₀ (R$)</label><input id="z-p0" inputmode="decimal" value="637,445"></div>
+        <div class="campo"><label for="z-pt">Preço de venda Pₜ (R$)</label><input id="z-pt" inputmode="decimal" value="703,91"></div>
+        <div class="campo"><label for="z-du">Dias úteis (t)</label><input id="z-du" inputmode="numeric" value="130"></div>
       </div>
-      
       <div class="botoes">
-        <button class="btn-primary" id="btn-calc-zero">▶ Processar Matemática</button>
+        <button class="primario" id="z-calc">Calcular retorno</button>
+        <button class="fantasma mini" id="z-reset">Recarregar exemplo do livro</button>
       </div>
-
-      <div id="z-result-container" hidden>
-        <div class="resultado">
-          <div class="res-card"><span class="rotulo">Lucro da Operação</span><div class="valor val-green" id="z-res-abs">—</div><div class="nota">Retorno absoluto</div></div>
-          <div class="res-card"><span class="rotulo">Rentabilidade Real Anual</span><div class="valor val-orange" id="z-res-anu">—</div><div class="nota">Base 252 dias úteis</div></div>
-        </div>
-
-        <div class="box-passos">
-          <h4>Raio-X do Cálculo</h4>
-          <div id="z-passos-box"></div>
-        </div>
+      <div class="resultado" id="z-res" hidden>
+        <div class="res-card"><span class="rotulo">Retorno ao período (3.1)</span><div class="valor pos" id="z-rp">—</div><div class="nota" id="z-rp-nota"></div></div>
+        <div class="res-card"><span class="rotulo">Retorno anualizado (3.3)</span><div class="valor taxa" id="z-ra">—</div><div class="nota">base 252 dias úteis</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="c3-cupons">
+<section id="com-cupom">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">3.3</span><h2>O Mundo Real: Títulos com Cupons</h2></div>
-    <p>Se o título paga juros a cada 6 meses (como NTN-F ou debêntures), calcular a rentabilidade vira um desafio. Como mensuramos a performance quando há <strong>saques no meio do caminho</strong>?</p>
-
+    <div class="sec-head"><span class="sec-num">3.2</span><h2>Retorno de títulos com pagamento de cupons</h2></div>
+    <p>Para papéis que pagam juros periódicos, usar as equações da seção 3.1 <strong>negligencia o fluxo de caixa pago pelo emissor</strong> e distorce a rentabilidade. Daí o conceito de <strong>retorno total</strong> (<em>total return</em>): um cálculo que considera os preços de compra e venda <em>e</em> os fluxos intermediários recebidos.</p>
+    
     <div class="dica-prof">
-      <h4>⚠️ A Armadilha da TIR (Taxa Interna de Retorno)</h4>
-      <p>Profissionais amam a fórmula <code>=TIR()</code> do Excel. O problema é que a matemática da TIR <strong>assume obrigatoriamente</strong> que todos os juros que caem na sua conta são reinvestidos rendendo exatamente a mesma taxa da TIR original. Isso é uma utopia. Se as taxas do mercado caírem, você vai reinvestir seus cupons a taxas piores, e a TIR mentirá o seu retorno real.</p>
+      <h4>⚠️ O Problema da TIR</h4>
+      <p>Muitos usam a TIR no Excel para calcular rentabilidade. O problema é que a fórmula matemática da TIR assume que todo cupom recebido é reinvestido rendendo <strong>exatamente a mesma taxa da TIR inicial</strong>. No mundo real, você vai comprar novos papéis a taxas diferentes e a TIR se torna uma medida "teórica".</p>
     </div>
 
-    <h3>O Padrão Ouro: Total Return por "Sistema de Cotas"</h3>
-    <p>Para descobrir a rentabilidade exata que aconteceu na realidade, simulamos a sua carteira como se fosse um <strong>Fundo de Investimento</strong>. Cada cupom de juros recebido em dinheiro é usado <em>no mesmo dia</em> para <strong>comprar mais "cotas" (títulos) aos preços reais praticados pelo mercado naquele instante</strong>.</p>
-    
-    <div class="bloco-formula">
-      <div class="desc">A Matemática do Reinvestimento em Cotas (Eq. 3.7 Simplificada)</div>
-      $$ Cotas_{Novas} = Cotas_{Atuais} + \left( \frac{\text{R\$ do Cupom Recebido}}{\text{Preço do Título no Dia do Pagamento}} \right) \times Cotas_{Atuais} $$
+    <h3>3.2.1 — Cálculo pela TIR</h3>
+    <div class="formula">
+      <span class="eq">TR<sup>a</sup><sub>0,t</sub> <span class="op">=</span> <span class="destaque">y</span></span>
+      <span class="ref">(3.4)</span>
+      <span class="desc">TIR do fluxo (y). Embutida a hipótese de reinvestimento à própria taxa.</span>
+    </div>
+
+    <h3>3.2.2 — Cálculo por quotas de títulos equivalentes (Total Return)</h3>
+    <p>A cada cupom recebido, simula-se a compra de mais do mesmo título ao preço de mercado da data — a quantidade possuída aumenta, como quotas de um fundo.</p>
+    <div class="formula">
+      <span class="eq">TR<sup>a</sup><sub>0,t</sub> <span class="op">=</span> <span class="op">[</span><span class="op">(</span><span class="frac"><span class="num">P<sub>t</sub> × Q<sub>t</sub></span><span class="den">P<sub>0</sub> × Q<sub>0</sub></span></span><span class="op">)</span><sup class="destaque">252/t</sup> <span class="op">−</span> 1<span class="op">]</span> <span class="op">×</span> 100</span>
+      <span class="ref">(3.5)</span>
+      <span class="desc">Preços inicial e final ponderados pelas quantidades atualizadas (Q).</span>
+    </div>
+    <div class="formula">
+      <span class="eq">Q<sub>t+1</sub> <span class="op">=</span> Q<sub>t</sub> <span class="op">+</span> <span class="frac"><span class="num">D<sub>t+1</sub></span><span class="den">P<sub>t+1</sub></span></span> <span class="op">×</span> Q<sub>t</sub></span>
+      <span class="ref">(3.7)</span>
+      <span class="desc">D = dinheiro do cupom. O retorno entre datas é (P<sub>t+1</sub>Q<sub>t+1</sub>)/(P<sub>t</sub>Q<sub>t</sub>) − 1.</span>
     </div>
   </div>
 </section>
 
-<!-- LABORATÓRIO: TOTAL RETURN -->
-<section id="c3-lab-total">
+<section id="simulador">
   <div class="wrap">
     <div class="painel">
-      <div class="titulo-painel">
-        <h3>Simulador de Fundo · Total Return vs TIR Teórica</h3>
-        <span class="badge-int">Laboratório Avançado</span>
+      <div class="titulo-painel"><h3>Simulador · total return por quotas + TIR</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">Monte o fluxo (compra, cupons, venda) e compare o retorno real (Cotas) com a teoria (TIR). Exemplo do livro 3.2.3: NTN-F comprada por R$ 692,77 e vendida por R$ 946,08.</p>
+
+      <div class="botoes">
+        <button class="fantasma mini" id="s-livro">Exemplo NTN-F</button>
+        <button class="fantasma mini" id="s-add">+ Adicionar cupom</button>
       </div>
-      <p class="sub">Descubra como o risco de reinvestimento afeta seus retornos. Adicione pagamentos de cupom, mude o preço do título na data de pagamento e compare a taxa realista (Cotas) com a taxa mentirosa (TIR).</p>
 
       <div class="tabela-rolagem">
-        <table id="tbl-total-return">
-          <thead><tr><th>Natureza do Fluxo</th><th>Dias Corridos</th><th>Valor (R$)</th><th>Preço de Tela do Título (R$)</th><th>Ação</th></tr></thead>
-          <tbody id="tr-body">
-            <!-- Injetado por JS -->
-          </tbody>
+        <table aria-label="Fluxo de caixa do título">
+          <thead><tr><th>Evento</th><th>Dias úteis</th><th>Cupom (R$)</th><th>Preço de mercado (R$)</th><th></th></tr></thead>
+          <tbody id="s-corpo"></tbody>
         </table>
       </div>
-      
-      <div class="botoes">
-        <button class="btn-ghost mini" id="btn-tr-add">+ Novo Cupom</button>
-        <button class="btn-primary" id="btn-calc-tr">▶ Simular Cenário</button>
-      </div>
 
-      <div id="tr-result-container" hidden>
-        <!-- Gráfico SVG Simplificado -->
-        <div class="grafico-box" style="margin-top: 30px;">
-          <h4 style="font-family: var(--display); font-size: 14px; margin-bottom: 12px; color: var(--tinta-suave);">Diagrama de Fluxo de Caixa (Visão do Investidor)</h4>
-          <svg id="svg-tr-timeline" viewBox="0 0 760 160"></svg>
+      <div class="botoes"><button class="primario" id="s-calc">Calcular retorno total</button></div>
+
+      <div id="s-saida" hidden>
+        <div class="timeline-box">
+          <svg id="s-svg" viewBox="0 0 760 190"></svg>
+          <div class="legenda-tl">Vermelho: Compra | Verde: Cupons | Escuro: Venda</div>
+        </div>
+
+        <h3 style="margin-top:22px">Cálculo Reinvestindo em Quotas (Tabela 3.1)</h3>
+        <div class="tabela-rolagem">
+          <table>
+            <thead><tr><th>d.u.</th><th>Fluxo (R$)</th><th>Preço (R$)</th><th>Quantidade de Cotas</th><th>P × Q (Patrimônio)</th></tr></thead>
+            <tbody id="s-quotas"></tbody>
+          </table>
         </div>
 
         <div class="resultado">
-          <div class="res-card" style="border-color: var(--t3-main); background: #F0FAF5;">
-            <span class="rotulo">Total Return Anualizado (Realidade)</span>
-            <div class="valor val-green" id="tr-res-cotas">—</div>
-            <div class="nota">Assume recompras a preços de mercado</div>
-          </div>
-          <div class="res-card" style="border-color: var(--ambar); background: #FFF9F0;">
-            <span class="rotulo">TIR da Operação (Teoria)</span>
-            <div class="valor val-orange" id="tr-res-tir">—</div>
-            <div class="nota">Ignora a flutuação do mercado</div>
-          </div>
+          <div class="res-card"><span class="rotulo">TR ao período (quotas)</span><div class="valor pos" id="s-trp">—</div></div>
+          <div class="res-card" style="border-color:var(--verde-alta); background:#EAF5EE;"><span class="rotulo">TR anualizado (quotas)</span><div class="valor pos" id="s-tra">—</div><div class="nota">Reinvestimento mercado</div></div>
+          <div class="res-card" style="border-color:var(--ambar); background:#FFF8E1;"><span class="rotulo">TIR do fluxo (Teoria)</span><div class="valor taxa" id="s-tir">—</div><div class="nota">Reinveste à própria TIR</div></div>
         </div>
-
-        <div class="box-passos">
-          <h4>A Evolução do seu Patrimônio (Extrato em Cotas)</h4>
-          <p style="font-size: 14px; color: var(--tinta-suave); margin-bottom: 16px;">Iniciamos o fundo comprando exatamente <strong>1.000 cotas</strong> do título.</p>
-          <div class="tabela-rolagem">
-            <table>
-              <thead><tr><th>Momento</th><th>Ação Realizada</th><th>Quantidade de Cotas Possuídas</th><th>Valor Total (R$)</th></tr></thead>
-              <tbody id="tr-passos-table"></tbody>
-            </table>
-          </div>
-          <p id="tr-analise" style="font-size: 14.5px; font-weight: 500; margin-top: 16px; padding: 12px; background: #F4F6F5; border-radius: 8px; border-left: 4px solid var(--t3-main);"></p>
-        </div>
+        <p class="suave" style="font-size:14px;margin-top:16px;max-width:74ch; background: #FAFAFA; padding: 12px; border-radius: 8px; border-left: 4px solid var(--tinta-suave);" id="s-leitura"></p>
       </div>
     </div>
   </div>
 </section>
 
-</div> <!-- FIM CAPÍTULO 3 -->
-
-
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║ CAPÍTULO 4 — CURVA DE JUROS E PRECIFICAÇÃO                           ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
-<div class="capitulo t4" id="cap4" data-cap="4">
-
-<header class="hero t4">
+<section id="comparacao">
   <div class="wrap">
-    <div class="eyebrow">Macroeconomia · Formação de Preços</div>
-    <h1><span class="cap">Capítulo 4</span>Como o Mercado "Adivinha" o Futuro</h1>
-    <p class="lead">A taxa de 5 anos exibida no seu home broker não cai do céu. Descubra a matemática elegante que transforma as expectativas políticas do Banco Central na Curva de Juros (ETTJ) que rege a economia.</p>
+    <div class="sec-head"><span class="sec-num">Δ</span><h2>TIR × total return por quotas</h2></div>
+    <div class="versus">
+      <div class="col um">
+        <h4>Método 1 · TIR</h4>
+        <ul>
+          <li>Premissa implícita: cupons reinvestidos <strong>à própria TIR</strong> original.</li>
+          <li>Irrealista quando a curva de juros se move.</li>
+        </ul>
+      </div>
+      <div class="col dois">
+        <h4>Método 2 · Quotas</h4>
+        <ul>
+          <li>Cupons compram mais títulos <strong>aos preços vigentes de mercado</strong>.</li>
+          <li>É o padrão do mercado e se estende a fundos.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="exercicios">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">✎</span><h2>Exercícios propostos (Cap. 3)</h2></div>
+    <div class="exercicio">
+      <span class="num-ex">Exercício 2 · julgamento</span>
+      <h4>"O cupom da NTN-F é definido pelo Tesouro em 10% a.a. Logo, a rentabilidade é 10% a.a., em qualquer circunstância."</h4>
+      <div class="vf">
+        <button class="fantasma mini" data-vf="v">Verdadeira</button>
+        <button class="fantasma mini" data-vf="f">Falsa</button>
+      </div>
+      <p class="feedback" id="vf-fb"></p>
+      <div class="gabarito" id="g2">
+        <span class="rotulo">Justificativa</span>
+        <p><strong>Falsa.</strong> O cupom define apenas o <em>fluxo de caixa</em> do papel, não a rentabilidade. A rentabilidade depende do <strong>preço de compra</strong> (ágio/deságio), das <strong>oscilações de mercado</strong> (se vendido antes) e da <strong>taxa de reinvestimento</strong> real dos cupons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /capítulo 3 -->
+
+<!-- ==============================================================================
+     CAPÍTULO 4
+     ============================================================================== -->
+<div class="capitulo" data-cap="4">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Crédito Privado · Programa de Estudos · Módulo Renda Fixa</div>
+    <h1><span class="cap">Capítulo 4</span>Estrutura a termo de taxas de juros (ETTJ)</h1>
+    <p class="lead">A taxa "de mercado" para cada prazo não cai do céu: ela é a <strong>média geométrica da trajetória esperada do DI</strong>, dia útil a dia útil. Este módulo cobre a definição da ETTJ e como o mercado revela as taxas prefixadas.</p>
   </div>
 </header>
 
-<nav class="topo t4">
+<nav class="topo" aria-label="Seções do capítulo 4">
   <div class="wrap">
-    <a href="#c4-conceito">O que é a ETTJ?</a>
-    <a href="#c4-equacao">A Equação Mestra</a>
-    <a href="#c4-lab-ettj">⚙ Lab: Criador de Curvas</a>
-    <a href="#c4-lab-ltn">⚙ Lab: Choque de Copom</a>
+    <a href="#c4-def"><span class="n">4.1</span>Definição</a>
+    <a href="#c4-diselic"><span class="n">4.2</span>DI × Selic</a>
+    <a href="#c4-formacao"><span class="n">4.3</span>Formação</a>
+    <a href="#c4-curva"><span class="n">⚙</span>Construa a curva</a>
+    <a href="#c4-copom"><span class="n">⚙</span>Apostas do Copom</a>
+    <a href="#c4-ltn"><span class="n">⚙</span>LTN c/ trajetória</a>
   </div>
 </nav>
 
-<section id="c4-conceito">
+<section id="c4-def">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">4.1</span><h2>Estrutura a Termo (ETTJ)</h2></div>
-    <div class="dica-prof">
-      <h4>💡 Traduzindo o "Economês"</h4>
-      <p>A palavra "Termo" no jargão financeiro significa simplesmente <strong>"Prazo"</strong>. Portanto, ETTJ é apenas a organização das taxas de juros de acordo com a data de vencimento. Quando plotamos isso num gráfico (Prazo no Eixo X, Taxa no Eixo Y), nasce a famosa "Curva de Juros".</p>
+    <div class="sec-head"><span class="sec-num">4.1</span><h2>Definição</h2></div>
+    <div class="definicao">
+      <span class="rotulo">Definição central</span>
+      <p>A ETTJ é a curva que relaciona as taxas de juros de um <em>mesmo risco de crédito</em> para <em>diferentes prazos</em>.</p>
     </div>
-
-    <p>O Banco Central não dita a taxa de juros para 5 anos. Ele só define a meta da taxa Selic para o <strong>dia de hoje</strong>. Quem decide a taxa de 5 anos é o <strong>Mercado Financeiro</strong>, baseando-se em expectativas. Existem diversas curvas para diferentes perfis de risco:</p>
     
-    <div class="grid-cards">
-      <div class="card-fator">
-        <span class="tag">Ativo Livre de Risco</span>
-        <h4>A Curva Soberana (Governo)</h4>
-        <p>Formada pela negociação de Títulos Públicos e Futuros de DI. É a "mãe" de todas as taxas, refletindo apenas a política monetária pura sem risco de calote.</p>
-      </div>
-      <div class="card-fator">
-        <span class="tag">Crédito Privado</span>
-        <h4>A Curva Corporativa</h4>
-        <p>A curva que precifica empresas (Debêntures). Ela é igual à Curva Soberana, somada a um "Spread" (prêmio de risco) para compensar o risco da empresa quebrar.</p>
-      </div>
+    <div class="dica-prof">
+      <h4>💡 O uso prático</h4>
+      <p>Para que serve a curva? Para <strong>"descobrir" preços justos</strong> de ativos que não estão sendo negociados naquele exato momento. Descontamos o fluxo de uma debênture ilíquida pela curva do indexador + spread para achar o preço de tela ("Marcação a Mercado").</p>
     </div>
   </div>
 </section>
 
-<section id="c4-equacao">
+<section id="c4-formacao">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">4.2</span><h2>A Mágica da Formação: A Equação Central</h2></div>
-    <p>Como o mercado transforma apostas sobre as próximas reuniões do Copom em uma única taxa de longo prazo? Através do princípio de <em>Não Arbitragem</em>: <strong>A taxa de longo prazo exigida hoje é a média geométrica de todas as taxas diárias esperadas para o futuro.</strong></p>
+    <div class="sec-head"><span class="sec-num">4.3</span><h2>Formação das taxas de juros (A Equação Mestra)</h2></div>
+    <p>O Copom define a meta Selic apenas para <strong>1 dia útil</strong>. As taxas para os outros prazos (1 ano, 5 anos) são formadas pelo <strong>mercado</strong> através da negociação de futuros e títulos públicos. Elas dependem das <em>Expectativas</em> do que o Copom vai fazer.</p>
 
-    <div class="bloco-formula">
-      <div class="desc">Equação 4.1: Formação da Taxa Pré (Spot)</div>
-      $$ (1 + i_{pré})^{\frac{du}{252}} = \prod_{k=0}^{du-1} \left( 1 + E[DI_k] \right)^{\frac{1}{252}} $$
+    <div class="formula">
+      <span class="eq">(1 + i)<sup class="destaque">du/252</sup> <span class="op">=</span> <span style="font-size:1.4em">∏</span><sub>k=0</sub><sup>du−1</sup> (1 + E[DI<sub>k</sub>])<sup>1/252</sup></span>
+      <span class="ref">(4.1)</span>
+      <span class="desc">A taxa pré <em>i</em> é a <strong>média geométrica</strong> (Produtório $\Pi$) da trajetória diária esperada do DI.</span>
     </div>
 
     <details class="explicacao">
-      <summary>🔍 Dissecando o Monstro Matemático</summary>
+      <summary>🔍 Traduzindo a Matemática</summary>
       <ul class="var-list">
-        <li><strong>Lado Esquerdo $(1 + i_{pré})$:</strong> É o retorno garantido que você travaria hoje comprando um título prefixado que vence no dia $du$.</li>
-        <li><strong>Símbolo $\prod$ (Produtório):</strong> Significa multiplicação sequencial. Na renda fixa, não somamos juros, nós multiplicamos fatores diariamente (juros sobre juros).</li>
-        <li><strong>$E[DI_k]$:</strong> É a "Expectativa" da taxa DI que vai vigorar num dia específico $k$ lá no futuro, baseado no que o mercado acha que o Banco Central vai fazer.</li>
-        <li><strong>A Lógica:</strong> Se as pessoas acham que a taxa diária (DI) vai subir muito ano que vem, o "Produtório" do lado direito aumenta. Automaticamente, para a equação fechar, a taxa Prefixada exigida HOJE no lado esquerdo também tem que subir!</li>
+        <li><strong>Lado Esquerdo (1+i):</strong> Retorno de travar seu dinheiro hoje numa taxa Prefixada fixa até o vencimento.</li>
+        <li><strong>O Símbolo Pi (∏):</strong> Significa multiplicação. Em juros compostos nós não somamos juros, multiplicamos fatores.</li>
+        <li><strong>E[DI<sub>k</sub>]:</strong> É a Expectativa da taxa DI no futuro dia "k". A taxa pré acompanha essas expectativas!</li>
       </ul>
     </details>
   </div>
 </section>
 
-<!-- LABORATÓRIO: CONSTRUTOR DE ETTJ -->
-<section id="c4-lab-ettj">
+<section id="c4-curva">
   <div class="wrap">
     <div class="painel">
-      <div class="titulo-painel">
-        <h3>Simulador de Política Monetária (Banco Central)</h3>
-        <span class="badge-int">Visualização em Tempo Real</span>
+      <div class="titulo-painel"><h3>Construa a sua ETTJ · Das decisões do Copom à Curva</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">A equação (4.1) em ação: altere as decisões do Copom e veja a Trajetória Esperada (Tracejada) gerar a Taxa Pré Spot (Curva Contínua).</p>
+      
+      <div class="campos" style="grid-template-columns: 200px 1fr;">
+        <div class="campo"><label>Taxa DI hoje (% a.a.)</label><input id="e-di0" inputmode="decimal" value="7,25"></div>
       </div>
-      <p class="sub">Controle as próximas 8 reuniões do Copom. Altere a taxa DI projetada e veja matematicamente como a "Escada" de projeções gera a "Curva" de taxas Pré (Spot) que aparece na tela dos investidores.</p>
-
-      <div style="background: #FAFBFA; padding: 20px; border-radius: 12px; border: 1px solid var(--linha);">
-        <div class="campos" style="margin-top: 0;">
-          <div class="campo" style="max-width: 250px;">
-            <label>Taxa Selic/DI Hoje (% a.a.)</label>
-            <input id="ettj-di0" type="number" step="0.25" value="10.50">
-          </div>
-        </div>
-        
-        <div style="margin-top: 20px;">
-          <label style="font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--tinta); display: block; margin-bottom: 12px;">Previsões para os próximos Copons (Alteração em %):</label>
-          <div class="grid-sliders" id="ettj-sliders" style="margin: 0;">
-            <!-- Gerado via JS -->
-          </div>
-        </div>
-      </div>
-
-      <div class="grafico-box">
-        <svg id="svg-ettj" viewBox="0 0 800 350"></svg>
-        <div class="legenda-graf" style="margin-top: 16px;">
-          <span class="chave"><span class="linha-svg" style="background: var(--t4-main);"></span> <strong>Curva Prefixada (Spot)</strong> (A Média Geométrica)</span>
-          <span class="chave"><span class="linha-svg" style="border-top: 3px dashed var(--ambar); background: transparent;"></span> <strong>Trajetória do DI Esperada</strong> (As decisões do Copom)</span>
-        </div>
-      </div>
-
-      <div class="box-passos" style="margin-top: 20px;">
-        <h4 style="color: var(--t4-main);">Diagnóstico da Curva</h4>
-        <p id="ettj-analise" style="font-size: 15px;"></p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- LABORATÓRIO: PRECIFICADOR LTN -->
-<section id="c4-lab-ltn">
-  <div class="wrap">
-    <div class="painel">
-      <div class="titulo-painel">
-        <h3>Calculadora de Choque: Impacto no Preço do Título</h3>
-        <span class="badge-int">Demonstração Matemática</span>
-      </div>
-      <p class="sub">Aplique a Equação 4.1 na prática. Descubra qual deveria ser o preço de negociação de uma LTN (R$ 1.000 no futuro) HOJE se o mercado de repente passasse a prever um corte radical de juros daqui a 20 dias.</p>
-
-      <div class="campos">
-        <div class="campo"><label>Selic Atual (% a.a.)</label><input id="ltn-selic" type="number" value="11.25"></div>
-        <div class="campo"><label>Dias úteis até o Copom</label><input id="ltn-dias-copom" type="number" value="20"></div>
-        <div class="campo"><label>Mudança Esperada na Selic (%)</label><input id="ltn-choque" type="number" step="0.25" value="-0.50"></div>
-        <div class="campo"><label>Prazo do Título (Dias Úteis)</label><input id="ltn-dias-tit" type="number" value="45"></div>
-      </div>
-
       <div class="botoes">
-        <button class="btn-primary" id="btn-calc-ltn">▶ Estimar Preço Justo de Tela</button>
+        <button class="fantasma mini" data-cen="alta">Cenário: ciclo de alta</button>
+        <button class="fantasma mini" data-cen="corte">Cenário: ciclo de corte</button>
+        <button class="fantasma mini" data-cen="vaievolta">Sobe e desce</button>
       </div>
-
-      <div id="ltn-result-container" hidden>
-        <div class="resultado">
-          <div class="res-card">
-            <span class="rotulo">Preço Justo (Valor Presente)</span>
-            <div class="valor val-blue" id="ltn-res-preco">—</div>
-            <div class="nota">O preço para entregar R$ 1.000 no venc.</div>
-          </div>
-          <div class="res-card">
-            <span class="rotulo">Taxa Pré Equivalente (Spot)</span>
-            <div class="valor val-orange" id="ltn-res-taxa">—</div>
-            <div class="nota">A média geométrica cobrada</div>
-          </div>
-        </div>
-
-        <div class="box-passos">
-          <h4 style="color: var(--t4-main);">Motor Matemático (Média Ponderada no Tempo)</h4>
-          <div id="ltn-passos-box"></div>
-        </div>
+      
+      <div class="copons" id="e-copons" style="background:#FAFAFA; border:1px solid var(--linha); padding:16px; border-radius:8px;"></div>
+      
+      <div class="grafico-box"><svg id="e-svg" viewBox="0 0 780 330"></svg></div>
+      <div class="legenda-graf">
+        <span class="chave"><span class="tra"></span> Taxa Pré Spot (Curva Justa)</span>
+        <span class="chave"><span class="tra di"></span> Trajetória do DI (Apostas Copom)</span>
       </div>
-
+      <p class="suave" style="font-size:14px; margin-top:16px; padding:12px; background:#FAFAFA; border-left:4px solid var(--ambar);" id="e-leitura"></p>
     </div>
   </div>
 </section>
 
-</div> <!-- FIM CAPÍTULO 4 -->
-
-
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║ CAPÍTULO 5 — INTERPOLAÇÃO E MÉTODOS QUANTITATIVOS                    ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
-<div class="capitulo t5" id="cap5" data-cap="5">
-
-<header class="hero t5">
+<section id="c4-ltn">
   <div class="wrap">
-    <div class="eyebrow">Matemática Quantitativa · Risco</div>
-    <h1><span class="cap">Capítulo 5</span>Fechando os Buracos da Curva</h1>
-    <p class="lead">O mercado financeiro sofre de "falhas de liquidez". Contratos não são negociados para todos os dias do calendário. Aprenda como a geometria, álgebra linear e modelos matemáticos criam preços virtuais justos onde a liquidez não alcança.</p>
+    <div class="painel">
+      <div class="titulo-painel"><h3>Precificador de LTN com choque de Copom</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">O caminho direto: das expectativas para o preço de tela. (P = 1.000 / FatorAcumulado)</p>
+      <div class="campos">
+        <div class="campo"><label>Selic corrente (% a.a.)</label><input id="l-selic" inputmode="decimal" value="8,00"></div>
+        <div class="campo"><label>Dias úteis até o Copom</label><input id="l-dur" inputmode="numeric" value="20"></div>
+        <div class="campo"><label>Mudança esperada (p.b.)</label><input id="l-var" inputmode="decimal" value="-50"></div>
+        <div class="campo"><label>Prazo Total do Título</label><input id="l-duv" inputmode="numeric" value="30"></div>
+      </div>
+      <details class="explicacao" style="margin-top:0;">
+        <summary style="font-size:12px; color:var(--tinta-suave);">O que é (p.b.) Pontos-Base?</summary>
+        <p>100 pontos-base = 1,00%. Logo, -50 p.b. significa uma aposta de corte de -0,50% na Selic.</p>
+      </details>
+
+      <div class="botoes"><button class="primario" id="l-calc">Precificar a LTN</button></div>
+      
+      <div id="l-saida" hidden>
+        <div class="passos" id="l-passos"></div>
+        <div class="resultado">
+          <div class="res-card"><span class="rotulo">Preço Justo da LTN Hoje</span><div class="valor pos" id="l-preco">—</div></div>
+          <div class="res-card"><span class="rotulo">Taxa Pré Implícita</span><div class="valor taxa" id="l-taxa">—</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /capítulo 4 -->
+
+<!-- ==============================================================================
+     CAPÍTULO 5
+     ============================================================================== -->
+<div class="capitulo" data-cap="5">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Crédito Privado · Programa de Estudos · Módulo Renda Fixa</div>
+    <h1><span class="cap">Capítulo 5</span>Técnicas de estimação da ETTJ</h1>
+    <p class="lead">A curva contínua que aparece nos noticiários não existe pronta no mercado: o que existe são <strong>pontos soltos</strong> (vértices) negociados com liquidez. Tudo o que está no meio precisa ser <strong>estimado e interpolado</strong> matematicamente.</p>
   </div>
 </header>
 
-<nav class="topo t5">
+<nav class="topo" aria-label="Seções do capítulo 5">
   <div class="wrap">
-    <a href="#c5-conceito">Por que Interpolar?</a>
-    <a href="#c5-metodos">Linear vs Exponencial</a>
-    <a href="#c5-lab-interp">⚙ Lab: Duelo de Interpolação</a>
-    <a href="#c5-spline">Cubic Spline</a>
-    <a href="#c5-ns">Modelos de Estimação (Nelson-Siegel)</a>
+    <a href="#c5-conceito"><span class="n">5.1</span>Conceito</a>
+    <a href="#c5-ff"><span class="n">5.2</span>Flat forward</a>
+    <a href="#c5-linear"><span class="n">5.3</span>Linear</a>
+    <a href="#c5-interp"><span class="n">⚙</span>Calculadora</a>
+    <a href="#c5-cubic"><span class="n">5.4</span>Cubic spline</a>
+    <a href="#c5-spline-lab"><span class="n">⚙</span>Laboratório</a>
+    <a href="#c5-python"><span class="n">{ }</span>Python</a>
+    <a href="#c5-outras"><span class="n">5.5</span>Nelson-Siegel / Svensson</a>
   </div>
 </nav>
 
 <section id="c5-conceito">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">5.1</span><h2>A Engenharia dos Preços Invisíveis</h2></div>
-    <div class="dica-prof">
-      <h4>💡 O Problema Prático do Analista de Risco</h4>
-      <p>Você precisa fechar o balanço do mês e "marcar a mercado" uma debênture que vence daqui a exatos 300 dias úteis. Ao olhar os painéis da bolsa (B3), você vê muita liquidez e taxas perfeitas para 252 dias (1 ano) e 504 dias (2 anos). Mas <strong>absolutamente ninguém</strong> negociou contratos para 300 dias. Qual taxa você usa? Chuta um valor? Não. Usamos a matemática pura para <strong>interpolar</strong> (ligar os pontos) e criar um preço artificial justo de 300 dias.</p>
+    <div class="sec-head"><span class="sec-num">5.1</span><h2>Conceito de interpolação</h2></div>
+    <p>Os contratos futuros de DI e os títulos públicos têm vencimentos em datas determinadas. A liquidez entre esses prazos é comprometida. A interpolação permite estimar a taxa em um prazo "vazio".</p>
+    <div class="definicao">
+      <span class="rotulo">Definição central</span>
+      <p>Interpolação de taxas é o procedimento para calcular taxas de juros para prazos nos quais <em>não existem</em> instrumentos financeiros que sirvam de referência.</p>
     </div>
+    <p>Essencial para: <strong>Cotar clientes, Precificar Ativos (Marcação a Mercado) e Apurar Resultados</strong>.</p>
   </div>
 </section>
 
-<section id="c5-metodos">
+<section id="c5-ff">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">5.2 e 5.3</span><h2>Os Caminhos Básicos: Linear vs Exponencial</h2></div>
-    <p>Existem diferentes formas de se desenhar uma linha entre dois pontos conhecidos (os vértices $t_1$ e $t_2$).</p>
+    <div class="sec-head"><span class="sec-num">5.2</span><h2>Flat forward exponencial (Padrão Brasil)</h2></div>
+    <p>O modelo assume que, entre dois vértices líquidos, a <strong>taxa a termo diária</strong> (Forward) permanece <strong>constante</strong>. Respeita a capitalização de juros compostos.</p>
 
-    <div class="grid-cards">
-      <div class="card-fator" style="border-top-color: var(--azul-prof);">
-        <span class="tag">Padrão Internacional</span>
-        <h4>Interpolação Linear (Aritmética)</h4>
-        <p>A velha e boa "regra de três" da geometria básica. Ignora completamente o conceito econômico de "juros compostos" e desenha uma <strong>reta perfeita</strong> entre os dois pontos. É rápida, resolve o problema para curtos prazos, mas distorce a matemática em vencimentos longos.</p>
-      </div>
-      <div class="card-fator" style="border-top-color: var(--ambar);">
-        <span class="tag">Padrão Brasileiro (B3/Anbima)</span>
-        <h4>Flat Forward (Exponencial)</h4>
-        <p>Pura lógica econômica. Se não temos negociação entre o ano 1 e o ano 2, assumimos que a taxa implícita projetada <em>entre esses dois pontos</em> (a Taxa Forward) se manterá idêntica (Flat) todos os dias. Ela respeita o fenômeno dos juros sobre juros.</p>
-      </div>
+    <div class="formula">
+      <span class="eq">(1 + Fwd)<sup class="destaque">(du₂−du₁)/252</sup> <span class="op">=</span> <span class="frac"><span class="num">(1 + i₂)<sup>du₂/252</sup></span><span class="den">(1 + i₁)<sup>du₁/252</sup></span></span></span>
+      <span class="ref">(5.1)</span>
+      <span class="desc">Acha-se a taxa implícita (Fwd) entre o prazo 1 e o prazo 2.</span>
     </div>
 
-    <div class="bloco-formula">
-      <div class="desc">O Algoritmo do Flat Forward: Descobrindo a Taxa Implícita ($Fwd$)</div>
-      $$ (1+Fwd)^{\frac{t_2 - t_1}{252}} = \frac{(1+i_2)^{\frac{t_2}{252}}}{(1+i_1)^{\frac{t_1}{252}}} $$
-    </div>
-    <div class="bloco-formula" style="margin-top: 0;">
-      <div class="desc">O Algoritmo do Flat Forward: Projetando o Alvo Desconhecido ($i_*$)</div>
-      $$ (1+i_*)^{\frac{t_*}{252}} = (1+i_1)^{\frac{t_1}{252}} \times (1+Fwd)^{\frac{t_* - t_1}{252}} $$
+    <div class="formula">
+      <span class="eq">(1 + i<sub>*</sub>)<sup>du<sub>*</sub>/252</sup> <span class="op">=</span> (1 + i₁)<sup>du₁/252</sup> <span class="op">×</span> (1 + Fwd)<sup>(du<sub>*</sub>−du₁)/252</sup></span>
+      <span class="ref">(5.2)</span>
+      <span class="desc">Aplica-se a Fwd no pedaço desconhecido para achar a taxa do buraco (i*).</span>
     </div>
   </div>
 </section>
 
-<!-- LABORATÓRIO: DUELO DE INTERPOLAÇÃO -->
-<section id="c5-lab-interp">
+<section id="c5-linear">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">5.3</span><h2>Interpolação linear (Padrão Internacional)</h2></div>
+    <p>Une os pontos com uma reta perfeita (Regra de três pura). Ignora juros compostos. Gera distorções no longo prazo, mas é rápida e internacionalmente aceita.</p>
+    <div class="formula">
+      <span class="eq">i<sub>*</sub> <span class="op">=</span> i₁ <span class="op">+</span> <span class="frac"><span class="num">(i₂ − i₁)</span><span class="den">(du₂ − du₁)</span></span> <span class="op">×</span> (du<sub>*</sub> − du₁)</span>
+      <span class="ref">(5.4)</span>
+    </div>
+  </div>
+</section>
+
+<section id="c5-interp">
   <div class="wrap">
     <div class="painel">
-      <div class="titulo-painel">
-        <h3>Calculadora Comparativa: Linear vs Flat Forward</h3>
-        <span class="badge-int">Cálculo Analítico</span>
+      <div class="titulo-painel"><h3>Calculadora · Flat Forward × Linear</h3><span class="badge-int">interativo</span></div>
+      <p class="sub">Compare os métodos. Pré-carregada: 5 anos a 8%, 10 anos a 9%, Alvo: 7 anos (Exemplo do Livro).</p>
+      <div class="campos">
+        <div class="campo"><label>du₁ (dias úteis)</label><input id="if-du1" inputmode="numeric" value="1260"></div>
+        <div class="campo"><label>i₁ (% a.a.)</label><input id="if-i1" inputmode="decimal" value="8,00"></div>
+        <div class="campo"><label>du₂ (dias úteis)</label><input id="if-du2" inputmode="numeric" value="2520"></div>
+        <div class="campo"><label>i₂ (% a.a.)</label><input id="if-i2" inputmode="decimal" value="9,00"></div>
+        <div class="campo" style="border-left: 2px solid var(--ambar); padding-left: 10px;"><label>du* ALVO</label><input id="if-dux" inputmode="numeric" value="1764"></div>
       </div>
-      <p class="sub">Observe a aberração matemática que ocorre ao comparar juros simples com compostos. Preencha os "Postos de Controle" (pontos com liquidez) e defina o seu "Alvo" (o prazo vazio).</p>
-
-      <div style="background: #FAFBFA; padding: 20px; border-radius: 12px; border: 1px solid var(--linha);">
-        <h4 style="font-family: var(--display); font-size: 15px; margin-bottom: 16px; color: var(--tinta-suave);">1. Parâmetros de Mercado (Os Vértices Fixos)</h4>
-        <div class="campos" style="margin-top: 0;">
-          <div class="campo"><label>Prazo 1 ($t_1$ em d.u.)</label><input id="ip-t1" type="number" value="1260"></div>
-          <div class="campo"><label>Taxa do Prazo 1 ($i_1$ em %)</label><input id="ip-i1" type="number" step="0.01" value="8.00"></div>
-          <div class="campo"><label>Prazo 2 ($t_2$ em d.u.)</label><input id="ip-t2" type="number" value="2520"></div>
-          <div class="campo"><label>Taxa do Prazo 2 ($i_2$ em %)</label><input id="ip-i2" type="number" step="0.01" value="9.00"></div>
+      <div class="botoes"><button class="primario" id="if-calc">Interpolar Alvo</button></div>
+      <div id="if-saida" hidden>
+        <div class="resultado">
+          <div class="res-card"><span class="rotulo">Taxa a termo (Fwd)</span><div class="valor taxa" id="if-fwd">—</div></div>
+          <div class="res-card" style="border-top:4px solid var(--ambar);"><span class="rotulo">Flat forward · i*</span><div class="valor pos" id="if-ff">—</div><div class="nota">Convenção BR</div></div>
+          <div class="res-card" style="border-top:4px solid var(--azul);"><span class="rotulo">Linear · i*</span><div class="valor azul" id="if-lin">—</div><div class="nota">Regra de Três</div></div>
         </div>
+        <h3 style="margin-top:20px; font-size:16px;">Passo a Passo Flat Forward</h3>
+        <div class="passos" id="if-passos"></div>
       </div>
-
-      <div style="background: var(--t5-light); padding: 20px; border-radius: 12px; border: 1px solid #D1C4E9; margin-top: 20px;">
-        <h4 style="font-family: var(--display); font-size: 15px; margin-bottom: 16px; color: var(--t5-dark);">2. Defina o Alvo Cego (O "Buraco")</h4>
-        <div class="campos" style="margin-top: 0; align-items: end;">
-          <div class="campo" style="max-width: 250px;">
-            <label>Dias Úteis Alvo ($t_*$)</label>
-            <input id="ip-tx" type="number" value="1764" style="border: 2px solid var(--t5-main);">
-          </div>
-          <button class="btn-primary" id="btn-calc-interp" style="margin-bottom: 2px;">▶ Calcular Taxas Equivalentes</button>
-        </div>
-      </div>
-
-      <div id="ip-result-container" hidden style="margin-top: 32px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-          <!-- Card Linear -->
-          <div class="box-passos" style="margin: 0; border-top: 6px solid var(--azul-prof);">
-            <h4 style="color: var(--azul-prof); border-color: var(--azul-prof);">Matemática Linear (Aritmética)</h4>
-            <div style="font-size: 32px; font-family: var(--mono); font-weight: 700; color: var(--azul-prof); margin-bottom: 16px; text-align: center;" id="ip-res-lin">—</div>
-            <div id="ip-passos-lin"></div>
-          </div>
-          <!-- Card Flat Forward -->
-          <div class="box-passos" style="margin: 0; border-top: 6px solid var(--ambar);">
-            <h4 style="color: var(--ambar); border-color: var(--ambar);">Matemática Flat Forward (Juros Compostos)</h4>
-            <div style="font-size: 32px; font-family: var(--mono); font-weight: 700; color: var(--ambar); margin-bottom: 16px; text-align: center;" id="ip-res-ff">—</div>
-            <div id="ip-passos-ff"></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<section id="c5-spline">
+<section id="c5-cubic">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">5.4</span><h2>Cubic Spline (A Régua Flexível)</h2></div>
-    <p>A interpolação Linear une os pontos com "réguas retas" criando quinas. A técnica <em>Cubic Spline</em> utiliza Álgebra Linear e matrizes para achar equações polinomiais complexas que desenham curvas <strong>visualmente orgânicas e perfeitamente suaves</strong> entre os vértices (uma fita flexível passando por pregos na parede).</p>
-
-    <div class="dica-prof" style="border-left-color: var(--t5-main);">
-      <h4 style="color: var(--t5-dark);">💻 Solução do Mundo Real (Python)</h4>
-      <p>Nenhum analista cria matrizes colossais na mão. O mercado utiliza bibliotecas financeiras quantitativas na linguagem <strong>Python</strong>. Veja como o problema horrendo se torna apenas 3 linhas de código na vida real através da biblioteca <code>Scipy</code>:</p>
+    <div class="sec-head"><span class="sec-num">5.4</span><h2>Cubic spline (A Régua Flexível)</h2></div>
+    <p>Gera uma aproximação polinomial de 3º grau <strong>por partes</strong>. Em vez de "bicos" ou retas, forma curvas perfeitamente suaves entre os vértices, igualando a inclinação e a curvatura nos pontos de encontro.</p>
+    <div class="formula">
+      <span class="eq">f(x) <span class="op">=</span> a <span class="op">+</span> b·x <span class="op">+</span> c·x<sup>2</sup> <span class="op">+</span> d·x<sup>3</sup></span>
+      <span class="ref">(5.5)</span>
     </div>
 
-    <pre class="codigo">
-<span class="cmt"># Importando os motores matemáticos pré-fabricados</span>
+    <details class="explicacao">
+      <summary>🤓 Álgebra Linear: O Sistema 8x8 do Livro</summary>
+      <div style="margin-top: 12px; padding: 12px; background: #F8F9F7; border: 1px solid var(--linha); border-radius: 6px;">
+        <p>Com 3 vértices (ex: ano 1, ano 2, ano 3), precisamos de 2 funções cúbicas, gerando 8 coeficientes ($a, b, c, d$). Criamos um sistema com 8 equações usando 4 regras:</p>
+        <ol style="margin-left: 20px; font-size: 14px; margin-top: 8px;">
+          <li>A curva deve passar pelos pontos (4 equações).</li>
+          <li>A 1ª Derivada deve ser igual no ponto de encontro (1 eq).</li>
+          <li>A 2ª Derivada deve ser igual no ponto de encontro (1 eq).</li>
+          <li>Condições de fronteira (pontas relaxadas) 2ª Deriv = 0 (2 eq).</li>
+        </ol>
+        <p style="margin-top: 10px;">Resolve-se isso isolando as variáveis numa Matriz Inversa (C = A⁻¹B). Por isso, usa-se computação para resolver Splines.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="c5-spline-lab">
+  <div class="wrap">
+    <div class="painel">
+      <div class="titulo-painel"><h3>Lab de Desenho · Spline vs Flat vs Linear</h3><span class="badge-int">Visual</span></div>
+      <p class="sub">Observe a forma em "bico" gerada pelo Flat Forward e a suavidade perfeita do Cubic Spline.</p>
+      
+      <div class="tabela-rolagem" style="max-width: 400px;">
+        <table id="sp-corpo">
+          <!-- Injetado via JS -->
+        </table>
+      </div>
+      
+      <div class="grafico-box"><svg id="sp-svg" viewBox="0 0 780 340"></svg></div>
+      <div class="legenda-graf">
+        <span class="chave"><span class="tra"></span> Cubic Spline (Suave)</span>
+        <span class="chave"><span class="tra di"></span> Flat Forward (Degrau/Bico)</span>
+        <span class="chave"><span class="tra lin"></span> Linear (Reta Quina)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="c5-python">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">{ }</span><h2>Python Salva Vidas</h2></div>
+    <p>O mercado não calcula Matrizes Inversas 8x8 na mão. Usamos pacotes <em>open source</em> como o <code>Scipy</code> no Python:</p>
+    <div class="codigo">
+<span class="cm"># 1. Importa os motores matemáticos prontos</span>
 <span class="kw">from</span> scipy.interpolate <span class="kw">import</span> CubicSpline
 <span class="kw">import</span> numpy <span class="kw">as</span> np
 
-<span class="cmt"># Registrando as "âncoras" conhecidas no sistema</span>
-eixo_tempo = np.array([<span class="str">1, 2, 3</span>]) 
-eixo_taxas = np.array([<span class="str">14.0, 15.0, 13.5</span>])
+<span class="cm"># 2. Insere os Vértices ("pregos na parede")</span>
+prazos = np.array([<span class="st">1, 2, 3</span>])
+taxas = np.array([<span class="st">14.0, 15.0, 13.5</span>])
 
-<span class="cmt"># O Computador gera os polinomios instantaneamente</span>
-curva_magica = <span class="func">CubicSpline</span>(eixo_tempo, eixo_taxas)
+<span class="cm"># 3. O Computador resolve o sistema linear inteiro</span>
+curva = <span class="func">CubicSpline</span>(prazos, taxas)
 
-<span class="cmt"># Consultando o "buraco" (Ex: ano 1.5)</span>
-<span class="func">print</span>(curva_magica(<span class="str">1.5</span>)) <span class="cmt"># Resposta imediata: 14.734%</span>
-    </pre>
+<span class="cm"># 4. Interpolando a taxa no buraco "1.5 anos"</span>
+print(curva(<span class="st">1.5</span>)) <span class="cm"># Output: 14.7344</span>
+    </div>
   </div>
 </section>
 
+<section id="c5-outras">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">5.5</span><h2>Estimação (Nelson-Siegel & Svensson)</h2></div>
+    <p>Quando há tão pouca liquidez que a interpolação falha (curvas esburacadas), usamos <strong>Regressão Paramétrica</strong>. Não obrigamos a linha a tocar em todos os pontos; obrigamos ela a assumir um formato macroeconômico saudável usando Mínimos Quadrados.</p>
+
+    <h3>Modelo Nelson-Siegel (1987)</h3>
+    <div class="formula">
+      <span class="eq">y(m) <span class="op">=</span> β<sub>0</sub> <span class="op">+</span> β<sub>1</sub><span class="op">·</span><span class="frac"><span class="num">1 − e<sup>−λm</sup></span><span class="den">λm</span></span> <span class="op">+</span> β<sub>2</sub><span class="op">·</span>(<span class="frac"><span class="num">1 − e<sup>−λm</sup></span><span class="den">λm</span></span> <span class="op">−</span> e<sup>−λm</sup>)</span>
+      <span class="ref">(5.8)</span>
+    </div>
+    <ul class="lista">
+      <li><strong>β₀ (Nível):</strong> Longo prazo. "Chão" da curva no infinito.</li>
+      <li><strong>β₁ (Inclinação):</strong> Curto prazo. Taxa de arrancada.</li>
+      <li><strong>β₂ (Curvatura):</strong> Médio prazo. A famosa "Corcunda" (hump).</li>
+      <li><strong>λ (Velocidade):</strong> Decaimento. Controla o pico da corcunda.</li>
+    </ul>
+
+    <h3 style="margin-top: 30px;">Modelo Svensson (1994)</h3>
+    <p>Adiciona um quarto termo (β₃ e λ₂) para permitir <strong>duas corcundas</strong> (formato em S complexo).</p>
+    <div class="formula">
+      <span class="eq">y(m) <span class="op">=</span> NS(m) <span class="op">+</span> β<sub>3</sub><span class="op">·</span>(<span class="frac"><span class="num">1 − e<sup>−λ₂m</sup></span><span class="den">λ₂m</span></span> <span class="op">−</span> e<sup>−λ₂m</sup>)</span>
+      <span class="ref">(5.9)</span>
+    </div>
+    
+    <h3 style="margin-top: 30px;">Super-Bell</h3>
+    <p>Regressão Múltipla pesada contra potências do prazo ($M, M^2, M^3, \log M$) e cupons. Requer <em>bootstrapping</em> depois.</p>
+    <div class="formula">
+      <span class="eq">Y<sub>M</sub> <span class="op">=</span> β<sub>0</sub> <span class="op">+</span> β<sub>1</sub>M <span class="op">+</span> β<sub>2</sub>M<sup>2</sup> <span class="op">+</span> β<sub>3</sub>M<sup>3</sup> <span class="op">+</span> β<sub>4</sub>M<sup>0,5</sup> <span class="op">+</span> β<sub>5</sub>log M <span class="op">+</span> ε</span>
+      <span class="ref">(5.12)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAB NELSON-SIEGEL ============ -->
 <section id="c5-ns">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">5.5</span><h2>Estimação Paramétrica: O Equalizador Nelson-Siegel</h2></div>
-    <p>Existem curvas onde há tão pouca negociação que tentar ligar pontos (interpolação) vira um caos de montanhas-russas distorcidas. Nesses casos, abrimos mão de "tocar em todos os pontos" e passamos a usar <strong>Regressão Estatística de Curva</strong>.</p>
-    <p>O modelo clássico <strong>Nelson-Siegel (1987)</strong> obriga a curva a assumir um formato macroeconômico lógico. Ele age como uma "Mesa de Som", possuindo botões (betas) que controlam as frequências do tempo.</p>
-
-    <div class="bloco-formula" style="border-left-color: var(--t5-main);">
-      <div class="desc">Equação da Morte (Nelson-Siegel)</div>
-      $$ y(m) = \beta_0 + \beta_1 \left( \frac{1 - e^{-\lambda m}}{\lambda m} \right) + \beta_2 \left( \frac{1 - e^{-\lambda m}}{\lambda m} - e^{-\lambda m} \right) $$
-    </div>
-
-    <!-- LABORATÓRIO: SINTETIZADOR NELSON SIEGEL -->
-    <div class="painel" style="border: 2px solid var(--t5-main); margin-top: 40px;">
-      <div class="titulo-painel">
-        <h3 style="color: var(--t5-dark);">Laboratório Sintetizador de Curvas</h3>
-        <span class="badge-int">Brinque de Quant</span>
+    <div class="painel">
+      <div class="titulo-painel"><h3>Sintetizador Nelson-Siegel / Svensson</h3><span class="badge-int">Laboratório de Quant</span></div>
+      <p class="sub">Mexa nos botões da "Mesa de Som" matemática e veja como as variáveis gregas entortam a curva da economia no mundo real.</p>
+      
+      <div class="sliders" style="background:#FAFAFA; border:1px solid var(--linha); border-radius:8px; padding:16px;">
+        <div class="slider-ctl"><label>β₀ (Nível L. Prazo) <span class="val" id="ns-vb0">10,0%</span></label><input type="range" id="ns-b0" min="0" max="16" step="0.1" value="10"></div>
+        <div class="slider-ctl"><label>β₁ (Inclinação C. Prazo) <span class="val" id="ns-vb1">−3,0%</span></label><input type="range" id="ns-b1" min="-8" max="8" step="0.1" value="-3"></div>
+        <div class="slider-ctl"><label>β₂ (1ª Corcunda) <span class="val" id="ns-vb2">4,0%</span></label><input type="range" id="ns-b2" min="-10" max="10" step="0.1" value="4"></div>
+        <div class="slider-ctl"><label>λ (Decaimento) <span class="val" id="ns-vl">0,80</span></label><input type="range" id="ns-l" min="0.1" max="3" step="0.05" value="0.8"></div>
       </div>
-      <p class="sub">Mova os potenciômetros do modelo matemático e compreenda visualmente o que cada letra grega faz com a estrutura da taxa de juros na vida real.</p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
-        
-        <div class="grid-sliders" style="margin: 0; background: transparent; border: none; padding: 0;">
-          <div class="slider-item">
-            <label>Nível (Longo Prazo) $\beta_0$ <span class="val" id="ns-v-b0">8.0%</span></label>
-            <input type="range" id="ns-s-b0" min="2" max="15" step="0.1" value="8.0">
-            <span style="font-size: 11px; color: #888;">Move a base estrutural da curva para cima ou para baixo.</span>
-          </div>
-          <div class="slider-item">
-            <label>Inclinação (Curto Prazo) $\beta_1$ <span class="val" id="ns-v-b1">-2.0%</span></label>
-            <input type="range" id="ns-s-b1" min="-10" max="10" step="0.1" value="-2.0">
-            <span style="font-size: 11px; color: #888;">Determina o choque momentâneo de política monetária atual.</span>
-          </div>
-          <div class="slider-item">
-            <label>Curvatura (Médio Prazo) $\beta_2$ <span class="val" id="ns-v-b2">0.0%</span></label>
-            <input type="range" id="ns-s-b2" min="-10" max="10" step="0.1" value="0.0">
-            <span style="font-size: 11px; color: #888;">Cria "corcundas" (Humps) causadas por ineficiências transitórias.</span>
-          </div>
-          <div class="slider-item" style="border-top: 1px dashed var(--linha); padding-top: 16px;">
-            <label>Ativar Refino (Svensson) $\beta_3$ <span class="val" id="ns-v-b3">0.0%</span></label>
-            <input type="range" id="ns-s-b3" min="-10" max="10" step="0.1" value="0.0">
-            <span style="font-size: 11px; color: #888;">O modelo <strong>Svensson</strong> injeta um quarto parâmetro para corrigir distorções e criar um "S-Shape" perfeito. Mova para gerar uma 2ª barriga.</span>
-          </div>
-        </div>
-
-        <div class="grafico-box" style="margin: 0; display: flex; flex-direction: column; justify-content: center;">
-          <svg id="svg-ns-synth" viewBox="0 0 500 300"></svg>
-          <div class="legenda-graf" style="margin-top: 16px;">
-            <span class="chave"><span class="linha-svg" style="background: var(--t5-main);"></span> <strong>Taxa Spot Prevista Modelada</strong></span>
-          </div>
-        </div>
-
+      
+      <div class="toggle-row" style="margin-top: 16px; background:#F3E5F5; padding: 12px; border-radius: 8px; border:1px solid #D1C4E9;">
+        <input type="checkbox" id="ns-sv">
+        <label for="ns-sv" style="font-weight:600; color:var(--roxo);">Ativar Termo de Svensson (Dupla Corcunda - 'S-Shape')</label>
       </div>
+      
+      <div class="sliders oculto" id="ns-svbox" style="margin-top: 12px;">
+        <div class="slider-ctl"><label>β₃ (2ª Corcunda) <span class="val" id="ns-vb3">−3,0%</span></label><input type="range" id="ns-b3" min="-10" max="10" step="0.1" value="-3"></div>
+        <div class="slider-ctl"><label>λ₂ (2º Decaimento) <span class="val" id="ns-vl2">0,15</span></label><input type="range" id="ns-l2" min="0.05" max="1.5" step="0.05" value="0.15"></div>
+      </div>
+
+      <div class="grafico-box" style="margin-top: 24px;">
+        <svg id="ns-svg" viewBox="0 0 780 300"></svg>
+        <div class="legenda-graf">
+          <span class="chave"><span class="tra"></span> Curva de Taxas Estimadas $y(m)$</span>
+          <span class="chave"><span class="tra di" style="border-color: #C97B12;"></span> Limite do Longo Prazo (β₀)</span>
+        </div>
+      </div>
+      <p class="suave" style="font-size:14px; margin-top:16px; padding:12px; background:#FAFAFA; border-left:4px solid var(--ambar);" id="ns-leitura"></p>
     </div>
   </div>
 </section>
 
-</div> <!-- FIM CAPÍTULO 5 -->
+</div><!-- /capítulo 5 -->
 
 <footer>
   <div class="wrap">
-    <div style="font-family: var(--display); font-size: 20px; font-weight: 700; color: #FFF; margin-bottom: 8px;">Masterclass Interativa: Renda Fixa</div>
-    <div style="font-family: var(--mono); color: #8FA196;">Microeconomia, Macroeconomia e Métodos Quantitativos · Matemática Pura</div>
+    <div>Estudos de Crédito Privado · Renda Fixa — Caps 3, 4 e 5</div>
+    <div class="mono">Mecânicas Nativas · 100% Responsivo · Base 252 d.u.</div>
   </div>
 </footer>
 
-
-<!-- ==========================================================================
-     MÁQUINAS JAVASCRIPT (LÓGICA E RENDERIZAÇÃO)
-     ========================================================================== -->
 <script>
-// Core Utilities
-const parseNum = (v) => { const n = parseFloat(String(v).replace(',', '.')); return isNaN(n) ? 0 : n; };
-const fMoney = (v) => "R$ " + v.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-const fPct = (v) => (v * 100).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + "%";
-const fFloat = (v, d=6) => v.toLocaleString('pt-BR', {minimumFractionDigits: d, maximumFractionDigits: d});
+/* ==============================================================================
+   NÚCLEO JS (REDUZIDO E OTIMIZADO PARA TODOS OS CAPS)
+   ============================================================================== */
+// UTILS
+function parseBR(s){ if(typeof s!=='string') s=String(s); s=s.trim().replace(/\s/g,'').replace(/R\$/gi,'').replace(/%/g,''); if(s==='') return NaN; if(s.includes(',')){ s=s.replace(/\./g,'').replace(',','.'); } return parseFloat(s); }
+function fmt(n,dec){ return n.toLocaleString('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
+function fmtPct(n,dec){ return fmt(n*100,dec)+'%'; }
+function fmt6(n){ return n.toLocaleString('pt-BR',{minimumFractionDigits:6,maximumFractionDigits:6}); }
+function passo(n,txt,form){ return '<div class="passo"><span class="pnum">'+n+'</span><div class="ptxt">'+txt+'</div><div class="pform">'+form+'</div></div>'; }
 
-// KaTeX Global Renderer Wrapper
-const atualizarMatematica = (containerId) => {
-  renderMathInElement(document.getElementById(containerId), {
-    delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false} ],
-    throwOnError: false
-  });
-};
+// TABS NAVEGAÇÃO
+function mostrarCap(n){
+  document.querySelectorAll('.capitulo').forEach(c=>c.classList.toggle('ativa',c.dataset.cap===n));
+  document.querySelectorAll('.aba').forEach(a=>{ let at=a.dataset.cap===n; a.classList.toggle('atual',at); a.setAttribute('aria-selected',at?'true':'false'); });
+  window.scrollTo({top:0}); if(n==='4') desenharETTJ(); if(n==='5') { desenharSpline(); desenharNS(); }
+}
+document.querySelectorAll('.aba').forEach(a=>a.addEventListener('click',()=>mostrarCap(a.dataset.cap)));
 
-// UI TABS NAVEGAÇÃO
-document.querySelectorAll('.aba').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    // Esconder/Desmarcar tudo
-    document.querySelectorAll('.aba').forEach(a => { a.classList.remove('atual'); a.setAttribute('aria-selected', 'false'); });
-    document.querySelectorAll('.capitulo').forEach(c => c.classList.remove('ativa'));
-    
-    // Ativar o target
-    const capId = e.target.getAttribute('data-cap');
-    e.target.classList.add('atual');
-    e.target.setAttribute('aria-selected', 'true');
-    document.getElementById('cap' + capId).classList.add('ativa');
-    window.scrollTo({top: 0});
-  });
+// --- CAP 3: ZERO CUPOM ---
+document.getElementById('z-calc').addEventListener('click', ()=>{
+  let p0=parseBR(document.getElementById('z-p0').value), pt=parseBR(document.getElementById('z-pt').value), du=parseBR(document.getElementById('z-du').value);
+  if(!(p0>0&&pt>0&&du>0)){ alert('Preencha valores > 0'); return; }
+  let rp=pt/p0-1, ra=Math.pow(pt/p0,252/du)-1;
+  document.getElementById('z-rp').textContent=fmtPct(rp,2); document.getElementById('z-ra').textContent=fmtPct(ra,2);
+  let c=(rp>=0?'pos':''); document.getElementById('z-rp').className='valor '+c; document.getElementById('z-rp').style.color=(rp<0?'var(--neg)':'');
+  document.getElementById('z-res').hidden=false;
+});
+document.getElementById('z-reset').addEventListener('click',()=>{ document.getElementById('z-p0').value='637,445'; document.getElementById('z-pt').value='703,91'; document.getElementById('z-du').value='130'; document.getElementById('z-calc').click(); });
+
+// --- CAP 3: TOTAL RETURN ---
+const sCorpo=document.getElementById('s-corpo');
+function sLinha(tipo, du, val, p){
+  let tr=document.createElement('tr'); tr.dataset.tipo=tipo;
+  let duC = tipo==='compra'?'<td>0</td>':`<td><input class="curto" data-c="du" value="${du}"></td>`;
+  let valC = tipo==='venda'?'<td class="suave">—</td>':tipo==='compra'?'<td class="suave">—</td>':`<td><input data-c="v" value="${val}"></td>`;
+  tr.innerHTML=`<td class="txt"><strong>${tipo}</strong></td>${duC}${valC}<td><input data-c="p" value="${p}"></td><td>${tipo==='cupom'?'<button class="remover">X</button>':''}</td>`;
+  return tr;
+}
+function sCarregar(p0, cupons, duT, pt){
+  sCorpo.innerHTML=''; sCorpo.appendChild(sLinha('compra',0,'',p0));
+  cupons.forEach(c=>sCorpo.appendChild(sLinha('cupom',c.du,c.v,c.p))); sCorpo.appendChild(sLinha('venda',duT,'',pt)); document.getElementById('s-saida').hidden=true;
+}
+sCorpo.addEventListener('click',e=>{ if(e.target.classList.contains('remover')) e.target.closest('tr').remove(); });
+document.getElementById('s-add').addEventListener('click',()=>{ let vd=sCorpo.querySelector('tr[data-tipo="venda"]'); sCorpo.insertBefore(sLinha('cupom','','',''),vd); });
+const S_LIVRO={p0:'692,774',c:[{du:113,v:'48,809',p:'880,711'},{du:240,v:'48,809',p:'932,790'}],du:249,pt:'946,084'};
+document.getElementById('s-livro').addEventListener('click',()=>sCarregar(S_LIVRO.p0,S_LIVRO.c,S_LIVRO.du,S_LIVRO.pt));
+sCarregar(S_LIVRO.p0,S_LIVRO.c,S_LIVRO.du,S_LIVRO.pt); // init
+
+document.getElementById('s-calc').addEventListener('click', ()=>{
+  let trs=[...sCorpo.querySelectorAll('tr')];
+  let bc=trs.find(t=>t.dataset.tipo==='compra'), bv=trs.find(t=>t.dataset.tipo==='venda');
+  let p0=parseBR(bc.querySelector('[data-c="p"]').value), pt=parseBR(bv.querySelector('[data-c="p"]').value), duT=parseBR(bv.querySelector('[data-c="du"]').value);
+  let cp=trs.filter(t=>t.dataset.tipo==='cupom').map(t=>({du:parseBR(t.querySelector('[data-c="du"]').value),v:parseBR(t.querySelector('[data-c="v"]').value),p:parseBR(t.querySelector('[data-c="p"]').value)})).filter(c=>c.du>0&&c.v>0&&c.p>0).sort((a,b)=>a.du-b.du);
+  if(!(p0>0&&pt>0&&duT>0)) return alert('Preencha os campos base.');
+  
+  let Q=1000, lns=[], vIni=p0*1000; lns.push({du:0,v:'-',p:p0,q:Q,pm:Q*p0});
+  cp.forEach(c=>{ let add=c.v/c.p*Q; Q+=add; lns.push({du:c.du,v:c.v,p:c.p,q:Q,pm:Q*c.p}); });
+  let vFin=pt*Q; lns.push({du:duT,v:pt,p:pt,q:Q,pm:vFin});
+  
+  let tb=document.getElementById('s-quotas'); tb.innerHTML='';
+  lns.forEach((l,i)=>{ let t=document.createElement('tr'); if(i===lns.length-1) t.className='total'; t.innerHTML=`<td>${l.du}</td><td>${typeof l.v==='number'?fmt(l.v,3):l.v}</td><td>${fmt(l.p,3)}</td><td>${fmt(l.q,5)}</td><td>R$ ${fmt(l.pm,2)}</td>`; tb.appendChild(t); });
+  
+  let trP=vFin/vIni-1, trA=Math.pow(1+trP,252/duT)-1;
+  document.getElementById('s-trp').textContent=fmtPct(trP,2); document.getElementById('s-tra').textContent=fmtPct(trA,2);
+  
+  // TIR Simplificada Métrica Newton-Raphson approach
+  let fl=[{du:0,v:-p0}]; cp.forEach(c=>fl.push(c)); fl.push({du:duT,v:pt});
+  let vp=y=>fl.reduce((s,f)=>s+f.v/Math.pow(1+y,f.du/252),0);
+  let y=0.1; for(let i=0;i<50;i++){ let f=vp(y), df=fl.reduce((s,f)=>s-(f.du/252)*f.v/Math.pow(1+y,f.du/252+1),0); y=y-f/df; }
+  document.getElementById('s-tir').textContent=fmtPct(y,2)+' a.a.';
+  
+  let dSvg=document.getElementById('s-svg'), sw=760, eY=110, x0=60, x1=sw-50, sc=d=>x0+(x1-x0)*(d/duT);
+  let p=`<line x1="${x0}" y1="${eY}" x2="${x1+18}" y2="${eY}" stroke="#16201C" stroke-width="1.5"/><line x1="${x0}" y1="${eY}" x2="${x0}" y2="${eY+40}" stroke="#B3402A" stroke-width="2.5"/><text x="${x0}" y="${eY+60}" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#B3402A">−R$ ${fmt(p0,2)}</text>`;
+  cp.forEach(c=>{ let cx=sc(c.du); p+=`<line x1="${cx}" y1="${eY}" x2="${cx}" y2="${eY-30}" stroke="#1E8A5A" stroke-width="2"/><text x="${cx}" y="${eY-40}" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="#1E8A5A">+ ${fmt(c.v,2)}</text>`; });
+  p+=`<line x1="${x1}" y1="${eY}" x2="${x1}" y2="${eY-50}" stroke="#0E3B2E" stroke-width="3"/><text x="${x1}" y="${eY-60}" text-anchor="middle" font-family="var(--mono)" font-size="12" font-weight="600" fill="#0E3B2E">+R$ ${fmt(pt,2)}</text>`;
+  dSvg.innerHTML=p;
+  
+  document.getElementById('s-leitura').innerHTML = `<strong>Visão Real:</strong> A carteira (Cotas) cresceu <strong>${fmtPct(trA,2)}</strong> ao ano. A TIR teórica seria ${fmtPct(y,2)}. Se o valor Real > TIR, o mercado te beneficiou com preços baratos na hora de reinvestir os juros.`;
+  document.getElementById('s-saida').hidden=false;
 });
 
-/* --------------------------------------------------------------------------
-   LÓGICA DO CAPÍTULO 3
--------------------------------------------------------------------------- */
-document.getElementById('btn-calc-zero').addEventListener('click', () => {
-  const p0 = parseNum(document.getElementById('z-p0').value);
-  const pt = parseNum(document.getElementById('z-pt').value);
-  const du = parseNum(document.getElementById('z-du').value);
-  
-  if(p0 <= 0 || pt <= 0 || du <= 0) return alert("Valores devem ser positivos maiores que zero.");
 
-  const fatorAbs = pt / p0;
-  const rp = fatorAbs - 1;
-  const ra = Math.pow(fatorAbs, 252/du) - 1;
+// --- CAP 4: ETTJ BUILDER ---
+const REU=[10,55,100,145,190,235,280,325], HOR=504;
+const cpnCtl=document.getElementById('e-copons');
+REU.forEach((du,i)=>cpnCtl.innerHTML+=`<div class="copom-ctl"><label>Copom ${i+1} (${du} du)</label><span class="delta" id="e-d${i}">0.0%</span><input type="range" min="-150" max="150" step="25" value="0" data-i="${i}"></div>`);
 
-  document.getElementById('z-res-abs').innerText = fPct(rp);
-  document.getElementById('z-res-anu').innerText = fPct(ra);
-
-  const htmlPassos = `
-    <div class="passo-item">
-      <div class="badge-num">1</div>
-      <div class="txt"><strong>Fator de Valorização Bruta:</strong> Apenas dividimos a riqueza final pela inicial. O que passar de 1 é o seu lucro real de bolso.</div>
-      <div class="math-box">$$ \\text{Fator} = \\frac{${pt.toFixed(2)}}{${p0.toFixed(2)}} = ${fFloat(fatorAbs)} $$</div>
-    </div>
-    <div class="passo-item">
-      <div class="badge-num">2</div>
-      <div class="txt"><strong>Anualização Exponencial (252 d.u.):</strong> Para comparar bananas com bananas no mercado, projetamos quanto esse fator geraria se ficasse aplicado exatos 1 ano, usando juros sobre juros. Proporção do ano = 252 / ${du}.</div>
-      <div class="math-box">$$ r^a = (${fFloat(fatorAbs)})^{\\frac{252}{${du}}} - 1 = \\textbf{${fPct(ra)}} \\text{ a.a.} $$</div>
-    </div>
-  `;
-  document.getElementById('z-passos-box').innerHTML = htmlPassos;
-  document.getElementById('z-result-container').hidden = false;
-  atualizarMatematica('z-passos-box');
-});
-
-// TR Quotas Lab Setup
-const defaultTrData = [
-  { tipo: 'compra', du: 0, val: '-', p: 692.774 },
-  { tipo: 'cupom', du: 113, val: 48.809, p: 880.711 },
-  { tipo: 'cupom', du: 240, val: 48.809, p: 932.790 },
-  { tipo: 'venda', du: 249, val: '-', p: 946.084 }
-];
-
-const renderTrTable = () => {
-  const tbody = document.getElementById('tr-body');
-  tbody.innerHTML = '';
-  defaultTrData.forEach((row, i) => {
-    let tr = document.createElement('tr');
-    tr.dataset.idx = i;
-    
-    let html = ``;
-    if(row.tipo === 'compra') {
-      html += `<td><strong>💰 Aporte Inicial</strong></td><td>Dia 0</td><td>-</td><td><input type="number" class="ip-p" value="${row.p}" step="0.01"></td><td></td>`;
-    } else if(row.tipo === 'venda') {
-      html += `<td><strong>🎯 Venda/Resgate</strong></td><td><input type="number" class="ip-du curto" value="${row.du}"></td><td>-</td><td><input type="number" class="ip-p" value="${row.p}" step="0.01"></td><td></td>`;
-    } else {
-      html += `<td>💵 Recebimento de Juros</td><td><input type="number" class="ip-du curto" value="${row.du}"></td><td><input type="number" class="ip-v" value="${row.val}" step="0.01"></td><td><input type="number" class="ip-p" value="${row.p}" step="0.01"></td><td><button class="btn-remover" onclick="removeTrRow(${i})">Del</button></td>`;
-    }
-    tr.innerHTML = html;
-    tbody.appendChild(tr);
-  });
-};
-
-document.getElementById('btn-tr-add').addEventListener('click', () => {
-  // Inserir antes da venda (ultimo index)
-  let v = defaultTrData.pop();
-  defaultTrData.push({ tipo: 'cupom', du: v.du-10, val: 40.0, p: v.p-10 });
-  defaultTrData.push(v);
-  renderTrTable();
-});
-
-window.removeTrRow = (idx) => { defaultTrData.splice(idx, 1); renderTrTable(); };
-renderTrTable();
-
-const calcTirRoot = (fluxos, guess = 0.1) => {
-  // Newton-Raphson basic implementation for IRR
-  const maxIter = 100; const precision = 1e-7; let y = guess;
-  for (let i = 0; i < maxIter; i++) {
-    let fv = 0, dfv = 0;
-    for (let f of fluxos) {
-      let t_anos = f.du / 252;
-      let power = Math.pow(1 + y, t_anos);
-      fv += f.val / power;
-      dfv -= (t_anos * f.val) / (power * (1 + y));
-    }
-    let newY = y - fv / dfv;
-    if (Math.abs(newY - y) < precision) return newY;
-    y = newY;
+function desenharETTJ(){
+  let d0=parseBR(document.getElementById('e-di0').value)/100; if(!(d0>0)) return;
+  let chg=[...cpnCtl.querySelectorAll('input')].map((r,i)=>{ let v=parseFloat(r.value)/10000; let el=document.getElementById('e-d'+i); el.textContent=(v>0?'+':'')+fmtPct(v,2); el.className='delta '+(v>0?'sobe':v<0?'cai':''); return v; });
+  let tDI=new Array(HOR), tSp=new Array(HOR), cV=d0, cIdx=0, L=0;
+  for(let d=0;d<HOR;d++){
+    while(cIdx<REU.length && d>=REU[cIdx]){ cV=Math.max(0.001,cV+chg[cIdx]); cIdx++; }
+    tDI[d]=cV; L+=Math.log(1+cV)/252; tSp[d]=Math.exp(L*252/(d+1))-1;
   }
-  return NaN;
-};
-
-document.getElementById('btn-calc-tr').addEventListener('click', () => {
-  // Sync Data
-  const rows = document.getElementById('tr-body').querySelectorAll('tr');
-  let validData = [];
-  rows.forEach(r => {
-    let idx = r.dataset.idx;
-    let tipo = defaultTrData[idx].tipo;
-    let p = parseNum(r.querySelector('.ip-p').value);
-    let du = tipo === 'compra' ? 0 : parseNum(r.querySelector('.ip-du').value);
-    let val = tipo === 'cupom' ? parseNum(r.querySelector('.ip-v').value) : 0;
-    validData.push({tipo, du, val, p});
-  });
-
-  const dCompra = validData.find(d => d.tipo === 'compra');
-  const dVenda = validData.find(d => d.tipo === 'venda');
-  const dCupons = validData.filter(d => d.tipo === 'cupom');
-
-  if(!dCompra || !dVenda || dCompra.p <= 0 || dVenda.p <= 0 || dVenda.du <= 0) return alert("Parâmetros inválidos.");
-
-  // 1. Math Cotas (Total Return)
-  let qts = 1000;
-  let capitalInic = qts * dCompra.p;
-  let htmlLog = `<tr><td>Início (0)</td><td>Compra Original</td><td>${fFloat(qts,2)}</td><td>${fMoney(capitalInic)}</td></tr>`;
+  let vMin=Math.min(...tDI,...tSp)-0.005, vMax=Math.max(...tDI,...tSp)+0.005;
+  let W=780, H=330, PX=50, PY=20, getX=d=>PX+(W-2*PX)*(d/HOR), getY=v=>H-PY-((v-vMin)/(vMax-vMin))*(H-2*PY);
+  let s='';
+  for(let g=0;g<=4;g++){ let v=vMin+(vMax-vMin)*g/4, y=getY(v); s+=`<line x1="${PX}" y1="${y}" x2="${W-PX}" y2="${y}" stroke="#E2E6DF"/><text x="${PX-5}" y="${y+3}" text-anchor="end" font-family="var(--mono)" font-size="10">${fmtPct(v,1)}</text>`; }
+  let pD=`M${getX(0)} ${getY(tDI[0])}`; for(let d=1;d<HOR;d++) if(tDI[d]!==tDI[d-1]) pD+=` L${getX(d)} ${getY(tDI[d-1])} L${getX(d)} ${getY(tDI[d])}`; pD+=` L${getX(HOR-1)} ${getY(tDI[HOR-1])}`;
+  s+=`<path d="${pD}" fill="none" stroke="#C97B12" stroke-width="2.5" stroke-dasharray="6 4"/>`;
+  let pS=`M${getX(1)} ${getY(tSp[0])}`; for(let d=1;d<HOR;d++) pS+=` L${getX(d+1)} ${getY(tSp[d])}`;
+  s+=`<path d="${pS}" fill="none" stroke="#0E3B2E" stroke-width="3.5"/>`;
+  document.getElementById('e-svg').innerHTML=s;
   
-  dCupons.forEach(c => {
-    let financeiroRecebido = c.val * qts;
-    let novasCotas = financeiroRecebido / c.p;
-    qts += novasCotas;
-    htmlLog += `<tr><td>Dia ${c.du}</td><td>Recompra via Cupom</td><td>${fFloat(qts,2)} (+${fFloat(novasCotas,2)})</td><td>${fMoney(qts * c.p)}</td></tr>`;
-  });
+  let diff=tSp[HOR-1]-tSp[10];
+  document.getElementById('e-leitura').innerHTML = `A Taxa Spot/Pré (Linha Contínua) é a Média Geométrica acumulada no tempo da Trajetória do DI (Linha Tracejada). A curva atual está <strong>${diff>0.001?'Crescente':diff<-0.001?'Invertida (Queda)':'Plana'}</strong>.`;
+}
+cpnCtl.addEventListener('input',desenharETTJ); document.getElementById('e-di0').addEventListener('input',desenharETTJ);
+document.querySelectorAll('[data-cen]').forEach(b=>b.addEventListener('click',()=>{
+  let c={alta:[25,50,50,50,25,0,0,0],corte:[-25,-50,-50,-50,-25,0,0,0],vaievolta:[50,50,25,0,-25,-50,-50,-25]}[b.dataset.cen];
+  cpnCtl.querySelectorAll('input').forEach((r,i)=>r.value=c[i]); desenharETTJ();
+}));
+desenharETTJ();
 
-  let capitalFinal = qts * dVenda.p;
-  htmlLog += `<tr class="total"><td>Fim (${dVenda.du})</td><td>Liquidação Final</td><td>${fFloat(qts,2)}</td><td>${fMoney(capitalFinal)}</td></tr>`;
-  document.getElementById('tr-passos-table').innerHTML = htmlLog;
-
-  let retAbsCotas = (capitalFinal / capitalInic) - 1;
-  let retAnuCotas = Math.pow(1 + retAbsCotas, 252/dVenda.du) - 1;
-
-  document.getElementById('tr-res-cotas').innerText = fPct(retAnuCotas);
-
-  // 2. Math TIR
-  let fluxosTir = [{du: 0, val: -dCompra.p}];
-  dCupons.forEach(c => fluxosTir.push({du: c.du, val: c.val}));
-  fluxosTir.push({du: dVenda.du, val: dVenda.p});
-  
-  let tirVal = calcTirRoot(fluxosTir);
-  document.getElementById('tr-res-tir').innerText = isNaN(tirVal) ? "Erro Conv." : fPct(tirVal);
-
-  // Analysis
-  let elAnalise = document.getElementById('tr-analise');
-  if(!isNaN(tirVal)) {
-    if(retAnuCotas > tirVal) elAnalise.innerHTML = `🌟 <strong>Efeito Positivo do Mercado:</strong> Como o preço de tela dos títulos estava atrativo nas datas dos pagamentos, você conseguiu "comprar muitas cotas baratas" com o seu juro. Isso alavancou seu patrimônio real <strong>(${fPct(retAnuCotas)})</strong> esmagando a rentabilidade ilusória estática da TIR <strong>(${fPct(tirVal)})</strong>.`;
-    else if(retAnuCotas < tirVal) elAnalise.innerHTML = `⚠️ <strong>Penalização de Mercado:</strong> Os títulos ficaram "caros" no meio do caminho. Seu dinheiro de juros comprou menos cotas do que a teoria projetava. Sua carteira cresceu num ritmo menor <strong>(${fPct(retAnuCotas)})</strong>, frustrando as expectativas falsas da TIR de <strong>(${fPct(tirVal)})</strong>.`;
-    else elAnalise.innerHTML = `Operação neutra perante risco de reinvestimento.`;
-  }
-
-  // Draw SVG
-  drawTrTimeline(validData, dVenda.du);
-  document.getElementById('tr-result-container').hidden = false;
-});
-
-const drawTrTimeline = (data, totalDu) => {
-  const svg = document.getElementById('svg-tr-timeline');
-  const w = 760, h = 160, marginX = 80, eixoY = 80;
-  const getX = (du) => marginX + (w - 2*marginX) * (du / totalDu);
-  
-  let paths = `<line x1="${marginX}" y1="${eixoY}" x2="${w-marginX+20}" y2="${eixoY}" stroke="#D1D8D4" stroke-width="2"/>`;
-  // Arrow head
-  paths += `<polygon points="${w-marginX+20},${eixoY} ${w-marginX+10},${eixoY-5} ${w-marginX+10},${eixoY+5}" fill="#D1D8D4"/>`;
-
-  data.forEach(d => {
-    let px = getX(d.du);
-    if(d.tipo === 'compra') {
-      paths += `<line x1="${px}" y1="${eixoY}" x2="${px}" y2="${eixoY+40}" stroke="#D32F2F" stroke-width="3"/>`;
-      paths += `<polygon points="${px},${eixoY+46} ${px-6},${eixoY+34} ${px+6},${eixoY+34}" fill="#D32F2F"/>`;
-      paths += `<text x="${px}" y="${eixoY+65}" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="#D32F2F" font-weight="bold">Saída Inicial</text>`;
-    } else if(d.tipo === 'venda') {
-      paths += `<line x1="${px}" y1="${eixoY}" x2="${px}" y2="${eixoY-50}" stroke="#0B6B46" stroke-width="4"/>`;
-      paths += `<polygon points="${px},${eixoY-58} ${px-8},${eixoY-44} ${px+8},${eixoY-44}" fill="#0B6B46"/>`;
-      paths += `<text x="${px}" y="${eixoY-68}" text-anchor="middle" font-family="var(--mono)" font-size="14" fill="#0B6B46" font-weight="bold">Resgate Cheio</text>`;
-      paths += `<text x="${px}" y="${eixoY+20}" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#57635C">${d.du} du</text>`;
-    } else {
-      paths += `<line x1="${px}" y1="${eixoY}" x2="${px}" y2="${eixoY-35}" stroke="#1E8A5A" stroke-width="2"/>`;
-      paths += `<polygon points="${px},${eixoY-40} ${px-5},${eixoY-30} ${px+5},${eixoY-30}" fill="#1E8A5A"/>`;
-      paths += `<text x="${px}" y="${eixoY-48}" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="#1E8A5A">Cupom Juros</text>`;
-      paths += `<text x="${px}" y="${eixoY+20}" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#57635C">${d.du} du</text>`;
-    }
-  });
-  svg.innerHTML = paths;
-};
-
-
-/* --------------------------------------------------------------------------
-   LÓGICA DO CAPÍTULO 4
--------------------------------------------------------------------------- */
-// ETTJ Builder Lab
-const copomDUs = [10, 55, 100, 145, 190, 235, 280, 325]; // Dias úteis simulados do Copom na frente
-const initEttjSliders = () => {
-  const container = document.getElementById('ettj-sliders');
-  let html = '';
-  copomDUs.forEach((du, idx) => {
-    html += `
-      <div class="slider-item">
-        <label>Copom (Dia ${du}) <span class="val" id="val-copom-${idx}">0.00%</span></label>
-        <input type="range" id="sl-copom-${idx}" class="copom-sl" min="-1.50" max="1.50" step="0.25" value="0">
-      </div>
-    `;
-  });
-  container.innerHTML = html;
-  
-  // Attach events
-  document.querySelectorAll('.copom-sl').forEach(el => el.addEventListener('input', drawEttjSystem));
-  document.getElementById('ettj-di0').addEventListener('input', drawEttjSystem);
-};
-
-const drawEttjSystem = () => {
-  let baseRate = parseNum(document.getElementById('ettj-di0').value) / 100;
-  
-  // Extract Copom changes
-  let changes = [];
-  document.querySelectorAll('.copom-sl').forEach((el, i) => {
-    let val = parseNum(el.value);
-    document.getElementById(`val-copom-${i}`).innerText = (val > 0 ? "+" : "") + val.toFixed(2) + "%";
-    changes.push(val / 100);
-  });
-
-  // Build Daily Trajectory (DI Expected Path)
-  const maxDu = 400;
-  let trajDI = new Array(maxDu);
-  let currentRate = baseRate;
-  let copomIdx = 0;
-
-  for(let d = 0; d < maxDu; d++) {
-    while(copomIdx < copomDUs.length && d >= copomDUs[copomIdx]) {
-      currentRate = Math.max(0.0001, currentRate + changes[copomIdx]); // Evita juro zero
-      copomIdx++;
-    }
-    trajDI[d] = currentRate;
-  }
-
-  // Calculate SPOT Curve via Geometic Mean logic
-  // (1+Spot)^(d/252) = Prod(1+DI_k)^(1/252)  => log approach for speed
-  let curveSpot = new Array(maxDu);
-  let sumLog = 0;
-  for(let d = 0; d < maxDu; d++) {
-    sumLog += Math.log(1 + trajDI[d]) / 252;
-    // Prevent div by 0 for d=0
-    let effectiveD = d === 0 ? 0.0001 : d;
-    curveSpot[d] = Math.exp(sumLog * 252 / effectiveD) - 1;
-  }
-  curveSpot[0] = trajDI[0]; // Fix index 0
-
-  // Draw Graph
-  const svg = document.getElementById('svg-ettj');
-  const w = 800, h = 350, pX = 50, pY = 30;
-  
-  // Find limits for scaling
-  let allVals = [...trajDI, ...curveSpot];
-  let vMin = Math.min(...allVals) - 0.01;
-  let vMax = Math.max(...allVals) + 0.01;
-
-  const getX = (d) => pX + (w - 2*pX) * (d / maxDu);
-  const getY = (v) => h - pY - ((v - vMin) / (vMax - vMin)) * (h - 2*pY);
-
-  let paths = ``;
-  // Grid lines
-  for(let i=0; i<=4; i++) {
-    let vScale = vMin + (vMax - vMin) * (i/4);
-    let py = getY(vScale);
-    paths += `<line x1="${pX}" y1="${py}" x2="${w-pX}" y2="${py}" stroke="#E2E6DF" stroke-dasharray="2 4"/>`;
-    paths += `<text x="${pX-8}" y="${py+4}" text-anchor="end" font-family="var(--mono)" font-size="11" fill="#888">${fPct(vScale)}</text>`;
-  }
-
-  // DI Path (Dashed)
-  let pDI = `M ${getX(0)} ${getY(trajDI[0])}`;
-  for(let d=1; d<maxDu; d++) {
-    if(trajDI[d] !== trajDI[d-1]) {
-      // Step function visual
-      pDI += ` L ${getX(d)} ${getY(trajDI[d-1])} L ${getX(d)} ${getY(trajDI[d])}`;
-    }
-  }
-  pDI += ` L ${getX(maxDu-1)} ${getY(trajDI[maxDu-1])}`;
-  paths += `<path d="${pDI}" fill="none" stroke="#F57C00" stroke-width="2.5" stroke-dasharray="8 6"/>`;
-
-  // Spot Curve (Solid)
-  let pSpot = `M ${getX(0)} ${getY(curveSpot[0])}`;
-  for(let d=1; d<maxDu; d++) {
-    pSpot += ` L ${getX(d)} ${getY(curveSpot[d])}`;
-  }
-  paths += `<path d="${pSpot}" fill="none" stroke="#1565C0" stroke-width="3.5"/>`;
-
-  // Draw Copom Markers
-  copomDUs.forEach(c => {
-    if(c < maxDu) paths += `<line x1="${getX(c)}" y1="${getY(vMin)}" x2="${getX(c)}" y2="${getY(vMin)-5}" stroke="#888" stroke-width="2"/>`;
-  });
-
-  svg.innerHTML = paths;
-
-  // Analysis Text
-  let diff = curveSpot[maxDu-1] - curveSpot[0];
-  let txt = "";
-  if(diff > 0.005) txt = `O mercado prevê um ciclo severo de <strong>ALTAS na Selic</strong>. Perceba que a Curva Azul (Spot que fixa o preço) age como uma elástico esticado: ela vai subindo gradualmente para buscar as escadas laranjas, pois carrega na sua média ponderada o peso dos juros altos futuros.`;
-  else if(diff < -0.005) txt = `Cenário de <strong>CORTE de Juros</strong>. A Curva Prefixada Spot mergulha tentando precificar os alívios monetários futuros. Títulos travados hoje garantem o prêmio antes das quedas.`;
-  else txt = `Cenário de estabilidade. A média (linha azul) acompanha de muito perto as escadas (trajetória DI) porque não há surpresas precificadas.`;
-  
-  document.getElementById('ettj-analise').innerHTML = txt;
-};
-
-// Initial Call Ettj Builder
-initEttjSliders();
-drawEttjSystem();
-
-// LTN Pricer Shock
-document.getElementById('btn-calc-ltn').addEventListener('click', () => {
-  let sRate = parseNum(document.getElementById('ltn-selic').value) / 100;
-  let dCopom = parseNum(document.getElementById('ltn-dias-copom').value);
-  let choque = parseNum(document.getElementById('ltn-choque').value) / 100;
-  let dTotal = parseNum(document.getElementById('ltn-dias-tit').value);
-
-  if(dTotal <= 0 || dCopom < 0) return alert("Prazos devem ser positivos.");
-
-  let fTotal = 0;
-  let rHtml = '';
-
-  if(dTotal <= dCopom) {
-    // Vence antes de mudar
-    fTotal = Math.pow(1 + sRate, dTotal / 252);
-    rHtml += `
-      <div class="passo-item">
-        <div class="badge-num">1</div>
-        <div class="txt"><strong>Maturidade Curta:</strong> O título expira em ${dTotal} dias, antes do Banco Central agir no dia ${dCopom}. Logo, a taxa se mantém constante.</div>
-        <div class="math-box">$$ \\text{Fator Único} = (1 + ${sRate.toFixed(4)})^{\\frac{${dTotal}}{252}} = ${fFloat(fTotal)} $$</div>
-      </div>
-    `;
+// --- CAP 4: LTN PRICER ---
+document.getElementById('l-calc').addEventListener('click',()=>{
+  let selic=parseBR(document.getElementById('l-selic').value)/100, dur=parseBR(document.getElementById('l-dur').value), vPb=parseBR(document.getElementById('l-var').value), duv=parseBR(document.getElementById('l-duv').value);
+  if(!(selic>0&&dur>=0&&duv>0)) return;
+  let taxFut=selic+vPb/10000, ft=0, h='';
+  if(duv<=dur){
+    ft=Math.pow(1+selic,duv/252);
+    h=passo(1,'O título vence antes do Copom. Sem choque na ETTJ.','Fator = (1 + '+fmtPct(selic,2)+')<sup>'+duv+'/252</sup> = <span class="res">'+fmt6(ft)+'</span>');
   } else {
-    // Vence depois
-    let f1 = Math.pow(1 + sRate, dCopom / 252);
-    let nRate = sRate + choque;
-    let dResto = dTotal - dCopom;
-    let f2 = Math.pow(1 + nRate, dResto / 252);
-    fTotal = f1 * f2;
-
-    rHtml += `
-      <div class="passo-item">
-        <div class="badge-num">1</div>
-        <div class="txt"><strong>Fase 1 (A Calmaria):</strong> O dinheiro traciona a Selic velha de ${fPct(sRate)} por ${dCopom} dias úteis (até o Copom).</div>
-        <div class="math-box">$$ \\text{Fator}_{1} = (1 + ${sRate.toFixed(4)})^{\\frac{${dCopom}}{252}} = ${fFloat(f1)} $$</div>
-      </div>
-      <div class="passo-item">
-        <div class="badge-num">2</div>
-        <div class="txt"><strong>Fase 2 (O Choque):</strong> Após o Copom, a nova taxa será ${fPct(nRate)}. O dinheiro renderá isso pelos ${dResto} dias finais do título.</div>
-        <div class="math-box">$$ \\text{Fator}_{2} = (1 + ${nRate.toFixed(4)})^{\\frac{${dResto}}{252}} = ${fFloat(f2)} $$</div>
-      </div>
-      <div class="passo-item">
-        <div class="badge-num">3</div>
-        <div class="txt"><strong>Produtório Final:</strong> Multiplicamos a cascata de juros para descobrir a acumulação completa de riqueza (Equação 4.1).</div>
-        <div class="math-box">$$ \\text{Fator Acumulado} = ${fFloat(f1)} \\times ${fFloat(f2)} = \\mathbf{${fFloat(fTotal)}} $$</div>
-      </div>
-    `;
+    let f1=Math.pow(1+selic,dur/252), f2=Math.pow(1+taxFut,(duv-dur)/252); ft=f1*f2;
+    h=passo(1,'Cálculo Ponderado no Tempo. Fator1 (Velho) * Fator2 (Novo).',`Fator = ${fmt6(f1)} × ${fmt6(f2)} = <span class="res">${fmt6(ft)}</span>`);
   }
-
-  let pxT = 1000 / fTotal;
-  let taxSpotEq = Math.pow(fTotal, 252/dTotal) - 1;
-
-  rHtml += `
-    <div class="passo-item">
-      <div class="badge-num">✓</div>
-      <div class="txt"><strong>Encontrando a Marcação e a Equivalência:</strong> Descontamos o prêmio final (R$ 1.000) e anualizamos o fator único.</div>
-      <div class="math-box">$$ P_0 = \\frac{1.000}{${fFloat(fTotal)}} = \\text{R\\$ } ${pxT.toFixed(2)} \\quad \\| \\quad i_{eq} = (${fFloat(fTotal)})^{\\frac{252}{${dTotal}}} - 1 = ${fPct(taxSpotEq)} $$</div>
-    </div>
-  `;
-
-  document.getElementById('ltn-res-preco').innerText = fMoney(pxT);
-  document.getElementById('ltn-res-taxa').innerText = fPct(taxSpotEq);
-  document.getElementById('ltn-passos-box').innerHTML = rHtml;
-  document.getElementById('ltn-result-container').hidden = false;
-  atualizarMatematica('ltn-passos-box');
+  let tx=Math.pow(ft,252/duv)-1, px=1000/ft;
+  document.getElementById('l-passos').innerHTML = h + passo(2,'Descobrindo as Equivalências.','Taxa Spot Equivalente: <span class="tax">'+fmtPct(tx,2)+'</span> | Preço de Tela Justo (R$ 1.000 / Fator): <span class="res">R$ '+fmt(px,2)+'</span>');
+  document.getElementById('l-preco').textContent='R$ '+fmt(px,2); document.getElementById('l-taxa').textContent=fmtPct(tx,2);
+  document.getElementById('l-saida').hidden=false;
 });
 
-
-/* --------------------------------------------------------------------------
-   LÓGICA DO CAPÍTULO 5
--------------------------------------------------------------------------- */
-document.getElementById('btn-calc-interp').addEventListener('click', () => {
-  let t1 = parseNum(document.getElementById('ip-t1').value);
-  let i1 = parseNum(document.getElementById('ip-i1').value) / 100;
-  let t2 = parseNum(document.getElementById('ip-t2').value);
-  let i2 = parseNum(document.getElementById('ip-i2').value) / 100;
-  let tx = parseNum(document.getElementById('ip-tx').value);
-
-  if(tx <= t1 || tx >= t2 || t1 >= t2) return alert("O Prazo Alvo precisa estar num 'buraco' estritamente entre o Prazo 1 e o Prazo 2.");
-
-  // Linear
-  let iLin = i1 + ((i2 - i1) / (t2 - t1)) * (tx - t1);
+// --- CAP 5: INTERPOLAÇÃO (FLAT VS LIN) ---
+document.getElementById('if-calc').addEventListener('click',()=>{
+  let du1=parseBR(document.getElementById('if-du1').value), i1=parseBR(document.getElementById('if-i1').value)/100, du2=parseBR(document.getElementById('if-du2').value), i2=parseBR(document.getElementById('if-i2').value)/100, dux=parseBR(document.getElementById('if-dux').value);
+  if(dux<=du1||dux>=du2) return alert('Prazo alvo deve estar ESTRITAMENTE ENTRE o P1 e P2.');
   
-  // Flat Forward
-  let f1 = Math.pow(1 + i1, t1 / 252);
-  let f2 = Math.pow(1 + i2, t2 / 252);
-  let fwdFactorRaw = f2 / f1;
-  let fwdRate = Math.pow(fwdFactorRaw, 252 / (t2 - t1)) - 1;
-  let fx = f1 * Math.pow(1 + fwdRate, (tx - t1) / 252);
-  let iFF = Math.pow(fx, 252 / tx) - 1;
-
-  document.getElementById('ip-res-lin').innerText = fPct(iLin);
-  document.getElementById('ip-passos-lin').innerHTML = `
-    <div class="math-box" style="border-color: var(--azul-prof);">
-      $$ i_* = ${fPct(i1)} + \\frac{${fPct(i2)} - ${fPct(i1)}}{${t2} - ${t1}} \\times (${tx} - ${t1}) $$
-    </div>
-  `;
-
-  document.getElementById('ip-res-ff').innerText = fPct(iFF);
-  document.getElementById('ip-passos-ff').innerHTML = `
-    <p style="font-size: 14px; margin-bottom: 8px;">1º: Encontrar a taxa implícita escondida entre o prazo 1 e prazo 2.</p>
-    <div class="math-box" style="border-color: var(--ambar);">
-      $$ Fwd_{implícito} = \\left( \\frac{(${fFloat(1+i2)})^{\\frac{${t2}}{252}}}{(${fFloat(1+i1)})^{\\frac{${t1}}{252}}} \\right)^{\\frac{252}{${t2-t1}}} - 1 = ${fPct(fwdRate)} $$
-    </div>
-    <p style="font-size: 14px; margin: 12px 0 8px;">2º: Levar o fator do prazo 1 até o Alvo usando a taxa achada e descapitalizar.</p>
-    <div class="math-box" style="border-color: var(--ambar);">
-      $$ i_* = \\left( (${fFloat(1+i1)})^{\\frac{${t1}}{252}} \\times (${fFloat(1+fwdRate)})^{\\frac{${tx} - ${t1}}{252}} \\right)^{\\frac{252}{${tx}}} - 1 $$
-    </div>
-  `;
-
-  document.getElementById('ip-result-container').hidden = false;
-  atualizarMatematica('ip-result-container');
+  let iLin=i1+(i2-i1)/(du2-du1)*(dux-du1);
+  let f1=Math.pow(1+i1,du1/252), f2=Math.pow(1+i2,du2/252);
+  let fwdRate=Math.pow(f2/f1,252/(du2-du1))-1;
+  let fx=f1*Math.pow(1+fwdRate,(dux-du1)/252);
+  let iFF=Math.pow(fx,252/dux)-1;
+  
+  document.getElementById('if-fwd').textContent=fmtPct(fwdRate,2);
+  document.getElementById('if-ff').textContent=fmtPct(iFF,4);
+  document.getElementById('if-lin').textContent=fmtPct(iLin,4);
+  
+  let h=passo(1,'Flat Forward (Passo A): Encontra Taxa Implícita (Fwd)',`Fwd = [ (1+${fmtPct(i2,0)})<sup>${du2}/252</sup> / (1+${fmtPct(i1,0)})<sup>${du1}/252</sup> ]<sup>252/${du2-du1}</sup> - 1 = <span class="res">${fmtPct(fwdRate,4)}</span>`) +
+        passo(2,'Flat Forward (Passo B): Projeta a Fwd sobre a Taxa 1',`i* = [ (1+${fmtPct(i1,0)})<sup>${du1}/252</sup> * (1+Fwd)<sup>${dux-du1}/252</sup> ]<sup>252/${dux}</sup> - 1 = <span class="res">${fmtPct(iFF,4)}</span>`) +
+        passo(3,'Linear: Regra de Três Direta (Matemática Simples sem capitalização)',`i* = ${fmtPct(i1,0)} + ((${fmtPct(i2,0)} - ${fmtPct(i1,0)}) / ${du2-du1}) * ${dux-du1} = <span class="tax">${fmtPct(iLin,4)}</span>`);
+  document.getElementById('if-passos').innerHTML=h; document.getElementById('if-saida').hidden=false;
 });
 
-// Nelson Siegel Synthesizer
-const calcNS = (m, b0, b1, b2, lambda) => {
-  let param = lambda * m;
-  if(param === 0) param = 0.0001; // fix div0
-  let part1 = (1 - Math.exp(-param)) / param;
-  let part2 = part1 - Math.exp(-param);
-  return b0 + (b1 * part1) + (b2 * part2);
-};
+// --- CAP 5: CUBIC SPLINE LAB ---
+const tbSp=document.getElementById('sp-corpo');
+let V_DATA=[{t:1,i:14},{t:2,i:15},{t:3,i:13.5}];
+function drawSpTbl(){ tbSp.innerHTML=''; V_DATA.forEach((v,i)=>tbSp.innerHTML+=`<tr><td>Ponto ${i+1}</td><td><input data-v="t" value="${v.t}" class="curto"> anos</td><td><input data-v="i" value="${v.i}"> %</td></tr>`); }
+function getV(){ return [...tbSp.querySelectorAll('tr')].map(t=>({t:parseBR(t.querySelector('[data-v="t"]').value), i:parseBR(t.querySelector('[data-v="i"]').value)/100})).sort((a,b)=>a.t-b.t); }
+drawSpTbl();
 
-const calcSV = (m, b0, b1, b2, lambda, b3, lambda2) => {
-  let param2 = lambda2 * m;
-  if(param2 === 0) param2 = 0.0001;
-  let part3 = ((1 - Math.exp(-param2)) / param2) - Math.exp(-param2);
-  return calcNS(m, b0, b1, b2, lambda) + (b3 * part3);
-};
+function naturalSpline(xs,ys){
+  let n=xs.length, h=[], al=new Array(n).fill(0), l=new Array(n).fill(1), mu=new Array(n).fill(0), z=new Array(n).fill(0), c=new Array(n).fill(0), b=new Array(n).fill(0), d=new Array(n).fill(0);
+  for(let i=0;i<n-1;i++) h.push(xs[i+1]-xs[i]);
+  for(let i=1;i<n-1;i++) al[i]=3*((ys[i+1]-ys[i])/h[i]-(ys[i]-ys[i-1])/h[i-1]);
+  for(let i=1;i<n-1;i++){ l[i]=2*(xs[i+1]-xs[i-1])-h[i-1]*mu[i-1]; mu[i]=h[i]/l[i]; z[i]=(al[i]-h[i-1]*z[i-1])/l[i]; }
+  for(let j=n-2;j>=0;j--){ c[j]=z[j]-mu[j]*c[j+1]; b[j]=(ys[j+1]-ys[j])/h[j]-h[j]*(c[j+1]+2*c[j])/3; d[j]=(c[j+1]-c[j])/(3*h[j]); }
+  return {a:ys,b,c,d,xs};
+}
+function csEv(t,sp){ let j=0; for(let k=0;k<sp.xs.length-1;k++) if(t>=sp.xs[k]) j=k; let dx=t-sp.xs[j]; return sp.a[j]+sp.b[j]*dx+sp.c[j]*dx*dx+sp.d[j]*dx*dx*dx; }
+function ffEv(t,V){ if(t<=V[0].t) return V[0].i; for(let k=0;k<V.length-1;k++) if(t<=V[k+1].t){ let f=(Math.pow(1+V[k+1].i,V[k+1].t)/Math.pow(1+V[k].i,V[k].t)); return Math.pow(Math.pow(1+V[k].i,V[k].t)*Math.pow(f,(t-V[k].t)/(V[k+1].t-V[k].t)),1/t)-1; } return V[V.length-1].i; }
+function linEv(t,V){ if(t<=V[0].t) return V[0].i; for(let k=0;k<V.length-1;k++) if(t<=V[k+1].t) return V[k].i+(V[k+1].i-V[k].i)/(V[k+1].t-V[k].t)*(t-V[k].t); return V[V.length-1].i; }
 
-const drawNSSynth = () => {
-  let b0 = parseNum(document.getElementById('ns-s-b0').value)/100;
-  let b1 = parseNum(document.getElementById('ns-s-b1').value)/100;
-  let b2 = parseNum(document.getElementById('ns-s-b2').value)/100;
-  let b3 = parseNum(document.getElementById('ns-s-b3').value)/100;
+function desenharSpline(){
+  let V=getV(); if(V.length<3) return;
+  let sp=naturalSpline(V.map(v=>v.t),V.map(v=>v.i));
+  let tMin=V[0].t, tMax=V[V.length-1].t, N=120, W=780, H=340, pX=50, pY=20;
   
-  // Static Lambdas for simplicity in standard view, but could be dynamic
-  let lambda = 0.5; 
-  let lambda2 = 0.15;
-
-  document.getElementById('ns-v-b0').innerText = fPct(b0);
-  document.getElementById('ns-v-b1').innerText = fPct(b1);
-  document.getElementById('ns-v-b2').innerText = fPct(b2);
-  document.getElementById('ns-v-b3').innerText = fPct(b3);
-
-  let useSv = Math.abs(b3) > 0;
-
-  const w = 500, h = 300, pX = 40, pY = 20;
-  const max_m = 120; // 10 years (months base roughly)
-  let pts = [];
+  let cs=[], ff=[], ln=[];
+  for(let i=0;i<=N;i++){ let t=tMin+(tMax-tMin)*i/N; cs.push({t,y:csEv(t,sp)}); ff.push({t,y:ffEv(t,V)}); ln.push({t,y:linEv(t,V)}); }
   
-  for(let m = 1; m <= max_m; m+=2) {
-    let y = useSv ? calcSV(m, b0, b1, b2, lambda, b3, lambda2) : calcNS(m, b0, b1, b2, lambda);
-    pts.push({m, y});
-  }
-
-  // Fixed visual bounds 0 to 20%
-  let vMin = 0; let vMax = 0.20;
+  let vMin=Math.min(...cs.map(o=>o.y),...ff.map(o=>o.y))-0.005, vMax=Math.max(...cs.map(o=>o.y),...ff.map(o=>o.y))+0.005;
+  let getX=t=>pX+(W-2*pX)*(t-tMin)/(tMax-tMin||1), getY=v=>H-pY-((v-vMin)/(vMax-vMin||1))*(H-2*pY);
   
-  const getX = (m) => pX + (w - 2*pX) * (m / max_m);
-  const getY = (v) => h - pY - ((v - vMin) / (vMax - vMin)) * (h - 2*pY);
+  let s='';
+  for(let g=0;g<=4;g++){ let v=vMin+(vMax-vMin)*g/4, y=getY(v); s+=`<line x1="${pX}" y1="${y}" x2="${W-pX}" y2="${y}" stroke="#E2E6DF"/><text x="${pX-5}" y="${y+4}" text-anchor="end" font-family="var(--mono)" font-size="10">${fmtPct(v,1)}</text>`; }
+  
+  let dLn=`M${getX(ln[0].t)} ${getY(ln[0].y)}`; for(let i=1;i<=N;i++) dLn+=` L${getX(ln[i].t)} ${getY(ln[i].y)}`; s+=`<path d="${dLn}" fill="none" stroke="#2B5E8A" stroke-width="2" stroke-dasharray="2 4"/>`;
+  let dFf=`M${getX(ff[0].t)} ${getY(ff[0].y)}`; for(let i=1;i<=N;i++) dFf+=` L${getX(ff[i].t)} ${getY(ff[i].y)}`; s+=`<path d="${dFf}" fill="none" stroke="#C97B12" stroke-width="2" stroke-dasharray="7 4"/>`;
+  let dCs=`M${getX(cs[0].t)} ${getY(cs[0].y)}`; for(let i=1;i<=N;i++) dCs+=` L${getX(cs[i].t)} ${getY(cs[i].y)}`; s+=`<path d="${dCs}" fill="none" stroke="#0E3B2E" stroke-width="3"/>`;
+  
+  V.forEach(v=>s+=`<circle cx="${getX(v.t)}" cy="${getY(v.i)}" r="5" fill="#16201C"/>`);
+  document.getElementById('sp-svg').innerHTML=s;
+}
+tbSp.addEventListener('input', desenharSpline); desenharSpline();
 
-  let paths = ``;
-  // Grids
-  for(let v=0; v<=20; v+=5) {
-    let py = getY(v/100);
-    paths += `<line x1="${pX}" y1="${py}" x2="${w-pX}" y2="${py}" stroke="#E2E6DF" stroke-dasharray="3"/>`;
-    paths += `<text x="${pX-8}" y="${py+4}" text-anchor="end" font-family="var(--mono)" font-size="10" fill="#888">${v}%</text>`;
-  }
-  // Axes
-  paths += `<line x1="${pX}" y1="${h-pY}" x2="${w-pX}" y2="${h-pY}" stroke="#1A201D" stroke-width="2"/>`;
-  paths += `<line x1="${pX}" y1="${pY}" x2="${pX}" y2="${h-pY}" stroke="#1A201D" stroke-width="2"/>`;
+// --- CAP 5: NELSON SIEGEL / SVENSSON ---
+function fnNS(m,l){ let x=l*m||0.001; return (1-Math.exp(-x))/x; }
+function fnHp(m,l){ let x=l*m||0.001; return (1-Math.exp(-x))/x - Math.exp(-x); }
+function desenharNS(){
+  let b0=parseBR(document.getElementById('ns-b0').value)/100, b1=parseBR(document.getElementById('ns-b1').value)/100, b2=parseBR(document.getElementById('ns-b2').value)/100, l=parseBR(document.getElementById('ns-l').value);
+  let b3=parseBR(document.getElementById('ns-b3').value)/100, l2=parseBR(document.getElementById('ns-l2').value), isSv=document.getElementById('ns-sv').checked;
+  
+  document.getElementById('ns-vb0').textContent=fmtPct(b0,1); document.getElementById('ns-vb1').textContent=fmtPct(b1,1); document.getElementById('ns-vb2').textContent=fmtPct(b2,1); document.getElementById('ns-vl').textContent=fmt(l,2);
+  document.getElementById('ns-vb3').textContent=fmtPct(b3,1); document.getElementById('ns-vl2').textContent=fmt(l2,2);
+  document.getElementById('ns-svbox').className='sliders'+(isSv?'':' oculto');
 
-  // Draw Line
-  let d = `M ${getX(pts[0].m)} ${getY(pts[0].y)}`;
-  for(let i=1; i<pts.length; i++) { d += ` L ${getX(pts[i].m)} ${getY(pts[i].y)}`; }
-  paths += `<path d="${d}" fill="none" stroke="var(--t5-main)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />`;
-
-  // Draw Asymptote (b0 limit)
-  let asyY = getY(b0);
-  paths += `<line x1="${pX}" y1="${asyY}" x2="${w-pX}" y2="${asyY}" stroke="#C97B12" stroke-width="1.5" stroke-dasharray="4"/>`;
-
-  document.getElementById('svg-ns-synth').innerHTML = paths;
-};
-
-document.getElementById('ns-s-b0').addEventListener('input', drawNSSynth);
-document.getElementById('ns-s-b1').addEventListener('input', drawNSSynth);
-document.getElementById('ns-s-b2').addEventListener('input', drawNSSynth);
-document.getElementById('ns-s-b3').addEventListener('input', drawNSSynth);
-drawNSSynth();
+  let pts=[], N=120, max_m=10;
+  for(let i=1;i<=N;i++){ let m=i/N*max_m; let y=b0+b1*fnNS(m,l)+b2*fnHp(m,l); if(isSv) y+=b3*fnHp(m,l2); pts.push({m,y}); }
+  
+  let vMin=Math.min(...pts.map(p=>p.y))-0.01, vMax=Math.max(...pts.map(p=>p.y))+0.01;
+  let W=780, H=300, PX=50, PY=20, getX=m=>PX+(W-2*PX)*(m/max_m), getY=v=>H-PY-((v-vMin)/(vMax-vMin))*(H-2*PY);
+  
+  let s='';
+  for(let g=0;g<=4;g++){ let v=vMin+(vMax-vMin)*g/4, y=getY(v); s+=`<line x1="${PX}" y1="${y}" x2="${W-PX}" y2="${y}" stroke="#E2E6DF"/><text x="${PX-5}" y="${y+4}" text-anchor="end" font-family="var(--mono)" font-size="10">${fmtPct(v,1)}</text>`; }
+  s+=`<line x1="${PX}" y1="${getY(b0)}" x2="${W-PX}" y2="${getY(b0)}" stroke="#C97B12" stroke-width="1.5" stroke-dasharray="4"/>`;
+  let path=`M${getX(pts[0].m)} ${getY(pts[0].y)}`; for(let i=1;i<N;i++) path+=` L${getX(pts[i].m)} ${getY(pts[i].y)}`;
+  s+=`<path d="${path}" fill="none" stroke="#673AB7" stroke-width="3"/>`;
+  document.getElementById('ns-svg').innerHTML=s;
+  
+  document.getElementById('ns-leitura').innerHTML=`<strong>Interpretação Econômica:</strong> A curva tende estruturalmente ao limite de Longo Prazo β₀ (${fmtPct(b0,1)} - Linha Âmbar). Como β₁ é ${fmtPct(b1,1)}, a curva no curtíssimo prazo "arranca" afastada de β₀. O componente β₂ gera a corcunda ditada pelo limite λ.`;
+}
+['ns-b0','ns-b1','ns-b2','ns-l','ns-b3','ns-l2'].forEach(id=>document.getElementById(id).addEventListener('input',desenharNS));
+document.getElementById('ns-sv').addEventListener('change',desenharNS); desenharNS();
 
 </script>
 </body>
